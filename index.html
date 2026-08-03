@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="INGA - Inovação e Gestão Ambiental. Consultoria especializada em sustentabilidade, preservação da biodiversidade e estratégias participativas para conservação da natureza.">
+    <meta name="description" content="INGA - Inovação e Gestão Ambiental. Consultoria em sustentabilidade, preservação da biodiversidade e estratégias participativas para conservação da natureza.">
     <meta name="keywords" content="sustentabilidade, biodiversidade, conservação da natureza, gestão ambiental, consultoria, estratégias participativas, INGA">
     <meta name="author" content="INGA">
     
@@ -12,38 +12,279 @@
     <!-- Preconnect to Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Load Inter Font (variable font covering weights 100-900 + italics) -->
+    <!-- Load Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=1.3">
+    <link rel="stylesheet" href="style.css?v=2.2">
 </head>
 <body>
-    <!-- Responsive Background Image Container -->
+    <!-- Responsive Background Image Container for Hero -->
     <div id="bg-container" class="bg-container"></div>
     
-    <!-- Main Content Layout -->
-    <main id="main-layout" class="layout-grid">
-        <!-- Brand Section (Left in Desktop / Top in Mobile) -->
-        <section id="brand-section" class="brand-container">
-            <div class="logo-wrapper">
-                <img src="img/logoBranca.svg" alt="Logo INGA" id="brand-logo" class="logo-img">
+    <!-- Header with Centered Menu -->
+    <header id="site-header" class="site-header">
+        <div class="header-inner">
+            <button id="menu-toggle" class="menu-toggle" aria-label="Abrir Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <nav id="main-nav" class="main-nav">
+                <ul class="nav-list">
+                    <li><a href="#quem-somos" class="nav-link inter-semibold">QUEM SOMOS</a></li>
+                    <li><a href="#nossa-abordagem" class="nav-link inter-semibold">NOSSA ABORDAGEM</a></li>
+                    <li><a href="#solucoes" class="nav-link inter-semibold">SOLUÇÕES</a></li>
+                    <li><a href="javascript:void(0)" id="nav-link-contato" class="nav-link inter-semibold trigger-contato">CONTATO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="hero-section">
+        <main id="main-layout" class="layout-grid">
+            <!-- Left Half (Ocean) - Main Phrase -->
+            <div id="hero-phrase-container" class="content-container">
+                <h1 id="main-phrase" class="main-phrase inter-medium">
+                    Estratégias<br>
+                    participativas<br>
+                    para a conservação<br>
+                    da natureza.
+                </h1>
             </div>
-            <p id="brand-tagline" class="tagline inter-semibold">INOVAÇÃO E GESTÃO AMBIENTAL</p>
-        </section>
-        
-        <!-- Phrase Section (Right in Desktop / Bottom in Mobile) -->
-        <section id="phrase-section" class="content-container">
-            <h1 id="main-phrase" class="main-phrase inter-medium">
-                Estratégias<br>
-                participativas<br>
-                para a conservação<br>
-                da natureza.
-            </h1>
-        </section>
-    </main>
+            
+            <!-- Right Half (Rock) - Brand Logo -->
+            <div id="hero-brand-container" class="brand-container">
+                <div class="logo-wrapper">
+                    <img src="img/logoBranca.svg" alt="Logo INGA" id="brand-logo" class="logo-img">
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <!-- 2. SEÇÃO QUEM SOMOS -->
+    <section id="quem-somos" class="quem-somos-section">
+        <div class="section-container">
+            <div class="editorial-grid">
+                <!-- Left Column (Visual Header) -->
+                <div class="col-visual">
+                    <div class="outline-circle animate-scroll">
+                        <span class="circle-text inter-semibold">Quem somos</span>
+                    </div>
+                    <button id="trigger-eduardo" class="btn-eduardo inter-medium">
+                        Conheça o Eduardo <span class="arrow">&rarr;</span>
+                    </button>
+                </div>
+                <!-- Right Column (Content Blocks) -->
+                <div class="col-content">
+                    <div class="text-block main-paragraph inter-light">
+                        <p>A INGA – Inovação e Gestão Ambiental nasceu da convicção de que os grandes desafios da conservação da natureza exigem mais do que conhecimento: exigem estratégia, participação e a capacidade de transformar diferentes perspectivas em decisões consistentes e ações efetivas.</p>
+                        <p>Especializada em planejamento estratégico, governança e processos participativos, a INGA apoia organizações públicas, privadas e da sociedade civil na concepção e implementação de iniciativas voltadas à conservação da biodiversidade e ao desenvolvimento sustentável.</p>
+                    </div>
+                    <blockquote class="highlight-quote inter-medium-italic">
+                        "Mais do que entregar produtos, acreditamos em fortalecer organizações, ampliar capacidades e transformar estratégias em resultados efetivos para a conservação da biodiversidade."
+                    </blockquote>
+                    <div class="text-block secondary-paragraph inter-light">
+                        <p>Atuamos na construção de estratégias até sua implementação, sempre por meio de processos colaborativos, transparentes e orientados para resultados. Criada em 2024, a empresa representa a consolidação de uma trajetória profissional construída ao longo de mais de duas décadas de atuação em projetos de conservação da natureza em diferentes regiões do Brasil.</p>
+                        <p>Essa trajetória reúne experiência em planejamento de áreas protegidas, estratégias de conservação, fortalecimento institucional, processos participativos e articulação entre governos, empresas e comunidades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. BANNER DE TRANSIÇÃO (PARALLAX) -->
+    <section id="transicao-banner" class="transicao-banner-section">
+        <div class="parallax-bg" style="background-image: url('img/nossaAbordagem.png');"></div>
+        <div class="parallax-overlay"></div>
+        <div class="banner-content">
+            <h2 class="impact-phrase inter-medium animate-scroll">
+                “Construímos estratégias, fortalecemos organizações e conectamos pessoas para transformar desafios ambientais em resultados para a biodiversidade.”
+            </h2>
+        </div>
+    </section>
+
+    <!-- 4. SEÇÃO NOSSA ABORDAGEM -->
+    <section id="nossa-abordagem" class="abordagem-section">
+        <div class="section-container">
+            <div class="editorial-grid">
+                <!-- Left Column (Visual Header) -->
+                <div class="col-visual">
+                    <div class="outline-circle animate-scroll">
+                        <span class="circle-text inter-semibold">Nossa abordagem</span>
+                    </div>
+                </div>
+                <!-- Right Column (Abordagem Grid) -->
+                <div class="col-content">
+                    <h3 class="abordagem-subtitle inter-regular">Cada projeto é único, mas nossa atuação é orientada por princípios comuns:</h3>
+                    
+                    <div class="principles-grid">
+                        <!-- Card 1 -->
+                        <div class="principle-card">
+                            <span class="card-num inter-extralight">01</span>
+                            <h4 class="card-title inter-semibold">Estratégia orientada por propósito</h4>
+                            <p class="card-desc inter-light">Partimos do propósito da organização ou iniciativa e dos resultados que se pretende alcançar para desenvolver caminhos alinhados aos seus desafios e oportunidades.</p>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="principle-card">
+                            <span class="card-num inter-extralight">02</span>
+                            <h4 class="card-title inter-semibold">Construção participativa</h4>
+                            <p class="card-desc inter-light">Acreditamos que as melhores soluções surgem do encontro entre diferentes conhecimentos, experiências e perspectivas.</p>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="principle-card">
+                            <span class="card-num inter-extralight">03</span>
+                            <h4 class="card-title inter-semibold">Ciência aplicada à decisão</h4>
+                            <p class="card-desc inter-light">Aliamos conhecimento técnico e empírico, experiência prática e metodologias versáteis para apoiar decisões mais qualificadas.</p>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="principle-card">
+                            <span class="card-num inter-extralight">04</span>
+                            <h4 class="card-title inter-semibold">Implementação e resultados</h4>
+                            <p class="card-desc inter-light">Buscamos fortalecer capacidades e criar condições para que estratégias se transformem em resultados concretos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BANNER DE TRANSIÇÃO 2 (PARALLAX) -->
+    <section id="solucoes-banner" class="transicao-banner-section">
+        <div class="parallax-bg" style="background-image: url('img/solucoes.jpg');"></div>
+        <div class="parallax-overlay"></div>
+        <div class="banner-content">
+            <h2 class="impact-phrase inter-medium animate-scroll">
+                Inovação e Gestão Ambiental
+            </h2>
+        </div>
+    </section>
+
+    <!-- 5. SEÇÃO SOLUÇÕES -->
+    <section id="solucoes" class="solucoes-section">
+        <div class="section-container">
+            <div class="editorial-grid">
+                <!-- Left Column (Visual Header) -->
+                <div class="col-visual">
+                    <div class="outline-circle animate-scroll">
+                        <span class="circle-text inter-semibold">Soluções</span>
+                    </div>
+                </div>
+                <!-- Right Column (Tabs Layout) -->
+                <div class="col-content">
+                    <p class="solucoes-intro inter-light">Os desafios ambientais não se resolvem apenas com conhecimento. Exigem estratégias consistentes, pessoas engajadas e organizações preparadas para transformar intenções em resultados. Por isso, a atuação da INGA está organizada em três etapas complementares, que podem ser desenvolvidas de forma integrada ou adaptadas às necessidades de cada projeto:</p>
+                    
+                    <!-- Tab Buttons -->
+                    <div class="tab-navigation">
+                        <button class="tab-btn active inter-bold" data-tab="planejar">Planejar</button>
+                        <button class="tab-btn inter-bold" data-tab="engajar">Engajar</button>
+                        <button class="tab-btn inter-bold" data-tab="fortalecer">Fortalecer</button>
+                    </div>
+
+                    <!-- Ficha (Cards Container) -->
+                    <div class="ficha-container">
+                        <!-- Ficha Planejar -->
+                        <div id="tab-planejar" class="ficha-content active">
+                            <p class="ficha-desc inter-light">Construímos estratégias para orientar decisões e gerar impacto. Apoiamos a definição de propósitos, prioridades e caminhos para orientar decisões e transformar objetivos em planos consistentes e viáveis. Atuamos em:</p>
+                            <ul class="ficha-list inter-light">
+                                <li>Planejamento estratégico institucional</li>
+                                <li>Planos de Manejo de Áreas Protegidas</li>
+                                <li>Planejamento territorial para conservação</li>
+                                <li>Estratégias e programas de uso e conservação da biodiversidade</li>
+                                <li>Planos de ação para ecossistemas e espécies ameaçadas</li>
+                                <li>Desenvolvimento de metodologias e instrumentos de planejamento</li>
+                            </ul>
+                        </div>
+
+                        <!-- Ficha Engajar -->
+                        <div id="tab-engajar" class="ficha-content">
+                            <p class="ficha-desc inter-light">Facilitamos processos colaborativos para conectar pessoas e interesses. Acreditamos na transparência e na governança participativa como chaves para a sustentabilidade de longo prazo. Atuamos em:</p>
+                            <ul class="ficha-list inter-light">
+                                <li>Mediação de conflitos socioambientais</li>
+                                <li>Facilitação de processos participativos e consultas públicas</li>
+                                <li>Desenvolvimento e fortalecimento de conselhos e redes de governança</li>
+                                <li>Engajamento de stakeholders, parceiros e comunidades tradicionais</li>
+                                <li>Articulação multi-setorial entre governos, empresas e sociedade civil</li>
+                            </ul>
+                        </div>
+
+                        <!-- Ficha Fortalecer -->
+                        <div id="tab-fortalecer" class="ficha-content">
+                            <p class="ficha-desc inter-light">Ampliamos a capacidade institucional de organizações e equipes. Oferecemos metodologias e treinamentos práticos para que estratégias se traduzam em impactos concretos na biodiversidade. Atuamos em:</p>
+                            <ul class="ficha-list inter-light">
+                                <li>Capacitação e treinamento em gestão e conservação ambiental</li>
+                                <li>Desenvolvimento organizacional e estruturação de redes de trabalho</li>
+                                <li>Desenho de sistemas de monitoramento e avaliação de projetos</li>
+                                <li>Auditoria e mentoria técnica de programas de biodiversidade</li>
+                                <li>Apoio metodológico continuado para tomadores de decisão</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p class="copyright inter-light">&copy; 2026 INGA - Inovação e Gestão Ambiental. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: QUEM LIDERA (EDUARDO PROFILE) -->
+    <div id="modal-lidera" class="modal-overlay" aria-hidden="true">
+        <div class="modal-card modal-lidera-card">
+            <button class="modal-close" aria-label="Fechar">&times;</button>
+            <div class="modal-content-grid">
+                <!-- Photo Side -->
+                <div class="modal-img-wrapper">
+                    <img src="img/eduardo.jpg" alt="Eduardo Hermes Silva" class="profile-img">
+                </div>
+                <!-- Bio Side -->
+                <div class="modal-info-wrapper">
+                    <div class="outline-circle modal-circle">
+                        <span class="circle-text inter-semibold">quem lidera</span>
+                    </div>
+                    <h3 class="profile-name inter-bold">Eduardo Hermes Silva</h3>
+                    <p class="profile-title inter-semibold-italic">Coordenador Técnico Sênior</p>
+                    <div class="profile-bio inter-light">
+                        <p>A INGA é liderada por Eduardo Hermes Silva, biólogo, mestre em Geografia e consultor com mais de vinte cinco anos de experiência em planejamento estratégico para conservação da biodiversidade, governança de áreas protegidas e facilitação de processos participativos. Ele responde pela coordenação técnica, pelo relacionamento com os clientes e pela qualidade das entregas.</p>
+                        <p>Conforme a complexidade, a INGA reúne e coordena uma rede de consultores e parceiros, formando equipes multidisciplinares capazes de integrar diferentes conhecimentos e experiências. Esse modelo combina atendimento próximo, flexibilidade e excelência técnica, permitindo que cada projeto conte com as competências mais adequadas aos seus desafios, sem abrir mão da consistência metodológica e da condução direta de um consultor sênior.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CONTATO -->
+    <div id="modal-contato" class="modal-overlay" aria-hidden="true">
+        <div class="modal-card modal-contato-card">
+            <button class="modal-close" aria-label="Fechar">&times;</button>
+            <div class="modal-contact-wrapper">
+                <div class="outline-circle modal-circle">
+                    <span class="circle-text inter-semibold">Contato</span>
+                </div>
+                <h3 class="contact-card-title inter-bold">Conecte-se conosco</h3>
+                <p class="contact-subtitle inter-light">Estamos à disposição para desenhar as melhores soluções estratégicas para o seu projeto.</p>
+                
+                <div class="contact-links">
+                    <div class="contact-item">
+                        <span class="contact-icon">&#9993;</span>
+                        <a href="mailto:eduardo@inga.eco.br" class="contact-link inter-medium">eduardo@inga.eco.br</a>
+                    </div>
+                    <div class="contact-item">
+                        <!-- Whatsapp phone symbol -->
+                        <span class="contact-icon">&#9990;</span>
+                        <a href="https://wa.me/5548996162725" target="_blank" class="contact-link inter-medium">(48) 99616-2725</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Custom Script -->
-    <script src="script.js?v=1.3"></script>
+    <script src="script.js?v=2.2"></script>
 </body>
 </html>

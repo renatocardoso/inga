@@ -1,14 +1,25 @@
 /* ==========================================================================
-   INGA - Style System & Responsive Layout
+   INGA - Style System & Full Website Layout
    ========================================================================== */
 
 /* 1. Reset and Variables */
 :root {
     --color-teal: #2c9f9a;
+    --color-teal-dark: #1f726e;
+    --color-teal-light: #e6f6f5;
+    --color-gold: #d4af37;
+    --color-gold-hover: #b89327;
     --color-white: #ffffff;
     --color-dark: #121212;
+    --color-dark-gray: #1e1e1e;
+    --color-light-bg: #f9f9f9;
+    --color-text-dark: #222222;
+    --color-text-muted: #666666;
+    
     --font-primary: 'Inter', sans-serif;
-    --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    --container-max: 1200px;
 }
 
 * {
@@ -17,10 +28,8 @@
     box-sizing: border-box;
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+html {
+    scroll-behavior: smooth;
     font-family: var(--font-primary);
     background-color: var(--color-dark);
     color: var(--color-white);
@@ -28,121 +37,147 @@ html, body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+    overflow-x: hidden;
+    background-color: var(--color-dark);
+}
+
 /* 2. User-Specified Inter Font Weights & Styles */
-.inter-thin {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: normal;
-}
-.inter-extralight {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
-}
-.inter-light {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-}
-.inter-regular {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-.inter-medium {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-}
-.inter-semibold {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-}
-.inter-bold {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-}
-.inter-extrabold {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-}
-.inter-black {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 900;
-    font-style: normal;
+.inter-thin { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 100; font-style: normal; }
+.inter-extralight { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 200; font-style: normal; }
+.inter-light { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 300; font-style: normal; }
+.inter-regular { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 400; font-style: normal; }
+.inter-medium { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 500; font-style: normal; }
+.inter-semibold { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 600; font-style: normal; }
+.inter-bold { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 700; font-style: normal; }
+.inter-extrabold { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 800; font-style: normal; }
+.inter-black { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 900; font-style: normal; }
+
+.inter-thin-italic { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 100; font-style: italic; }
+.inter-extralight-italic { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 200; font-style: italic; }
+.inter-light-italic { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 300; font-style: italic; }
+.inter-regular-italic { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 400; font-style: italic; }
+.inter-medium-italic { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 500; font-style: italic; }
+.inter-semibold-italic { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 600; font-style: italic; }
+.inter-bold-italic { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 700; font-style: italic; }
+.inter-extrabold-italic { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 800; font-style: italic; }
+.inter-black-italic { font-family: var(--font-primary); font-optical-sizing: auto; font-weight: 900; font-style: italic; }
+
+/* 3. Header & Menu */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 2.2rem 2rem;
+    transition: var(--transition-smooth);
+    background-color: rgba(18, 18, 18, 0.7);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Italic Classes */
-.inter-thin-italic {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: italic;
-}
-.inter-extralight-italic {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: italic;
-}
-.inter-light-italic {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: italic;
-}
-.inter-regular-italic {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: italic;
-}
-.inter-medium-italic {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: italic;
-}
-.inter-semibold-italic {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: italic;
-}
-.inter-bold-italic {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: italic;
-}
-.inter-extrabold-italic {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: italic;
-}
-.inter-black-italic {
-    font-family: var(--font-primary);
-    font-optical-sizing: auto;
-    font-weight: 900;
-    font-style: italic;
+.site-header.scrolled {
+    padding: 1.2rem 2rem;
+    background-color: rgba(18, 18, 18, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
+    border-bottom-color: transparent;
 }
 
-/* 3. Responsive Background Rotation System */
+.header-inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center; /* Center the menu on screen */
+    align-items: center;
+    position: relative;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 4rem; /* Wide letter space menu */
+}
+
+.nav-link {
+    color: var(--color-white);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    transition: var(--transition-fast);
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+/* Hover yellow gold color */
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-gold);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-gold);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Mobile Hamburger Menu */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+    width: 30px;
+    height: 24px;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    z-index: 110;
+}
+
+.hamburger-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-white);
+    transition: var(--transition-fast);
+}
+
+/* 4. Hero Section */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Responsive Background Rotation System (Natural orientation: Ocean Left, Rock Right) */
 .bg-container {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: 1;
     background-image: url('img/conceito1.jpg');
     background-repeat: no-repeat;
@@ -158,7 +193,7 @@ html, body {
         left: 0;
         width: 100vw;
         height: 100vh;
-        transform: scaleX(-1); /* Mirror horizontally to put rock on left, ocean on right */
+        transform: none; /* No horizontal flip needed anymore, matches Figma layout */
     }
 }
 
@@ -174,7 +209,6 @@ html, body {
     }
 }
 
-/* 4. Layout & Grid Styling */
 .layout-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -184,14 +218,32 @@ html, body {
     z-index: 10;
 }
 
-/* Brand Section (Left) */
+/* Hero Content Container (Left / Ocean) */
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 6% 3rem 12%; /* Keep it balanced over the ocean */
+    animation: fadeInPhrase 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.main-phrase {
+    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--color-white);
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Hero Brand Container (Right / Rock) */
 .brand-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 3rem;
-    animation: fadeInBrand 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: fadeInBrand 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .logo-wrapper {
@@ -203,13 +255,12 @@ html, body {
     width: 250px;
     height: auto;
     display: block;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     transition: var(--transition-smooth);
 }
 
 .logo-img:hover {
     transform: scale(1.03);
-    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
 }
 
 .tagline {
@@ -218,58 +269,661 @@ html, body {
     color: var(--color-teal);
     text-transform: uppercase;
     text-align: center;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-/* Phrase Section (Right) */
-.content-container {
+/* 5. Generic Section Styles */
+.section-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 8rem 2rem;
+}
+
+.editorial-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 4rem;
+}
+
+/* Left Column: Visual Outline Circle Header */
+.col-visual {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
-    padding: 3rem 12% 3rem 6%;
-    animation: fadeInPhrase 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    position: relative;
+    min-height: 240px; /* Base height to accommodate absolute circle container */
 }
 
-.main-phrase {
-    font-size: clamp(2.2rem, 3.8vw, 3.4rem);
-    line-height: 1.25;
-    letter-spacing: -0.01em;
+/* Thicker border (6px stroke) and absolute positioning (50% overlapping boundary) */
+.outline-circle {
+    width: 240px;
+    height: 240px;
+    border: 6px solid var(--color-teal);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: absolute;
+    top: 0;
+    left: 2rem;
+    transform: translateY(-50%);
+    z-index: 25;
+    transition: var(--transition-smooth);
+    background-color: transparent;
+}
+
+/* Custom styling for Solucoes section circle which uses gold border */
+.solucoes-section .outline-circle {
+    border-color: var(--color-gold);
+}
+
+.outline-circle:hover {
+    background-color: rgba(44, 159, 154, 0.05); /* Slight transparent tint */
+    border-color: var(--color-teal-dark);
+}
+
+.solucoes-section .outline-circle:hover {
+    background-color: rgba(212, 175, 55, 0.05); /* Gold transparent tint */
+    border-color: var(--color-gold-hover);
+}
+
+.outline-circle:hover .circle-text {
+    transform: scale(1.05);
+}
+
+.circle-text {
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color-teal);
+    line-height: 1.4;
+    transition: var(--transition-smooth);
+}
+
+.solucoes-section .circle-text {
+    color: var(--color-gold);
+}
+
+.col-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* 6. Quem Somos Section */
+.quem-somos-section {
+    background-color: var(--color-white);
+    color: var(--color-text-dark);
+    position: relative;
+    z-index: 10;
+}
+
+.quem-somos-section .circle-text {
+    color: var(--color-teal);
+}
+
+.btn-eduardo {
+    padding: 0.8rem 1.6rem;
+    background: none;
+    border: 1px solid var(--color-teal);
+    border-radius: 4px;
+    color: var(--color-teal);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: var(--transition-fast);
+    position: absolute;
+    top: 155px; /* Sit cleanly right below the 240px circle */
+    left: 2.2rem;
+    z-index: 25;
+}
+
+.btn-eduardo:hover {
+    background-color: var(--color-teal);
     color: var(--color-white);
-    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* 5. Animations */
+.btn-eduardo .arrow {
+    transition: transform 0.3s ease;
+}
+
+.btn-eduardo:hover .arrow {
+    transform: translateX(5px);
+}
+
+.text-block {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: #333333;
+}
+
+.text-block p {
+    margin-bottom: 1.5rem;
+}
+
+.text-block p:last-child {
+    margin-bottom: 0;
+}
+
+.highlight-quote {
+    font-size: 1.6rem;
+    line-height: 1.45;
+    color: var(--color-teal-dark);
+    border-left: 3px solid var(--color-teal);
+    padding-left: 2rem;
+    margin: 1.5rem 0;
+}
+
+/* 7. Transition Parallax Banner */
+.transicao-banner-section {
+    position: relative;
+    height: 70vh;
+    min-height: 480px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.parallax-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%; /* Extra height to support smooth parallax translation */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Pure CSS parallax window effect */
+    z-index: -2;
+}
+
+/* Fallback for touch devices where background-attachment: fixed is buggy */
+@media (hover: none) {
+    .parallax-bg {
+        background-attachment: scroll;
+        height: 100%;
+    }
+}
+
+.parallax-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.45); /* Soft overlay darken */
+    z-index: -1;
+}
+
+.banner-content {
+    max-width: 900px;
+    padding: 2rem;
+    text-align: center;
+}
+
+.impact-phrase {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    line-height: 1.4;
+    color: var(--color-white);
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* 8. Nossa Abordagem Section */
+.abordagem-section {
+    background-color: var(--color-light-bg);
+    color: var(--color-text-dark);
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.abordagem-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem 4rem;
+}
+
+.principle-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.card-num {
+    font-size: 2.2rem;
+    color: var(--color-teal);
+    line-height: 1;
+}
+
+.card-title {
+    font-size: 1.15rem;
+    color: var(--color-text-dark);
+}
+
+.card-desc {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #555555;
+}
+
+/* 9. Soluções Section */
+.solucoes-section {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    position: relative;
+    z-index: 10;
+}
+
+.solucoes-intro {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: #cccccc;
+}
+
+/* Tab Navigation designed as folder indexes ("fichário") */
+.tab-navigation {
+    display: flex;
+    border-bottom: 3px solid var(--color-gold); /* Tab bar base border */
+    gap: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: -3px; /* Overlap content card border */
+    position: relative;
+    z-index: 20;
+}
+
+.tab-btn {
+    background: transparent;
+    border: 3px solid transparent;
+    border-bottom: none;
+    color: var(--color-gold);
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 0.8rem 2rem;
+    border-radius: 6px 6px 0 0;
+    transition: var(--transition-fast);
+}
+
+.tab-btn:hover {
+    background-color: rgba(212, 175, 55, 0.05);
+    color: var(--color-white);
+}
+
+.tab-btn.active {
+    background-color: var(--color-gold);
+    color: var(--color-dark);
+    border-color: var(--color-gold);
+    font-weight: 700;
+}
+
+/* Ficha Card Layout */
+.ficha-container {
+    position: relative;
+    z-index: 10;
+}
+
+.ficha-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(15px);
+    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
+    background-color: var(--color-dark-gray);
+    border: 3px solid var(--color-gold); /* Matching gold folder outline */
+    border-radius: 0 6px 6px 6px; /* Smooth corners except under active tab */
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.ficha-content.active {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Highlight dynamic style around contents */
+.tab-btn.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ficha-title {
+    font-size: 1.8rem;
+    color: var(--color-teal);
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.ficha-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #e0e0e0;
+    margin-bottom: 2rem;
+}
+
+.ficha-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+    list-style: none;
+}
+
+.ficha-list li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #cccccc;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.ficha-list li::before {
+    content: '▪';
+    color: var(--color-teal);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* 10. Footer */
+.site-footer {
+    background-color: #0b0b0b;
+    border-top: 1px solid #1a1a1a;
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.copyright {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    color: #666666;
+}
+
+/* 11. Modals & Popups System */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(8px);
+    z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.5s;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.modal-card {
+    background-color: var(--color-dark-gray);
+    border: 1px solid #333333;
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.5);
+    transform: scale(0.9);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 90%;
+}
+
+.modal-overlay.active .modal-card {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: #888888;
+    font-size: 2.2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    z-index: 50;
+}
+
+.modal-close:hover {
+    color: var(--color-white);
+    transform: scale(1.1);
+}
+
+/* Lidera Modal Layout */
+.modal-lidera-card {
+    max-width: 940px;
+}
+
+.modal-content-grid {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+}
+
+.modal-img-wrapper {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+    background-color: #111111;
+    overflow: hidden;
+    position: relative;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-info-wrapper {
+    padding: 4rem 4rem 4rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-circle {
+    position: relative !important;
+    top: 0 !important;
+    width: 160px;
+    height: 160px;
+    margin-bottom: 1rem;
+}
+
+.profile-name {
+    font-size: 1.8rem;
+    color: var(--color-white);
+    line-height: 1.2;
+}
+
+.profile-title {
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    color: var(--color-teal);
+    margin-top: -0.5rem;
+}
+
+.profile-bio {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #cccccc;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+/* Contato Modal Layout */
+.modal-contato-card {
+    max-width: 500px;
+}
+
+.modal-contact-wrapper {
+    padding: 4.5rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+.contact-card-title {
+    font-size: 1.8rem;
+    color: var(--color-white);
+    margin-top: 1rem;
+}
+
+.contact-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #aaaaaa;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid #2a2a2a;
+    padding: 1.2rem;
+    border-radius: 6px;
+    transition: var(--transition-fast);
+}
+
+.contact-item:hover {
+    border-color: var(--color-teal);
+    background-color: rgba(44, 159, 154, 0.04);
+}
+
+.contact-icon {
+    font-size: 1.4rem;
+    color: var(--color-teal);
+}
+
+.contact-link {
+    font-size: 1.05rem;
+    color: var(--color-white);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.contact-link:hover {
+    color: var(--color-gold);
+}
+
+/* Animations Helper */
 @keyframes fadeInBrand {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeInPhrase {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 12. Mobile Responsiveness */
+@media (max-width: 1024px) {
+    .nav-list {
+        gap: 2rem;
     }
 }
 
-/* 6. Mobile Responsiveness (Vertical Aspect / Screen <= 900px) */
 @media (max-width: 900px) {
+    /* Header menu toggle */
+    .menu-toggle {
+        display: flex;
+    }
+
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(18, 18, 18, 0.98);
+        backdrop-filter: blur(15px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(100%);
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 105;
+    }
+
+    .main-nav.active {
+        transform: translateX(0);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+    }
+
+    /* Hamburger Active Animation */
+    .menu-toggle.active .hamburger-line:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .menu-toggle.active .hamburger-line:nth-child(2) {
+        opacity: 0;
+    }
+    .menu-toggle.active .hamburger-line:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* Layout Grids */
     .layout-grid {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        padding: 5rem 2rem 6.5rem 2rem;
+        padding: 6.5rem 2rem 7rem 2rem;
         text-align: center;
     }
 
@@ -292,7 +946,6 @@ html, body {
         padding: 0;
         align-items: center;
         width: 100%;
-        max-width: 480px;
     }
 
     .main-phrase {
@@ -300,17 +953,98 @@ html, body {
         line-height: 1.3;
         text-align: center;
     }
-}
 
-/* Height-based adjustments for short mobile screens */
-@media (max-height: 600px) and (max-width: 900px) {
-    .layout-grid {
-        padding: 2.5rem 2rem 3rem 2rem;
+    /* Editorial sections */
+    .editorial-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
     }
-    .logo-img {
-        width: 150px;
+
+    .col-visual {
+        align-items: center;
     }
-    .main-phrase {
-        font-size: 1.6rem;
+
+    .outline-circle {
+        position: relative !important;
+        top: 0 !important;
+        left: auto !important;
+        transform: none !important;
+        width: 180px;
+        height: 180px;
+    }
+
+    .btn-eduardo {
+        position: relative !important;
+        top: 0 !important;
+        left: auto !important;
+        margin-top: 2rem !important;
+    }
+
+    .section-container {
+        padding: 5rem 1.5rem;
+    }
+
+    .principles-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .ficha-list {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .ficha-content {
+        padding: 2rem;
+        min-height: auto;
+    }
+
+    .tab-navigation {
+        gap: 1.5rem;
+        justify-content: space-between;
+    }
+
+    .tab-btn {
+        font-size: 0.85rem;
+        letter-spacing: 0.08em;
+    }
+
+    /* Modal Mobile */
+    .modal-content-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-img-wrapper {
+        min-height: 260px;
+        height: 260px;
+    }
+
+    .modal-info-wrapper {
+        padding: 2.5rem 2rem;
+        align-items: center;
+        text-align: center;
+    }
+
+    .modal-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .modal-card {
+        width: 95%;
+        margin: 1rem auto;
+    }
+    
+    .modal-close {
+        top: 1rem;
+        right: 1.25rem;
+        color: var(--color-white);
+        background-color: rgba(0,0,0,0.5);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
