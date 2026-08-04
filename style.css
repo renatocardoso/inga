@@ -15,6 +15,7 @@
     --color-light-bg: #f9f9f9;
     --color-text-dark: #222222;
     --color-text-muted: #666666;
+    --color-ocean-depth: #0a312f; /* Deep Ocean 500 */
     
     --font-primary: 'Inter', sans-serif;
     --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -72,17 +73,42 @@ body {
     z-index: 100;
     padding: 2.2rem 2rem;
     transition: var(--transition-smooth);
-    background-color: rgba(18, 18, 18, 0.7);
+    background-color: rgba(10, 49, 47, 0.5); /* Deep ocean 500 with 50% opacity */
     backdrop-filter: blur(8px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .site-header.scrolled {
     padding: 1.2rem 2rem;
-    background-color: rgba(18, 18, 18, 0.95);
+    background-color: rgba(10, 49, 47, 0.85);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.15);
     border-bottom-color: transparent;
+}
+
+/* Brand circle dot at top-left */
+.header-logo-link {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    z-index: 110;
+}
+
+.brand-dot {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-color: var(--color-teal);
+    border-radius: 50%;
+    transition: var(--transition-fast);
+}
+
+.brand-dot:hover {
+    transform: scale(1.15);
+    background-color: var(--color-teal-light);
 }
 
 .header-inner {
@@ -247,8 +273,22 @@ body {
 }
 
 .logo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 1.25rem;
     transition: var(--transition-smooth);
+}
+
+.logo-tagline {
+    color: var(--color-teal);
+    font-size: 0.62rem;
+    letter-spacing: 0.28em;
+    margin-top: 0.9rem;
+    text-transform: uppercase;
+    text-align: center;
+    white-space: nowrap;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .logo-img {
@@ -307,7 +347,7 @@ body {
     position: absolute;
     top: 0;
     left: 2rem;
-    transform: translateY(-50%);
+    margin-top: -110px; /* Positioned 50% overlapping boundary */
     z-index: 25;
     transition: var(--transition-smooth);
     background-color: transparent;
@@ -475,48 +515,89 @@ body {
 
 /* 8. Nossa Abordagem Section */
 .abordagem-section {
-    background-color: var(--color-light-bg);
-    color: var(--color-text-dark);
+    background-color: var(--color-ocean-depth);
+    color: var(--color-white);
     position: relative;
     z-index: 10;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.abordagem-section .circle-text {
+    color: var(--color-teal);
 }
 
 .abordagem-subtitle {
     font-size: 1.25rem;
-    color: var(--color-text-muted);
+    color: #a0c0be;
     line-height: 1.5;
 }
 
 .principles-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3.5rem 4rem;
+    gap: 3rem;
 }
 
 .principle-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e0e0e0;
+    position: relative;
+    height: 280px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: var(--transition-smooth);
 }
 
-.card-num {
-    font-size: 2.2rem;
-    color: var(--color-teal);
-    line-height: 1;
+.card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(6, 32, 30, 0.95) 15%, rgba(6, 32, 30, 0.5) 100%);
+    transition: var(--transition-smooth);
+    z-index: 1;
+}
+
+.principle-card:hover .card-overlay {
+    background: rgba(6, 32, 30, 0.95);
+}
+
+.card-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 2.2rem;
+    transition: var(--transition-smooth);
 }
 
 .card-title {
-    font-size: 1.15rem;
-    color: var(--color-text-dark);
+    font-size: 1.25rem;
+    color: var(--color-white);
+    margin: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .card-desc {
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: #555555;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #cccccc;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-top: 0;
+}
+
+.principle-card:hover .card-desc {
+    max-height: 150px;
+    opacity: 1;
+    margin-top: 0.8rem;
 }
 
 /* 9. Soluções Section */
@@ -871,9 +952,35 @@ body {
 }
 
 @media (max-width: 900px) {
-    /* Header menu toggle */
+    /* Header menu toggle override to brand circle */
     .menu-toggle {
         display: flex;
+        width: 28px;
+        height: 28px;
+        background-color: var(--color-teal);
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        padding: 0;
+        position: absolute;
+        right: 2rem;
+        z-index: 110;
+        transition: var(--transition-fast);
+    }
+
+    .menu-toggle.active {
+        background-color: transparent;
+    }
+
+    .hamburger-line {
+        background-color: var(--color-white);
+        width: 16px;
+        height: 2px;
+        margin: 0;
+        position: absolute;
+        opacity: 0;
+        transition: var(--transition-fast);
     }
 
     .main-nav {
@@ -906,15 +1013,18 @@ body {
         font-size: 1.1rem;
     }
 
-    /* Hamburger Active Animation */
+    /* Hamburger Active Animation for Brand Toggler */
+    .menu-toggle.active .hamburger-line {
+        opacity: 1;
+    }
     .menu-toggle.active .hamburger-line:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+        transform: rotate(45deg);
     }
     .menu-toggle.active .hamburger-line:nth-child(2) {
         opacity: 0;
     }
     .menu-toggle.active .hamburger-line:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+        transform: rotate(-45deg);
     }
 
     /* Layout Grids */
@@ -969,6 +1079,7 @@ body {
         top: 0 !important;
         left: auto !important;
         transform: none !important;
+        margin-top: 0 !important;
         width: 180px;
         height: 180px;
     }

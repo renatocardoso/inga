@@ -256,6 +256,39 @@ const init = () => {
             currentY = 0;
         }
     });
+
+    // --- Circle Header Overlaps & Parallax Locking ---
+    const circles = document.querySelectorAll('.outline-circle');
+    const headerHeight = siteHeader.offsetHeight || 80;
+
+    const animateCircles = () => {
+        const isDesktopView = window.innerWidth > 900;
+        
+        circles.forEach(circle => {
+            if (!isDesktopView) {
+                circle.style.transform = '';
+                return;
+            }
+            
+            const parentSection = circle.closest('section');
+            if (!parentSection) return;
+            
+            const parentRect = parentSection.getBoundingClientRect();
+            const triggerPoint = headerHeight;
+            
+            if (parentRect.top > triggerPoint) {
+                const distance = parentRect.top - triggerPoint;
+                const translateOffset = distance * 0.15;
+                circle.style.transform = `translateY(calc(-50% + ${translateOffset}px))`;
+            } else {
+                circle.style.transform = `translateY(-50%)`;
+            }
+        });
+    };
+
+    window.addEventListener('scroll', animateCircles);
+    window.addEventListener('resize', animateCircles);
+    animateCircles();
 };
 
 if (document.readyState === 'loading') {

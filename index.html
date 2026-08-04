@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=2.2">
+    <link rel="stylesheet" href="style.css?v=2.3">
 </head>
 <body>
     <!-- Responsive Background Image Container for Hero -->
@@ -25,6 +25,9 @@
     <!-- Header with Centered Menu -->
     <header id="site-header" class="site-header">
         <div class="header-inner">
+            <a href="#hero" class="header-logo-link" aria-label="Home">
+                <span class="brand-dot"></span>
+            </a>
             <button id="menu-toggle" class="menu-toggle" aria-label="Abrir Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
@@ -58,6 +61,7 @@
             <div id="hero-brand-container" class="brand-container">
                 <div class="logo-wrapper">
                     <img src="img/logoBranca.svg" alt="Logo INGA" id="brand-logo" class="logo-img">
+                    <div class="logo-tagline inter-semibold">INOVAÇÃO E GESTÃO AMBIENTAL</div>
                 </div>
             </div>
         </main>
@@ -80,14 +84,13 @@
                 <div class="col-content">
                     <div class="text-block main-paragraph inter-light">
                         <p>A INGA – Inovação e Gestão Ambiental nasceu da convicção de que os grandes desafios da conservação da natureza exigem mais do que conhecimento: exigem estratégia, participação e a capacidade de transformar diferentes perspectivas em decisões consistentes e ações efetivas.</p>
-                        <p>Especializada em planejamento estratégico, governança e processos participativos, a INGA apoia organizações públicas, privadas e da sociedade civil na concepção e implementação de iniciativas voltadas à conservação da biodiversidade e ao desenvolvimento sustentável.</p>
+                        <p>Especializada em planejamento estratégico, governança e processos participativos, a INGA apoia organizações públicas, privadas e da sociedade civil na concepção e implementação de iniciativas voltadas à conservação da biodiversidade e ao desenvolvimento sustentável. Atuamos na construção de estratégias até sua implementação, sempre por meio de processos colaborativos, transparentes e orientados para resultados.</p>
                     </div>
                     <blockquote class="highlight-quote inter-medium-italic">
                         "Mais do que entregar produtos, acreditamos em fortalecer organizações, ampliar capacidades e transformar estratégias em resultados efetivos para a conservação da biodiversidade."
                     </blockquote>
                     <div class="text-block secondary-paragraph inter-light">
-                        <p>Atuamos na construção de estratégias até sua implementação, sempre por meio de processos colaborativos, transparentes e orientados para resultados. Criada em 2024, a empresa representa a consolidação de uma trajetória profissional construída ao longo de mais de duas décadas de atuação em projetos de conservação da natureza em diferentes regiões do Brasil.</p>
-                        <p>Essa trajetória reúne experiência em planejamento de áreas protegidas, estratégias de conservação, fortalecimento institucional, processos participativos e articulação entre governos, empresas e comunidades.</p>
+                        <p>Criada em 2024, a empresa representa a consolidação de uma trajetória profissional construída ao longo de mais de duas décadas de atuação em projetos de conservação da natureza em diferentes regiões do Brasil. Essa trajetória reúne experiência em planejamento de áreas protegidas, estratégias de conservação, fortalecimento institucional, processos participativos e articulação entre governos, empresas e comunidades.</p>
                     </div>
                 </div>
             </div>
@@ -96,7 +99,7 @@
 
     <!-- 3. BANNER DE TRANSIÇÃO (PARALLAX) -->
     <section id="transicao-banner" class="transicao-banner-section">
-        <div class="parallax-bg" style="background-image: url('img/nossaAbordagem.png');"></div>
+        <div class="parallax-bg" style="background-image: url('img/transicao1.jpg');"></div>
         <div class="parallax-overlay"></div>
         <div class="banner-content">
             <h2 class="impact-phrase inter-medium animate-scroll">
@@ -121,28 +124,36 @@
                     
                     <div class="principles-grid">
                         <!-- Card 1 -->
-                        <div class="principle-card">
-                            <span class="card-num inter-extralight">01</span>
-                            <h4 class="card-title inter-semibold">Estratégia orientada por propósito</h4>
-                            <p class="card-desc inter-light">Partimos do propósito da organização ou iniciativa e dos resultados que se pretende alcançar para desenvolver caminhos alinhados aos seus desafios e oportunidades.</p>
+                        <div class="principle-card" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80');">
+                            <div class="card-overlay"></div>
+                            <div class="card-content">
+                                <h4 class="card-title inter-semibold">Estratégia orientada por propósito</h4>
+                                <p class="card-desc inter-light">Partimos do propósito da organização ou iniciativa e dos resultados que se pretende alcançar para desenvolver caminhos alinhados aos seus desafios e oportunidades.</p>
+                            </div>
                         </div>
                         <!-- Card 2 -->
-                        <div class="principle-card">
-                            <span class="card-num inter-extralight">02</span>
-                            <h4 class="card-title inter-semibold">Construção participativa</h4>
-                            <p class="card-desc inter-light">Acreditamos que as melhores soluções surgem do encontro entre diferentes conhecimentos, experiências e perspectivas.</p>
+                        <div class="principle-card" style="background-image: url('https://images.unsplash.com/photo-1531538606174-0f90ff5dce83?auto=format&fit=crop&w=600&q=80');">
+                            <div class="card-overlay"></div>
+                            <div class="card-content">
+                                <h4 class="card-title inter-semibold">Construção participativa</h4>
+                                <p class="card-desc inter-light">Acreditamos que as melhores soluções surgem do encontro entre diferentes conhecimentos, experiências e perspectivas.</p>
+                            </div>
                         </div>
                         <!-- Card 3 -->
-                        <div class="principle-card">
-                            <span class="card-num inter-extralight">03</span>
-                            <h4 class="card-title inter-semibold">Ciência aplicada à decisão</h4>
-                            <p class="card-desc inter-light">Aliamos conhecimento técnico e empírico, experiência prática e metodologias versáteis para apoiar decisões mais qualificadas.</p>
+                        <div class="principle-card" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80');">
+                            <div class="card-overlay"></div>
+                            <div class="card-content">
+                                <h4 class="card-title inter-semibold">Ciência aplicada à decisão</h4>
+                                <p class="card-desc inter-light">Aliamos conhecimento técnico e empírico, experiência prática e metodologias versáteis para apoiar decisões mais qualificadas.</p>
+                            </div>
                         </div>
                         <!-- Card 4 -->
-                        <div class="principle-card">
-                            <span class="card-num inter-extralight">04</span>
-                            <h4 class="card-title inter-semibold">Implementação e resultados</h4>
-                            <p class="card-desc inter-light">Buscamos fortalecer capacidades e criar condições para que estratégias se transformem em resultados concretos.</p>
+                        <div class="principle-card" style="background-image: url('https://images.unsplash.com/photo-1530587191325-3db32d826c18?auto=format&fit=crop&w=600&q=80');">
+                            <div class="card-overlay"></div>
+                            <div class="card-content">
+                                <h4 class="card-title inter-semibold">Implementação e resultados</h4>
+                                <p class="card-desc inter-light">Buscamos fortalecer capacidades e criar condições para que estratégias se transformem em resultados concretos.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -285,6 +296,6 @@
     </div>
 
     <!-- Custom Script -->
-    <script src="script.js?v=2.2"></script>
+    <script src="script.js?v=2.3"></script>
 </body>
 </html>
