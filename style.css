@@ -262,6 +262,16 @@ body {
     text-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
 }
 
+.hero-subtitle {
+    margin-top: 1.5rem;
+    font-size: clamp(1rem, 1.25vw, 1.2rem);
+    line-height: 1.6;
+    color: #e0e0e0;
+    max-width: 480px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    animation: fadeInPhrase 1.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
 /* Hero Brand Container (Right / Rock) */
 .brand-container {
     display: flex;
@@ -347,7 +357,7 @@ body {
     position: absolute;
     top: 0;
     left: 2rem;
-    margin-top: -110px; /* Positioned 50% overlapping boundary */
+    margin-top: -120px; /* Positioned 50% overlapping boundary */
     z-index: 25;
     transition: var(--transition-smooth);
     background-color: transparent;
@@ -380,6 +390,7 @@ body {
     color: var(--color-teal);
     line-height: 1.4;
     transition: var(--transition-smooth);
+    margin-top: 40px; /* Positioned 40px below circle center per user request */
 }
 
 .solucoes-section .circle-text {
@@ -449,6 +460,18 @@ body {
     margin-bottom: 0;
 }
 
+.trajetoria-link {
+    color: var(--color-teal-dark);
+    text-decoration: none;
+    font-style: italic;
+    font-weight: 600;
+    transition: var(--transition-fast);
+}
+
+.trajetoria-link:hover {
+    color: var(--color-gold-hover);
+}
+
 .highlight-quote {
     font-size: 1.6rem;
     line-height: 1.45;
@@ -515,215 +538,484 @@ body {
 
 /* 8. Nossa Abordagem Section */
 .abordagem-section {
-    background-color: var(--color-ocean-depth);
+    background-color: #002c2d;
     color: var(--color-white);
     position: relative;
     z-index: 10;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.abordagem-section .outline-circle {
+    border-color: #2e9d9a;
+}
+
 .abordagem-section .circle-text {
-    color: var(--color-teal);
+    color: #2e9d9a;
+}
+
+.abordagem-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    margin-bottom: 3.5rem;
+    min-height: 120px;
+}
+
+.abordagem-header .col-visual {
+    width: 320px;
+    min-height: auto;
+}
+
+.abordagem-header .col-header-text {
+    flex: 1;
+    padding-top: 1.5rem;
 }
 
 .abordagem-subtitle {
-    font-size: 1.25rem;
-    color: #a0c0be;
-    line-height: 1.5;
+    font-size: 1.05rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: #e0e0e0;
+    margin: 0;
 }
 
-.principles-grid {
+/* 2x2 Minimalist Interactive Grid - Full Width Usable Area */
+.principles-grid-container {
+    position: relative;
+    width: 100%;
+    min-height: 560px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    --line-h-top: 50%;
+    --line-v-left: 50%;
+}
+
+/* Division Lines with Architectural Overhangs */
+.grid-line {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.55);
+    z-index: 5;
+    pointer-events: none;
+    transition: top 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                left 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                background-color 0.3s ease;
+}
+
+.line-h {
+    top: var(--line-h-top);
+    left: -20px;
+    width: calc(100% + 40px);
+    height: 1.5px;
+}
+
+.line-v {
+    left: var(--line-v-left);
+    top: -20px;
+    width: 1.5px;
+    height: calc(100% + 40px);
+}
+
+/* Quadrants */
+.quadrant {
+    position: relative;
+    padding: 3rem;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.4s ease;
+}
+
+/* Rest State: centered title */
+.quad-rest {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quad-rest .quad-title {
+    font-size: 1.7rem;
+    line-height: 1.3;
+    color: var(--color-white);
+    letter-spacing: -0.01em;
+}
+
+/* Hover State: reveal expanded content matching Image 2 mockup proportions */
+.quad-hover {
+    position: absolute;
+    inset: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
+    align-items: center;
+    padding: 3rem 4rem;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.97);
+    transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1), transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.principle-card {
-    position: relative;
-    height: 280px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    transition: var(--transition-smooth);
+.quadrant:hover .quad-rest,
+.principles-grid-container.hover-quad-1 .quad-top-left .quad-rest,
+.principles-grid-container.hover-quad-2 .quad-top-right .quad-rest,
+.principles-grid-container.hover-quad-3 .quad-bottom-left .quad-rest,
+.principles-grid-container.hover-quad-4 .quad-bottom-right .quad-rest {
+    opacity: 0;
+    transform: scale(0.95);
+    pointer-events: none;
 }
 
-.card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(6, 32, 30, 0.95) 15%, rgba(6, 32, 30, 0.5) 100%);
-    transition: var(--transition-smooth);
-    z-index: 1;
+.quadrant:hover .quad-hover,
+.principles-grid-container.hover-quad-1 .quad-top-left .quad-hover,
+.principles-grid-container.hover-quad-2 .quad-top-right .quad-hover,
+.principles-grid-container.hover-quad-3 .quad-bottom-left .quad-hover,
+.principles-grid-container.hover-quad-4 .quad-bottom-right .quad-hover {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
 }
 
-.principle-card:hover .card-overlay {
-    background: rgba(6, 32, 30, 0.95);
-}
-
-.card-content {
-    position: relative;
-    z-index: 2;
-    height: 100%;
+/* Elements inside hover state */
+.hover-left, .hover-right {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    padding: 2.2rem;
-    transition: var(--transition-smooth);
+    justify-content: center;
 }
 
-.card-title {
-    font-size: 1.25rem;
+.hover-left .quad-title, .hover-right .quad-title {
+    font-size: 1.85rem;
+    line-height: 1.25;
     color: var(--color-white);
-    margin: 0;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    margin-bottom: 1.2rem;
 }
 
-.card-desc {
-    font-size: 0.92rem;
-    line-height: 1.6;
-    color: #cccccc;
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+.quad-icon {
+    margin-top: 1rem;
+}
+
+.icon-above {
+    margin-bottom: 1.2rem;
     margin-top: 0;
 }
 
-.principle-card:hover .card-desc {
-    max-height: 150px;
-    opacity: 1;
-    margin-top: 0.8rem;
+.svg-icon {
+    width: 72px;
+    height: 72px;
+    color: #ffffff;
+    stroke: #ffffff;
+    display: block;
+}
+
+.quad-desc {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #d0e4e2;
+}
+
+/* Grid Line Animation Coordinates per Hovered Quadrant */
+.principles-grid-container:has([data-quad="1"]:hover),
+.principles-grid-container.hover-quad-1 {
+    --line-h-top: 62%;
+    --line-v-left: 62%;
+}
+
+.principles-grid-container:has([data-quad="2"]:hover),
+.principles-grid-container.hover-quad-2 {
+    --line-h-top: 62%;
+    --line-v-left: 38%;
+}
+
+.principles-grid-container:has([data-quad="3"]:hover),
+.principles-grid-container.hover-quad-3 {
+    --line-h-top: 38%;
+    --line-v-left: 62%;
+}
+
+.principles-grid-container:has([data-quad="4"]:hover),
+.principles-grid-container.hover-quad-4 {
+    --line-h-top: 38%;
+    --line-v-left: 38%;
+}
+
+/* Dim non-hovered quadrants */
+.principles-grid-container:has(.quadrant:hover) .quadrant:not(:hover),
+.principles-grid-container[class*="hover-quad-"] .quadrant:not(:hover) {
+    opacity: 0.35;
 }
 
 /* 9. Soluções Section */
 .solucoes-section {
-    background-color: var(--color-dark);
-    color: var(--color-white);
+    background-color: #f4d173;
+    color: #35301b;
     position: relative;
     z-index: 10;
+    padding-top: 0;
+    padding-bottom: 6rem;
+}
+
+.solucoes-section .outline-circle {
+    border-color: #35301b;
+}
+
+.solucoes-section .circle-text {
+    color: #35301b;
+}
+
+.solucoes-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    padding-top: 8rem;
+}
+
+.solucoes-header .col-visual {
+    width: 320px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-height: 240px;
+}
+
+.solucoes-header .col-header-text {
+    flex: 1;
+    margin-left: 320px;
+    padding-top: 0;
 }
 
 .solucoes-intro {
-    font-size: 1.1rem;
-    line-height: 1.75;
-    color: #cccccc;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #35301b;
+    margin: 0;
 }
 
-/* Tab Navigation designed as folder indexes ("fichário") */
-.tab-navigation {
-    display: flex;
-    border-bottom: 3px solid var(--color-gold); /* Tab bar base border */
-    gap: 0.5rem;
-    margin-top: 1rem;
-    margin-bottom: -3px; /* Overlap content card border */
+/* Soluções Interactive Wrapper */
+.solucoes-interactive-wrapper {
     position: relative;
-    z-index: 20;
+    width: 100%;
 }
 
-.tab-btn {
-    background: transparent;
-    border: 3px solid transparent;
-    border-bottom: none;
-    color: var(--color-gold);
-    font-size: 0.9rem;
-    letter-spacing: 0.15em;
+/* --- 1. Rest State Cards View (Image 2) --- */
+.solucoes-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.solucoes-interactive-wrapper.is-expanded .solucoes-cards-grid {
+    display: none;
+}
+
+.solucao-card-item {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.solucao-card-item:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+}
+
+.solucao-card-btn {
+    width: 100%;
+    padding: 1.25rem 1rem;
+    background-color: #38321e;
+    color: #ffffff;
+    border: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     cursor: pointer;
-    padding: 0.8rem 2rem;
-    border-radius: 6px 6px 0 0;
-    transition: var(--transition-fast);
+    text-align: center;
+    transition: background-color 0.3s ease;
 }
 
-.tab-btn:hover {
-    background-color: rgba(212, 175, 55, 0.05);
-    color: var(--color-white);
+.solucao-card-item:hover .solucao-card-btn {
+    background-color: #2b2615;
 }
 
-.tab-btn.active {
-    background-color: var(--color-gold);
-    color: var(--color-dark);
-    border-color: var(--color-gold);
-    font-weight: 700;
-}
-
-/* Ficha Card Layout */
-.ficha-container {
-    position: relative;
-    z-index: 10;
-}
-
-.ficha-content {
-    position: absolute;
-    top: 0;
-    left: 0;
+.solucao-card-img-wrap {
     width: 100%;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(15px);
-    transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s;
-    background-color: var(--color-dark-gray);
-    border: 3px solid var(--color-gold); /* Matching gold folder outline */
-    border-radius: 0 6px 6px 6px; /* Smooth corners except under active tab */
-    padding: 3rem;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    height: 320px;
+    overflow: hidden;
 }
 
-.ficha-content.active {
-    position: relative;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
+.solucao-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Highlight dynamic style around contents */
-.tab-btn.active::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+.solucao-card-item:hover .solucao-card-img {
+    transform: scale(1.05);
 }
 
-.ficha-title {
-    font-size: 1.8rem;
-    color: var(--color-teal);
-    margin-bottom: 1.25rem;
+/* --- 2. Expanded Tab Card View (Image 1) --- */
+.solucoes-expanded-card {
+    display: none;
+    flex-direction: column;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.14);
+    animation: fadeInCard 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.solucoes-interactive-wrapper.is-expanded .solucoes-expanded-card {
+    display: flex;
+}
+
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Tab Header Buttons */
+.solucoes-tab-nav {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.solucoes-tab-header-btn {
+    padding: 1.25rem 1rem;
+    border: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    cursor: pointer;
+    text-align: center;
+    background-color: #c6982b;
+    color: #ffffff;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.ficha-desc {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: #e0e0e0;
-    margin-bottom: 2rem;
+.solucoes-tab-header-btn:hover {
+    background-color: #b58920;
 }
 
-.ficha-list {
+.solucoes-tab-header-btn.active {
+    background-color: #38321e;
+    color: #ffffff;
+}
+
+/* Expanded Card Body Panels */
+.solucoes-tab-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.solucao-panel {
+    display: none;
+    flex-direction: column;
+}
+
+.solucao-panel.active {
+    display: flex;
+    animation: fadeInPanel 0.35s ease forwards;
+}
+
+@keyframes fadeInPanel {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Panel Top Row: Image + Description */
+.panel-top-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem 2rem;
-    list-style: none;
+    min-height: 320px;
 }
 
-.ficha-list li {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #cccccc;
-    padding-left: 1.5rem;
-    position: relative;
+.panel-img-col {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-.ficha-list li::before {
-    content: '▪';
-    color: var(--color-teal);
-    position: absolute;
-    left: 0;
-    top: 0;
+.panel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.panel-desc-col {
+    background-color: #38321e;
+    color: #ffffff;
+    padding: 3rem 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.panel-desc-text {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: #f5f2e8;
+    margin: 0;
+}
+
+/* Panel Bottom Row: Atuamos em list */
+.panel-bottom-row {
+    background-color: #ece2cd;
+    color: #35301b;
+    padding: 3rem 3.5rem;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    align-items: flex-start;
+}
+
+.panel-atuamos-label {
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #38321e;
+    padding-top: 0.2rem;
+}
+
+.panel-atuamos-list ul {
+    list-style-type: disc;
+    padding-left: 1.25rem;
+    margin: 0;
+}
+
+.panel-atuamos-list li {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #35301b;
+    margin-bottom: 0.4rem;
+}
+
+.panel-atuamos-list li:last-child {
+    margin-bottom: 0;
 }
 
 /* 10. Footer */
@@ -842,6 +1134,10 @@ body {
     width: 160px;
     height: 160px;
     margin-bottom: 1rem;
+}
+
+.modal-circle .circle-text {
+    margin-top: 18px;
 }
 
 .profile-name {
@@ -1064,6 +1360,14 @@ body {
         text-align: center;
     }
 
+    .hero-subtitle {
+        text-align: center;
+        margin-top: 1.2rem;
+        font-size: 1rem;
+        padding: 0 1.5rem;
+        max-width: 500px;
+    }
+
     /* Editorial sections */
     .editorial-grid {
         grid-template-columns: 1fr;
@@ -1082,6 +1386,10 @@ body {
         margin-top: 0 !important;
         width: 180px;
         height: 180px;
+    }
+
+    .outline-circle .circle-text {
+        margin-top: 21px;
     }
 
     .btn-eduardo {

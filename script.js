@@ -134,22 +134,85 @@ const init = () => {
 
 
     // ==========================================
-    // 6. SOLUÇÕES INTERACTIVE TABS (FICHAS)
+    // 5.5 NOSSA ABORDAGEM QUADRANTS INTERACTIVITY
     // ==========================================
-    tabButtons.forEach(btn => {
+    const principlesGrid = document.getElementById('principles-grid');
+    const quadrants = document.querySelectorAll('.quadrant');
+
+    if (principlesGrid && quadrants.length > 0) {
+        quadrants.forEach(quad => {
+            const quadNum = quad.getAttribute('data-quad');
+            
+            quad.addEventListener('mouseenter', () => {
+                principlesGrid.className = `principles-grid-container hover-quad-${quadNum}`;
+            });
+            
+            quad.addEventListener('mouseleave', () => {
+                principlesGrid.className = 'principles-grid-container';
+            });
+
+            quad.addEventListener('click', () => {
+                if (principlesGrid.classList.contains(`hover-quad-${quadNum}`)) {
+                    principlesGrid.className = 'principles-grid-container';
+                } else {
+                    principlesGrid.className = `principles-grid-container hover-quad-${quadNum}`;
+                }
+            });
+        });
+    }
+
+
+    // ==========================================
+    // 6. SOLUÇÕES INTERACTIVE CARDS & TABS
+    // ==========================================
+    const solucoesWrapper = document.getElementById('solucoes-wrapper');
+    const solucaoCardItems = document.querySelectorAll('.solucao-card-item');
+    const tabHeaderBtns = document.querySelectorAll('.solucoes-tab-header-btn');
+    const solucaoPanels = document.querySelectorAll('.solucao-panel');
+
+    const switchSolucaoTab = (tabId) => {
+        if (!solucoesWrapper) return;
+        
+        // Show expanded view
+        solucoesWrapper.classList.add('is-expanded');
+
+        // Update tab header buttons
+        tabHeaderBtns.forEach(btn => {
+            if (btn.getAttribute('data-tab-target') === tabId) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+        // Update panel content
+        solucaoPanels.forEach(panel => {
+            if (panel.getAttribute('id') === `panel-${tabId}`) {
+                panel.classList.add('active');
+            } else {
+                panel.classList.remove('active');
+            }
+        });
+    };
+
+    // Click rest state cards (image or button)
+    solucaoCardItems.forEach(card => {
+        card.addEventListener('click', () => {
+            const solucaoId = card.getAttribute('data-solucao');
+            switchSolucaoTab(solucaoId);
+        });
+    });
+
+    // Click expanded header tab buttons
+    tabHeaderBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            // Remove active classes
-            tabButtons.forEach(b => b.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
-
-            // Add active class to clicked tab
-            btn.classList.add('active');
-
-            // Find matching card and trigger animation fade-in
-            const targetTab = btn.getAttribute('data-tab');
-            const targetContent = document.getElementById(`tab-${targetTab}`);
-            if (targetContent) {
-                targetContent.classList.add('active');
+            const targetTab = btn.getAttribute('data-tab-target');
+            
+            // If already active, toggle back to 3-cards view
+            if (btn.classList.contains('active')) {
+                solucoesWrapper.classList.remove('is-expanded');
+            } else {
+                switchSolucaoTab(targetTab);
             }
         });
     });
@@ -172,8 +235,16 @@ const init = () => {
     };
 
     // Trigger Eduardo Bio Modal
+    const triggerTrajetoria = document.getElementById('trigger-trajetoria');
+    
     if (triggerEduardo) {
         triggerEduardo.addEventListener('click', () => openModal(modalLidera));
+    }
+    if (triggerTrajetoria) {
+        triggerTrajetoria.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(modalLidera);
+        });
     }
 
     // Trigger Contato Modal
