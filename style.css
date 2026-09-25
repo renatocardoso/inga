@@ -4,6 +4,7 @@
 
 /* 1. Reset and Variables */
 :root {
+    /* Brand & Legacy Colors */
     --color-teal: #2c9f9a;
     --color-teal-dark: #1f726e;
     --color-teal-light: #e6f6f5;
@@ -16,8 +17,35 @@
     --color-text-dark: #222222;
     --color-text-muted: #666666;
     --color-ocean-depth: #0a312f; /* Deep Ocean 500 */
-    
+
+    /* Design System Tokens Primitivos (Figma Oceano) */
+    --color-ocean-900: #091f1e;
+    --color-ocean-700: #1b5e5c;
+    --color-ocean-500: #2e9d9a;
+    --color-ocean-100: #d5ebea;
+
+    /* Design System Tokens de Tipografia (rem) */
     --font-primary: 'Inter', sans-serif;
+    --font-size-body-xl: 1.5rem;    /* 24px */
+    --line-height-body-xl: 1.75rem; /* 28px */
+    --font-size-contact: 1.25rem;   /* 20px */
+    --line-height-contact: 1.5rem;  /* 24px */
+    --font-weight-light: 300;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* Design System Tokens Semânticos - CardContato */
+    --card-contact-bg: var(--color-ocean-900);
+    --card-contact-text: var(--color-ocean-100);
+    --card-contact-action: var(--color-ocean-500);
+    --card-contact-action-hover: var(--color-ocean-100);
+    --card-contact-close: var(--color-ocean-700);
+    --card-contact-close-hover: var(--color-ocean-100);
+    --card-contact-width: 374px;
+    --card-contact-min-height: 412px;
+
+    /* Transições & Containers */
     --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-fast: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     --container-max: 1200px;
@@ -1162,71 +1190,160 @@ body {
     gap: 1.2rem;
 }
 
-/* Contato Modal Layout */
+/* ==========================================================================
+   CardContato - Design System & Figma Specification (SPEC-001)
+   ========================================================================== */
 .modal-contato-card {
-    max-width: 500px;
-}
-
-.modal-contact-wrapper {
-    padding: 4.5rem 3.5rem;
+    background-color: var(--card-contact-bg);
+    border: 1px solid rgba(46, 157, 154, 0.12);
+    border-radius: 4px;
+    width: 90%;
+    max-width: var(--card-contact-width);
+    min-height: var(--card-contact-min-height);
+    padding: 4.2rem 3.8rem 3.5rem 3.8rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
+    justify-content: flex-start;
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.65);
+    position: relative;
+    box-sizing: border-box;
 }
 
-.contact-card-title {
-    font-size: 1.8rem;
-    color: var(--color-white);
-    margin-top: 1rem;
-}
-
-.contact-subtitle {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #aaaaaa;
-}
-
-.contact-links {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    width: 100%;
-    margin-top: 1rem;
-}
-
-.contact-item {
+.modal-contato-card .contact-close-btn {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.25rem;
+    background: none;
+    border: none;
+    color: var(--card-contact-close);
+    cursor: pointer;
+    padding: 0.6rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
-    background-color: rgba(255, 255, 255, 0.02);
-    border: 1px solid #2a2a2a;
-    padding: 1.2rem;
-    border-radius: 6px;
     transition: var(--transition-fast);
+    z-index: 10;
 }
 
-.contact-item:hover {
-    border-color: var(--color-teal);
-    background-color: rgba(44, 159, 154, 0.04);
+.modal-contato-card .contact-close-btn:hover,
+.modal-contato-card .contact-close-btn:focus-visible {
+    color: var(--card-contact-close-hover);
+    transform: scale(1.15);
 }
 
-.contact-icon {
-    font-size: 1.4rem;
-    color: var(--color-teal);
+.contact-card-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 3.5rem;
 }
 
-.contact-link {
-    font-size: 1.05rem;
-    color: var(--color-white);
+.contact-main-text {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-body-xl);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-body-xl);
+    color: var(--card-contact-text);
+    margin: 0;
+    max-width: 250px;
+    letter-spacing: -0.01em;
+}
+
+.contact-actions-area {
+    display: flex;
+    align-items: flex-start;
+    gap: 3.5rem;
+    position: relative;
+    min-height: 100px;
+}
+
+.contact-action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+}
+
+.contact-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--card-contact-action);
+    transition: var(--transition-fast);
     text-decoration: none;
-    transition: var(--transition-fast);
 }
 
-.contact-link:hover {
-    color: var(--color-gold);
+.contact-icon-link:hover,
+.contact-icon-link:focus-visible,
+.contact-action-item:hover .contact-icon-link {
+    color: var(--card-contact-action-hover);
+    transform: translateY(-2px);
+}
+
+.contact-svg-icon {
+    display: block;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.contact-reveal-text {
+    position: absolute;
+    top: calc(100% + 0.85rem);
+    left: 0;
+    white-space: nowrap;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-contact);
+    font-weight: var(--font-weight-light);
+    line-height: var(--line-height-contact);
+    color: var(--card-contact-action);
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s;
+    pointer-events: none;
+}
+
+.contact-action-item:hover .contact-reveal-text,
+.contact-action-item:focus-within .contact-reveal-text,
+.contact-action-item.is-revealed .contact-reveal-text {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.contact-reveal-text:hover,
+.contact-reveal-text:focus-visible {
+    color: var(--card-contact-action-hover);
+    text-decoration: underline;
+}
+
+/* Responsividade Mobile do CardContato */
+@media (max-width: 480px) {
+    .modal-contato-card {
+        padding: 3rem 2rem 2.5rem 2rem;
+        min-height: auto;
+    }
+
+    .contact-main-text {
+        font-size: 1.3rem;
+        line-height: 1.6rem;
+    }
+
+    .contact-actions-area {
+        flex-direction: column;
+        gap: 1.8rem;
+    }
+
+    .contact-reveal-text {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        pointer-events: auto;
+        font-size: 1.15rem;
+        margin-top: 0.35rem;
+    }
 }
 
 /* Animations Helper */
@@ -1454,7 +1571,7 @@ body {
         margin: 1rem auto;
     }
     
-    .modal-close {
+    .modal-lidera-card .modal-close {
         top: 1rem;
         right: 1.25rem;
         color: var(--color-white);
