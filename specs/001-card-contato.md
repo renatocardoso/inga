@@ -17,13 +17,15 @@
 | `--color-ocean-500` | `#2e9d9a` | Tom dos ícones e textos de contato |
 | `--color-ocean-100` | `#d5ebea` | Tom claro do texto principal |
 
-### 2.2. Tokens de Tipografia (em `rem`, base 16px)
-| Token | Valor em `rem` | Equivalente px | Uso |
+### 2.2. Tokens de Tipografia e Tracking (em `rem`, base 16px)
+| Token | Valor em `rem` / `em` | Equivalente px | Uso |
 | :--- | :--- | :--- | :--- |
 | `--font-size-body-xl` | `1.5rem` | 24px | Texto principal do card |
 | `--line-height-body-xl`| `1.75rem` / `2rem` | 28px / 32px | Altura de linha do texto principal |
 | `--font-size-contact` | `1.25rem` | 20px | E-mail e telefone no hover |
 | `--font-weight-light` | `300` | Light | Peso das fontes do card |
+| `--letter-spacing-normal` | `0em` | 0px | Tracking padrão (Figma 0%) |
+| `--letter-spacing-tight` | `-0.02em` | - | Tracking condensado |
 
 ### 2.3. Tokens Semânticos do Componente
 | Token Semântico | Mapeado Para | Contexto de Uso |
@@ -34,6 +36,8 @@
 | `--card-contact-action-hover`| `var(--color-ocean-100)` | Cor de destaque no hover dos ícones |
 | `--card-contact-close` | `var(--color-ocean-700)` | Cor do botão de fechar |
 | `--card-contact-close-hover` | `var(--color-ocean-100)` | Cor do botão fechar no hover |
+| `--card-contact-tracking` | `var(--letter-spacing-normal)` | Espaçamento entre letras idêntico ao Figma (0%) |
+| `--card-contact-text-width` | `241px` (15.0625rem) | Largura exata da caixa de texto para quebra de linha idêntica |
 
 ---
 

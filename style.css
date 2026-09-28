@@ -35,6 +35,12 @@
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
 
+    /* Design System Tokens de Tracking (letter-spacing) */
+    --letter-spacing-tight: -0.02em;
+    --letter-spacing-normal: 0em;
+    --letter-spacing-figma: 0.01em;
+    --letter-spacing-wide: 0.05em;
+
     /* Design System Tokens Semânticos - CardContato */
     --card-contact-bg: var(--color-ocean-900);
     --card-contact-text: var(--color-ocean-100);
@@ -44,6 +50,8 @@
     --card-contact-close-hover: var(--color-ocean-100);
     --card-contact-width: 374px;
     --card-contact-min-height: 412px;
+    --card-contact-tracking: var(--letter-spacing-figma);
+    --card-contact-text-width: 241px; /* 15.0625rem fiel ao Figma */
 
     /* Transições & Containers */
     --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1243,10 +1251,10 @@ body {
     font-size: var(--font-size-body-xl);
     font-weight: var(--font-weight-light);
     line-height: var(--line-height-body-xl);
+    letter-spacing: var(--card-contact-tracking);
     color: var(--card-contact-text);
     margin: 0;
-    max-width: 250px;
-    letter-spacing: -0.01em;
+    max-width: var(--card-contact-text-width);
 }
 
 .contact-actions-area {
@@ -1294,6 +1302,7 @@ body {
     font-size: var(--font-size-contact);
     font-weight: var(--font-weight-light);
     line-height: var(--line-height-contact);
+    letter-spacing: var(--letter-spacing-normal);
     color: var(--card-contact-action);
     text-decoration: none;
     opacity: 0;
