@@ -19,14 +19,14 @@ const renderSolucoes = (initialActiveSolution = null) => {
         </p>
 
         <!-- 1. Três Botões Circulares -->
-        <div class="solutions__buttons ${initialActiveSolution ? 'is-hidden' : ''}" id="story-solutions-buttons">
-            <button type="button" class="solutions__circle-btn solutions__circle-btn--planejar" data-target="planejar">
+        <div class="solutions__buttons ${initialActiveSolution ? 'is-compact' : ''}" id="story-solutions-buttons">
+            <button type="button" class="solutions__circle-btn solutions__circle-btn--planejar ${initialActiveSolution === 'planejar' ? 'is-active-btn' : ''}" data-target="planejar">
                 <span class="solutions__circle-label">PLANEJAR</span>
             </button>
-            <button type="button" class="solutions__circle-btn solutions__circle-btn--fortalecer" data-target="fortalecer">
+            <button type="button" class="solutions__circle-btn solutions__circle-btn--fortalecer ${initialActiveSolution === 'fortalecer' ? 'is-active-btn' : ''}" data-target="fortalecer">
                 <span class="solutions__circle-label">FORTALECER</span>
             </button>
-            <button type="button" class="solutions__circle-btn solutions__circle-btn--engajar" data-target="engajar">
+            <button type="button" class="solutions__circle-btn solutions__circle-btn--engajar ${initialActiveSolution === 'engajar' ? 'is-active-btn' : ''}" data-target="engajar">
                 <span class="solutions__circle-label">ENGAJAR</span>
             </button>
         </div>
@@ -164,20 +164,29 @@ const renderSolucoes = (initialActiveSolution = null) => {
   const panels = container.querySelectorAll('.solutions__panel');
   const closeBtns = container.querySelectorAll('.solutions__close-btn');
 
+  const openStorySolution = (target) => {
+    btnGroup.classList.remove('is-hidden');
+    btnGroup.classList.add('is-compact');
+    circleBtns.forEach(b => {
+      b.classList.toggle('is-active-btn', b.getAttribute('data-target') === target);
+    });
+    panels.forEach(p => p.classList.remove('is-active'));
+    const activePanel = container.querySelector(`#story-panel-${target}`);
+    if (activePanel) activePanel.classList.add('is-active');
+  };
+
   circleBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       const target = btn.getAttribute('data-target');
-      btnGroup.classList.add('is-hidden');
-      panels.forEach(p => p.classList.remove('is-active'));
-      const activePanel = container.querySelector(`#story-panel-${target}`);
-      if (activePanel) activePanel.classList.add('is-active');
+      openStorySolution(target);
     });
   });
 
   closeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       panels.forEach(p => p.classList.remove('is-active'));
-      btnGroup.classList.remove('is-hidden');
+      btnGroup.classList.remove('is-compact');
+      circleBtns.forEach(b => b.classList.remove('is-active-btn'));
     });
   });
 

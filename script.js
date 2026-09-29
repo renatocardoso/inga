@@ -87,9 +87,13 @@ const init = () => {
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const targetId = link.getAttribute('href');
+
+            // Immediately mark clicked nav link as active (Oceano400)
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
             
-            // Skip contact trigger which is javascript:void(0)
-            if (targetId.startsWith('#')) {
+            // Skip contact trigger which is javascript:void(0) or button
+            if (targetId && targetId.startsWith('#')) {
                 e.preventDefault();
                 const targetElement = document.querySelector(targetId);
                 
@@ -204,15 +208,21 @@ const init = () => {
 
         lastActiveSolutionBtn = triggerBtn;
 
-        // Animate out the 3 circles
-        solutionsButtons.classList.add('is-hidden');
+        // Innovative compact dock: shrink circles into compact selector for direct switching
+        solutionsButtons.classList.remove('is-hidden');
+        solutionsButtons.classList.add('is-compact');
+
+        // Update active highlight on compact buttons
+        solutionCircleBtns.forEach(btn => {
+            const isMatch = btn.getAttribute('data-target-solution') === solutionId;
+            btn.classList.toggle('is-active-btn', isMatch);
+            btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+        });
 
         // Activate corresponding panel
         solutionPanels.forEach(panel => {
             if (panel.id === `solution-panel-${solutionId}`) {
                 panel.classList.add('is-active');
-                const closeBtn = panel.querySelector('.solutions__close-btn, .solutions__back-btn');
-                if (closeBtn) closeBtn.focus();
             } else {
                 panel.classList.remove('is-active');
             }
@@ -227,8 +237,12 @@ const init = () => {
             panel.classList.remove('is-active');
         });
 
-        // Restore 3 circles
-        solutionsButtons.classList.remove('is-hidden');
+        // Restore 3 large circles
+        solutionsButtons.classList.remove('is-compact');
+        solutionCircleBtns.forEach(btn => {
+            btn.classList.remove('is-active-btn');
+            btn.removeAttribute('aria-selected');
+        });
 
         // Restore focus
         if (lastActiveSolutionBtn && typeof lastActiveSolutionBtn.focus === 'function') {
