@@ -23,7 +23,7 @@ const init = () => {
     // Hamburger Mobile Menu
     const menuToggle = document.getElementById('menu-toggle');
     const mainNav = document.getElementById('main-nav');
-    const navLinks = document.querySelectorAll('.nav-link');
+    const navLinks = document.querySelectorAll('.header-nav__link, .nav-link');
 
     // Modals
     const modalLidera = document.getElementById('modal-lidera');

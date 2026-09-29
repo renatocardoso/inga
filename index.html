@@ -16,308 +16,329 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=2.5">
+    <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
-    <!-- Responsive Background Image Container for Hero -->
-    <div id="bg-container" class="bg-container"></div>
-    
-    <!-- Header with Centered Menu -->
-    <header id="site-header" class="site-header">
-        <div class="header-inner">
-            <a href="#hero" class="header-logo-link" aria-label="Home">
-                <span class="brand-dot"></span>
+
+    <!-- =====================================================================
+         1. FLOATING HEADER NAVIGATION (Figma node 2242:525)
+         ===================================================================== -->
+    <header id="site-header" class="header-nav" data-name="header-nav">
+        <div class="header-nav__container">
+            <!-- Brand Dot (Home anchor) -->
+            <a href="#hero" class="header-nav__brand-btn" aria-label="Ir para o topo" data-name="brand-dot">
+                <span class="header-nav__brand-dot"></span>
             </a>
-            <button id="menu-toggle" class="menu-toggle" aria-label="Abrir Menu">
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
-                <span class="hamburger-line"></span>
+
+            <!-- Mobile Hamburger Toggle -->
+            <button id="menu-toggle" class="header-nav__toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-nav">
+                <span class="header-nav__toggle-line"></span>
+                <span class="header-nav__toggle-line"></span>
+                <span class="header-nav__toggle-line"></span>
             </button>
-            <nav id="main-nav" class="main-nav">
-                <ul class="nav-list">
-                    <li><a href="#quem-somos" class="nav-link inter-semibold">QUEM SOMOS</a></li>
-                    <li><a href="#nossa-abordagem" class="nav-link inter-semibold">NOSSA ABORDAGEM</a></li>
-                    <li><a href="#solucoes" class="nav-link inter-semibold">SOLUÇÕES</a></li>
-                    <li><a href="javascript:void(0)" id="nav-link-contato" class="nav-link inter-semibold trigger-contato">CONTATO</a></li>
-                </ul>
+
+            <!-- Floating Pill Navigation List -->
+            <nav id="main-nav" class="header-nav__list" role="navigation" aria-label="Navegação Principal" data-name="header-nav__list">
+                <a href="#quem-somos" class="header-nav__link" data-name="nav-btn">QUEM SOMOS</a>
+                <a href="#nossa-abordagem" class="header-nav__link" data-name="nav-btn">NOSSA ABORDAGEM</a>
+                <a href="#solucoes" class="header-nav__link" data-name="nav-btn">SOLUÇÕES</a>
+                <button type="button" id="nav-link-contato" class="header-nav__link header-nav__link--btn trigger-contato" data-name="nav-btn">CONTATO</button>
             </nav>
         </div>
     </header>
 
-    <!-- 1. HERO SECTION -->
-    <section id="hero" class="hero-section">
-        <main id="main-layout" class="layout-grid">
-            <!-- Left Half (Ocean) - Main Phrase -->
-            <div id="hero-phrase-container" class="content-container">
-                <h1 id="main-phrase" class="main-phrase inter-medium">
+    <!-- =====================================================================
+         2. HERO SECTION (Figma nodes 26:2, 30:11, 30:10, 803:783)
+         ===================================================================== -->
+    <section id="hero" class="hero" data-name="Hero">
+        <div class="hero__bg-container" id="bg-container"></div>
+        <div class="hero__container">
+            <!-- Left: Hero Headline -->
+            <div class="hero__headline-box">
+                <h1 class="hero__title">
                     Estratégias<br>
-                    participativas<br>
-                    para a conservação<br>
-                    da natureza
+                    participativas para<br>
+                    a conservação da<br>
+                    natureza.
                 </h1>
-                <p class="hero-subtitle inter-light">
-                    Construímos estratégias, fortalecemos organizações e conectamos pessoas para transformar desafios ambientais em resultados para a biodiversidade.
+            </div>
+
+            <!-- Right: Brand Logo & Tagline -->
+            <div class="hero__brand-box">
+                <img src="img/logoBranca.svg" alt="INGA Logo" class="hero__logo-img">
+                <p class="hero__tagline">inovação e gestão ambiental</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         3. QUEM SOMOS SECTION (Figma nodes 2023:145, 343:638, 344:641, 344:642, Ellipse 2021:134)
+         ===================================================================== -->
+    <section id="quem-somos" class="about-section" data-name="Quem Somos">
+        <div class="about-container">
+            <!-- Main editorial text paragraphs -->
+            <div class="about-paragraphs">
+                <p>
+                    A INGA – Inovação e Gestão Ambiental nasceu da convicção de que os grandes desafios da conservação da natureza exigem mais do que conhecimento: exigem estratégia, participação e a capacidade de transformar diferentes perspectivas em decisões consistentes e ações efetivas.
+                </p>
+                <p>
+                    Especializada em planejamento estratégico, governança e processos participativos, a INGA apoia organizações públicas, privadas e da sociedade civil na concepção e implementação de iniciativas voltadas à conservação da biodiversidade e ao desenvolvimento sustentável. Atuamos na construção de estratégias até sua implementação, sempre por meio de processos colaborativos, transparentes e orientados para resultados.
+                </p>
+                <p>
+                    Criada em 2024, a INGA representa a consolidação de uma <button type="button" class="about__trigger--lead" id="trigger-trajetoria" aria-haspopup="dialog" aria-controls="modal-lidera">TRAJETÓRIA PROFISSIONAL</button> construída ao longo de mais de duas décadas de atuação em projetos de conservação da natureza em diferentes regiões do Brasil.
                 </p>
             </div>
-            
-            <!-- Right Half (Rock) - Brand Logo -->
-            <div id="hero-brand-container" class="brand-container">
-                <div class="logo-wrapper">
-                    <img src="img/logoBranca.svg" alt="Logo INGA" id="brand-logo" class="logo-img">
-                    <div class="logo-tagline inter-semibold">INOVAÇÃO E GESTÃO AMBIENTAL</div>
-                </div>
-            </div>
-        </main>
-    </section>
 
-    <!-- 2. SEÇÃO QUEM SOMOS -->
-    <section id="quem-somos" class="quem-somos-section">
-        <div class="section-container">
-            <div class="editorial-grid">
-                <!-- Left Column (Visual Header) -->
-                <div class="col-visual">
-                    <div class="outline-circle animate-scroll">
-                        <span class="circle-text inter-semibold">Quem somos</span>
-                    </div>
-                </div>
-                <!-- Right Column (Content Blocks) -->
-                <div class="col-content">
-                    <div class="text-block main-paragraph inter-light">
-                        <p>A INGA – Inovação e Gestão Ambiental nasceu da convicção de que os grandes desafios da conservação da natureza exigem mais do que conhecimento: exigem estratégia, participação e a capacidade de transformar diferentes perspectivas em decisões consistentes e ações efetivas.</p>
-                        <p>Especializada em planejamento estratégico, governança e processos participativos, a INGA apoia organizações públicas, privadas e da sociedade civil na concepção e implementação de iniciativas voltadas à conservação da biodiversidade e ao desenvolvimento sustentável. Atuamos na construção de estratégias até sua implementação, sempre por meio de processos colaborativos, transparentes e orientados para resultados.</p>
-                        <p>Criada em 2024, a INGA representa a consolidação de uma <button type="button" class="about__trigger--lead" id="trigger-trajetoria" aria-haspopup="dialog" aria-controls="modal-lidera">TRAJETÓRIA PROFISSIONAL</button> construída ao longo de mais de duas décadas de atuação em projetos de conservação da natureza em diferentes regiões do Brasil.</p>
-                    </div>
-                    <blockquote class="highlight-quote inter-medium-italic">
-                        "Essa trajetória reúne experiência em planejamento de áreas protegidas, estratégias de conservação, fortalecimento institucional, processos participativos e articulação entre governos, empresas e comunidades."
-                    </blockquote>
-                    <div class="text-block secondary-paragraph inter-light">
-                        <p>Mais do que entregar produtos, acreditamos em fortalecer organizações, ampliar capacidades e transformar estratégias em resultados efetivos para a conservação da biodiversidade.</p>
+            <!-- Highlight Quote (Teal) -->
+            <blockquote class="about-quote">
+                Essa trajetória reúne experiência em planejamento de áreas protegidas, estratégias de conservação, fortalecimento institucional, processos participativos e articulação entre governos, empresas e comunidades.
+            </blockquote>
+
+            <!-- Secondary Paragraph -->
+            <div class="about-secondary">
+                <p>
+                    Mais do que entregar produtos, acreditamos em fortalecer organizações, ampliar capacidades e transformar estratégias em resultados efetivos para a conservação da biodiversidade.
+                </p>
+            </div>
+
+            <!-- Overlapping Fern Circle with Center Text Overlay -->
+            <div class="about-circle-wrap">
+                <div class="about-circle-outer">
+                    <div class="about-circle-inner" style="background-image: url('img/samambaia_circulo.png');">
+                        <p class="about-circle-text">
+                            Construímos estratégias, fortalecemos organizações e conectamos pessoas para transformar desafios ambientais em resultados para a biodiversidade.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 3. BANNER DE TRANSIÇÃO (PARALLAX) -->
-    <section id="transicao-banner" class="transicao-banner-section">
-        <div class="parallax-bg" style="background-image: url('img/transicao1.jpg');"></div>
-        <div class="parallax-overlay"></div>
-        <div class="banner-content">
-            <h2 class="impact-phrase inter-medium animate-scroll">
-                “Construímos estratégias, fortalecemos organizações e conectamos pessoas para transformar desafios ambientais em resultados para a biodiversidade.”
-            </h2>
+    <!-- =====================================================================
+         4. NOSSA ABORDAGEM SECTION (Figma nodes 2023:141, 344:645, Component 2248:547)
+         ===================================================================== -->
+    <section id="nossa-abordagem" class="approach-section" data-name="Nossa Abordagem">
+        <div class="approach-container">
+            <p class="approach-subtitle">
+                Cada projeto é único, mas nossa atuação é orientada por princípios comuns:
+            </p>
         </div>
-    </section>
 
-    <!-- 4. SEÇÃO NOSSA ABORDAGEM -->
-    <section id="nossa-abordagem" class="abordagem-section">
-        <div class="section-container">
-            <!-- Top Visual Header & Subtitle Grid -->
-            <div class="abordagem-header">
-                <div class="col-visual">
-                    <div class="outline-circle animate-scroll">
-                        <span class="circle-text inter-semibold">Nossa abordagem</span>
+        <!-- PillarsAccordion Interactive 2x2 Quadrant Grid (SPEC-002) -->
+        <div class="pillars" id="pillars-accordion">
+            <div class="pillars__grid" role="region" aria-label="Princípios da nossa abordagem">
+                
+                <!-- Pilar 1: Estratégia (Petróleo) -->
+                <div class="pillars__item pillars__item--petroleo" 
+                     tabindex="0" 
+                     role="button" 
+                     aria-expanded="false" 
+                     aria-controls="pillar-body-estrategia"
+                     data-pillar="estrategia">
+                    <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
+                        <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                            <line x1="12" y1="12" x2="32" y2="32" />
+                            <line x1="32" y1="12" x2="12" y2="32" />
+                        </svg>
+                    </button>
+                    <div class="pillars__inner">
+                        <div class="pillars__col-visual">
+                            <div class="pillars__header">
+                                <h3 class="pillars__title">Estratégia orientada<br>por propósito</h3>
+                            </div>
+                            <div class="pillars__body" id="pillar-body-estrategia">
+                                <div class="pillars__icon">
+                                    <svg class="pillars__svg" viewBox="0 0 181 181" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round">
+                                        <circle cx="90.5" cy="90.5" r="76" />
+                                        <circle cx="90.5" cy="90.5" r="48" />
+                                        <circle cx="90.5" cy="90.5" r="20" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pillars__body">
+                            <p class="pillars__desc">Partimos do propósito da organização ou iniciativa e dos resultados que se pretende alcançar para desenvolver caminhos alinhados aos seus desafios e oportunidades.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-header-text">
-                    <p class="abordagem-subtitle inter-light">Cada projeto é único, mas nossa atuação é orientada por princípios comuns:</p>
+
+                <!-- Pilar 2: Construção (Verde) -->
+                <div class="pillars__item pillars__item--verde" 
+                     tabindex="0" 
+                     role="button" 
+                     aria-expanded="false" 
+                     aria-controls="pillar-body-construcao"
+                     data-pillar="construcao">
+                    <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
+                        <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                            <line x1="12" y1="12" x2="32" y2="32" />
+                            <line x1="32" y1="12" x2="12" y2="32" />
+                        </svg>
+                    </button>
+                    <div class="pillars__inner">
+                        <div class="pillars__body">
+                            <p class="pillars__desc">Acreditamos que as melhores soluções surgem do encontro entre diferentes conhecimentos, experiências e perspectivas.</p>
+                        </div>
+                        <div class="pillars__col-visual">
+                            <div class="pillars__header">
+                                <h3 class="pillars__title">Construção<br>participativa</h3>
+                            </div>
+                            <div class="pillars__body" id="pillar-body-construcao">
+                                <div class="pillars__icon">
+                                    <svg class="pillars__svg" viewBox="0 0 192 192" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round">
+                                        <polygon points="96,16 48,92 144,92" />
+                                        <circle cx="62" cy="144" r="32" />
+                                        <rect x="114" y="112" width="64" height="64" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- PillarsAccordion Interactive 2x2 Quadrant Grid (SPEC-002) -->
-            <div class="pillars" id="pillars-accordion">
-                <div class="pillars__grid" role="region" aria-label="Princípios da nossa abordagem">
-                    
-                    <!-- Pilar 1: Estratégia (Petróleo) -->
-                    <div class="pillars__item pillars__item--petroleo" 
-                         tabindex="0" 
-                         role="button" 
-                         aria-expanded="false" 
-                         aria-controls="pillar-body-estrategia"
-                         data-pillar="estrategia">
-                        <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
-                            <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
-                                <line x1="12" y1="12" x2="32" y2="32" />
-                                <line x1="32" y1="12" x2="12" y2="32" />
-                            </svg>
-                        </button>
-                        <div class="pillars__inner">
-                            <div class="pillars__col-visual">
-                                <div class="pillars__header">
-                                    <h3 class="pillars__title">Estratégia orientada<br>por propósito</h3>
-                                </div>
-                                <div class="pillars__body" id="pillar-body-estrategia">
-                                    <div class="pillars__icon">
-                                        <svg class="pillars__svg" viewBox="0 0 181 181" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round">
-                                            <circle cx="90.5" cy="90.5" r="76" />
-                                            <circle cx="90.5" cy="90.5" r="48" />
-                                            <circle cx="90.5" cy="90.5" r="20" />
-                                        </svg>
-                                    </div>
+
+                <!-- Pilar 3: Ciência (Oceano) -->
+                <div class="pillars__item pillars__item--oceano" 
+                     tabindex="0" 
+                     role="button" 
+                     aria-expanded="false" 
+                     aria-controls="pillar-body-ciencia"
+                     data-pillar="ciencia">
+                    <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
+                        <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                            <line x1="12" y1="12" x2="32" y2="32" />
+                            <line x1="32" y1="12" x2="12" y2="32" />
+                        </svg>
+                    </button>
+                    <div class="pillars__inner">
+                        <div class="pillars__col-visual">
+                            <div class="pillars__body" id="pillar-body-ciencia">
+                                <div class="pillars__icon">
+                                    <svg class="pillars__svg" viewBox="0 0 187 187" fill="currentColor">
+                                        <rect x="25" y="98" width="35" height="64" rx="4" />
+                                        <rect x="76" y="52" width="35" height="110" rx="4" />
+                                        <rect x="127" y="24" width="35" height="138" rx="4" />
+                                    </svg>
                                 </div>
                             </div>
-                            <div class="pillars__body">
-                                <p class="pillars__desc">Partimos do propósito da organização ou iniciativa e dos resultados que se pretende alcançar para desenvolver caminhos alinhados aos seus desafios e oportunidades.</p>
+                            <div class="pillars__header">
+                                <h3 class="pillars__title">Ciência aplicada<br>à decisão</h3>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Pilar 2: Construção (Verde) -->
-                    <div class="pillars__item pillars__item--verde" 
-                         tabindex="0" 
-                         role="button" 
-                         aria-expanded="false" 
-                         aria-controls="pillar-body-construcao"
-                         data-pillar="construcao">
-                        <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
-                            <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
-                                <line x1="12" y1="12" x2="32" y2="32" />
-                                <line x1="32" y1="12" x2="12" y2="32" />
-                            </svg>
-                        </button>
-                        <div class="pillars__inner">
-                            <div class="pillars__body">
-                                <p class="pillars__desc">Acreditamos que as melhores soluções surgem do encontro entre diferentes conhecimentos, experiências e perspectivas.</p>
-                            </div>
-                            <div class="pillars__col-visual">
-                                <div class="pillars__header">
-                                    <h3 class="pillars__title">Construção<br>participativa</h3>
-                                </div>
-                                <div class="pillars__body" id="pillar-body-construcao">
-                                    <div class="pillars__icon">
-                                        <svg class="pillars__svg" viewBox="0 0 192 192" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round">
-                                            <polygon points="96,16 48,92 144,92" />
-                                            <circle cx="62" cy="144" r="32" />
-                                            <rect x="114" y="112" width="64" height="64" />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="pillars__body">
+                            <p class="pillars__desc">Aliamos conhecimento técnico e empírico, experiência prática e metodologias versáteis para apoiar decisões mais qualificadas.</p>
                         </div>
                     </div>
-
-                    <!-- Pilar 3: Ciência (Oceano) -->
-                    <div class="pillars__item pillars__item--oceano" 
-                         tabindex="0" 
-                         role="button" 
-                         aria-expanded="false" 
-                         aria-controls="pillar-body-ciencia"
-                         data-pillar="ciencia">
-                        <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
-                            <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
-                                <line x1="12" y1="12" x2="32" y2="32" />
-                                <line x1="32" y1="12" x2="12" y2="32" />
-                            </svg>
-                        </button>
-                        <div class="pillars__inner">
-                            <div class="pillars__col-visual">
-                                <div class="pillars__body" id="pillar-body-ciencia">
-                                    <div class="pillars__icon">
-                                        <svg class="pillars__svg" viewBox="0 0 187 187" fill="currentColor">
-                                            <rect x="25" y="98" width="35" height="64" rx="4" />
-                                            <rect x="76" y="52" width="35" height="110" rx="4" />
-                                            <rect x="127" y="24" width="35" height="138" rx="4" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="pillars__header">
-                                    <h3 class="pillars__title">Ciência aplicada<br>à decisão</h3>
-                                </div>
-                            </div>
-                            <div class="pillars__body">
-                                <p class="pillars__desc">Aliamos conhecimento técnico e empírico, experiência prática e metodologias versáteis para apoiar decisões mais qualificadas.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Pilar 4: Resultados (Âmbar) -->
-                    <div class="pillars__item pillars__item--ambar" 
-                         tabindex="0" 
-                         role="button" 
-                         aria-expanded="false" 
-                         aria-controls="pillar-body-resultados"
-                         data-pillar="resultados">
-                        <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
-                            <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
-                                <line x1="12" y1="12" x2="32" y2="32" />
-                                <line x1="32" y1="12" x2="12" y2="32" />
-                            </svg>
-                        </button>
-                        <div class="pillars__inner">
-                            <div class="pillars__body">
-                                <p class="pillars__desc">Buscamos fortalecer capacidades e criar condições para que estratégias se transformem em resultados concretos.</p>
-                            </div>
-                            <div class="pillars__col-visual">
-                                <div class="pillars__body" id="pillar-body-resultados">
-                                    <div class="pillars__icon">
-                                        <svg class="pillars__svg" viewBox="0 0 170 170" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M48 116 C30 96 34 62 56 42 C80 20 118 22 138 46 C158 70 152 108 126 128 C104 146 72 144 54 126" />
-                                            <path d="M52 106 L82 76 L108 96 L134 66" />
-                                            <path d="M116 64 H136 V84" />
-                                        </svg>
-                                    </div>
-                                </div>
-                                <div class="pillars__header">
-                                    <h3 class="pillars__title">Implementação<br>e resultados</h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
+
+                <!-- Pilar 4: Resultados (Âmbar) -->
+                <div class="pillars__item pillars__item--ambar" 
+                     tabindex="0" 
+                     role="button" 
+                     aria-expanded="false" 
+                     aria-controls="pillar-body-resultados"
+                     data-pillar="resultados">
+                    <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
+                        <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                            <line x1="12" y1="12" x2="32" y2="32" />
+                            <line x1="32" y1="12" x2="12" y2="32" />
+                        </svg>
+                    </button>
+                    <div class="pillars__inner">
+                        <div class="pillars__body">
+                            <p class="pillars__desc">Buscamos fortalecer capacidades e criar condições para que estratégias se transformem em resultados concretos.</p>
+                        </div>
+                        <div class="pillars__col-visual">
+                            <div class="pillars__body" id="pillar-body-resultados">
+                                <div class="pillars__icon">
+                                    <svg class="pillars__svg" viewBox="0 0 170 170" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M48 116 C30 96 34 62 56 42 C80 20 118 22 138 46 C158 70 152 108 126 128 C104 146 72 144 54 126" />
+                                        <path d="M52 106 L82 76 L108 96 L134 66" />
+                                        <path d="M116 64 H136 V84" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="pillars__header">
+                                <h3 class="pillars__title">Implementação<br>e resultados</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- BANNER DE TRANSIÇÃO 2 (PARALLAX) -->
-    <section id="solucoes-banner" class="transicao-banner-section">
-        <div class="parallax-bg" style="background-image: url('img/solucoes.jpg');"></div>
-        <div class="parallax-overlay"></div>
-        <div class="banner-content">
-            <h2 class="impact-phrase inter-medium animate-scroll">
-                Inovação e Gestão Ambiental
-            </h2>
+    <!-- =====================================================================
+         5. TRANSIÇÃO SANDPIPERS (Figma node 2028:177)
+         ===================================================================== -->
+    <section class="transition-birds-section" aria-hidden="true">
+        <div class="transition-birds__img-wrap">
+            <img src="img/macaricos_transicao.png" alt="Aves maçaricos na areia da praia" class="transition-birds__img">
         </div>
     </section>
 
-    <!-- 5. SEÇÃO SOLUÇÕES -->
-    <section id="solucoes" class="solucoes-section">
-        <div class="section-container">
-            <!-- Visual Header (Circle & Subtitle) -->
-            <div class="solucoes-header">
-                <div class="col-visual">
-                    <div class="outline-circle animate-scroll">
-                        <span class="circle-text inter-semibold">Soluções</span>
-                    </div>
-                </div>
-                <div class="col-header-text">
-                    <p class="solucoes-intro inter-light">Os desafios ambientais não se resolvem apenas com conhecimento. Exigem estratégias consistentes, pessoas engajadas e organizações preparadas para transformar intenções em resultados. Por isso, a atuação da INGA está organizada em três etapas complementares, que podem ser desenvolvidas de forma integrada ou adaptadas às necessidades de cada projeto</p>
-                </div>
+    <!-- =====================================================================
+         6. SOLUÇÕES INTRO SECTION (Figma nodes 2070:429, 2070:426, 2067:354)
+         ===================================================================== -->
+    <section class="solutions-intro-section" data-name="Soluções Intro">
+        <div class="solutions-intro__grid">
+            <div class="solutions-intro__text-side">
+                <p class="solutions-intro__quote">
+                    Os desafios ambientais exigem estratégias consistentes, pessoas engajadas e organizações preparadas para transformar intenção em resultados.
+                </p>
             </div>
+            <div class="solutions-intro__media-side">
+                <img src="img/solucoes_escrevendo_vidro.png" alt="Planejamento estratégico participativo" class="solutions-intro__media-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================================
+         7. SOLUÇÕES MAIN SHOWCASE (Figma nodes 2028:176, 1029:125, 2064:336, 2064:342, 2064:344)
+         ===================================================================== -->
+    <section id="solucoes" class="solutions-section" data-name="Soluções">
+        <div class="solutions-container">
+            <p class="solutions-lead-intro">
+                A atuação da INGA está organizada em três etapas complementares, que podem ser desenvolvidas de forma integrada ou adaptadas às necessidades de cada projeto.
+            </p>
 
             <!-- Interactive Soluções Showcase (SPEC-002) -->
             <div class="solutions__arena" id="solutions-arena">
                 
-                <!-- 1. Três Botões Circulares (Estado de Repouso / Seletor) -->
+                <!-- 3 Circular Buttons Rest State -->
                 <div class="solutions__buttons" id="solutions-buttons">
-                    <button type="button" class="solutions__circle-btn solutions__circle-btn--planejar" data-target-solution="planejar">
-                        PLANEJAR
+                    <button type="button" 
+                            class="solutions__circle-btn solutions__circle-btn--planejar" 
+                            data-target-solution="planejar"
+                            aria-controls="solution-panel-planejar"
+                            aria-label="Abrir detalhes da solução Planejar">
+                        <span class="solutions__circle-label">PLANEJAR</span>
                     </button>
-                    <button type="button" class="solutions__circle-btn solutions__circle-btn--fortalecer" data-target-solution="fortalecer">
-                        FORTALECER
+
+                    <button type="button" 
+                            class="solutions__circle-btn solutions__circle-btn--fortalecer" 
+                            data-target-solution="fortalecer"
+                            aria-controls="solution-panel-fortalecer"
+                            aria-label="Abrir detalhes da solução Fortalecer">
+                        <span class="solutions__circle-label">FORTALECER</span>
                     </button>
-                    <button type="button" class="solutions__circle-btn solutions__circle-btn--engajar" data-target-solution="engajar">
-                        ENGAJAR
+
+                    <button type="button" 
+                            class="solutions__circle-btn solutions__circle-btn--engajar" 
+                            data-target-solution="engajar"
+                            aria-controls="solution-panel-engajar"
+                            aria-label="Abrir detalhes da solução Engajar">
+                        <span class="solutions__circle-label">ENGAJAR</span>
                     </button>
                 </div>
 
-                <!-- 2. Painéis Detalhados Aglutinados (Showcase Ativo) -->
-                <div class="solutions__showcase" id="solutions-showcase">
+                <!-- Showcase Panels Container -->
+                <div class="solutions__panels-container">
                     
-                    <!-- Painel 1: Planejar -->
-                    <div class="solutions__panel solutions__panel--planejar" id="solution-panel-planejar">
-                        <div class="solutions__top-stage">
-                            <button type="button" class="solutions__back-btn" aria-label="Voltar para a seleção de soluções">
+                    <!-- Panel 1: PLANEJAR -->
+                    <div class="solutions__panel solutions__panel--planejar" id="solution-panel-planejar" role="region" aria-label="Detalhes de Planejar">
+                        <div class="solutions__main-content">
+                            <button type="button" class="solutions__back-btn" aria-label="Voltar para as três soluções">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="19" y1="12" x2="5" y2="12"></line>
                                     <polyline points="12 19 5 12 12 5"></polyline>
@@ -328,36 +349,36 @@
                                 <div class="solutions__badge-circle solutions__badge-circle--planejar">
                                     PLANEJAR
                                 </div>
-                                <img src="img/etapa_planejar.jpg" alt="Planejar - Olhar da onça" class="solutions__hero-img">
+                                <img src="img/etapa_planejar.jpg" alt="Planejar - Onça pintada em galho" class="solutions__hero-img">
                             </div>
                             <p class="solutions__desc-text">
-                                Construímos estratégias para orientar decisões e gerar impacto. Apoiamos a definição de propósitos, prioridades e caminhos para orientar decisões e transformar objetivos em planos consistentes e viáveis.
+                                Desenhamos caminhos claros para a conservação. Apoiamos organizações na definição de visões de futuro, prioridades estratégicas e planos de ação consistentes, sempre considerando o contexto ecológico, social e institucional de cada território.
                             </p>
                         </div>
                         <div class="solutions__bottom-panel solutions__bottom-panel--planejar">
                             <div class="solutions__bottom-grid">
                                 <div class="solutions__sub-img-wrap">
-                                    <img src="img/solucao_planejar_sub.jpg" alt="Caatinga e vegetação semiárida" class="solutions__sub-img">
+                                    <img src="img/solucao_planejar_sub.jpg" alt="Mapa e anotações de planejamento" class="solutions__sub-img">
                                 </div>
                                 <div class="solutions__atuamos-content">
                                     <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
                                     <ul class="solutions__atuamos-list">
+                                        <li>Planos de manejo de Unidades de Conservação;</li>
+                                        <li>Planos de Ação Territorial e Nacional para espécies ameaçadas;</li>
                                         <li>Planejamento estratégico institucional;</li>
-                                        <li>Planos de Manejo de Áreas Protegidas;</li>
-                                        <li>Planejamento territorial para conservação;</li>
-                                        <li>Estratégias e programas de uso e conservação da biodiversidade;</li>
-                                        <li>Planos de ação para ecossistemas e espécies ameaçadas;</li>
-                                        <li>Desenvolvimento de metodologias e instrumentos de planejamento.</li>
+                                        <li>Estratégias de conservação da biodiversidade;</li>
+                                        <li>Planos de gestão e governança territorial;</li>
+                                        <li>Avaliação e monitoramento de planos.</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Painel 2: Fortalecer -->
-                    <div class="solutions__panel solutions__panel--fortalecer" id="solution-panel-fortalecer">
-                        <div class="solutions__top-stage">
-                            <button type="button" class="solutions__back-btn" aria-label="Voltar para a seleção de soluções">
+                    <!-- Panel 2: FORTALECER -->
+                    <div class="solutions__panel solutions__panel--fortalecer" id="solution-panel-fortalecer" role="region" aria-label="Detalhes de Fortalecer">
+                        <div class="solutions__main-content">
+                            <button type="button" class="solutions__back-btn" aria-label="Voltar para as três soluções">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="19" y1="12" x2="5" y2="12"></line>
                                     <polyline points="12 19 5 12 12 5"></polyline>
@@ -368,35 +389,35 @@
                                 <div class="solutions__badge-circle solutions__badge-circle--fortalecer">
                                     FORTALECER
                                 </div>
-                                <img src="img/etapa_fortalecer.jpg" alt="Fortalecer - Paisagem aquática e áreas alagadas" class="solutions__hero-img">
+                                <img src="img/etapa_fortalecer.jpg" alt="Fortalecer - Equipe em campo com prancheta" class="solutions__hero-img">
                             </div>
                             <p class="solutions__desc-text">
-                                Transformamos estratégias em capacidade de implementação. Uma boa estratégia só gera impacto quando as organizações estão preparadas para colocá-la em prática. Apoiamos organizações e iniciativas no fortalecimento de sua gestão, no desenvolvimento de capacidades e na estruturação de processos que tornem a implementação mais consistente e duradoura.
+                                Desenvolvemos capacidades para transformar planos em prática. Fortalecemos instituições, lideranças e equipes para que possam implementar suas estratégias com autonomia, eficiência e sustentabilidade ao longo do tempo.
                             </p>
                         </div>
                         <div class="solutions__bottom-panel solutions__bottom-panel--fortalecer">
                             <div class="solutions__bottom-grid">
                                 <div class="solutions__sub-img-wrap">
-                                    <img src="img/solucao_fortalecer_sub.jpg" alt="Flores do cerrado sempre-viva" class="solutions__sub-img">
+                                    <img src="img/solucao_fortalecer_sub.jpg" alt="Reunião participativa de equipe" class="solutions__sub-img">
                                 </div>
                                 <div class="solutions__atuamos-content">
                                     <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
                                     <ul class="solutions__atuamos-list">
-                                        <li>Fortalecimento institucional;</li>
-                                        <li>Desenvolvimento organizacional;</li>
-                                        <li>Gestão do conhecimento;</li>
-                                        <li>Capacitação e formação de equipe;</li>
-                                        <li>Estruturação de programas e projetos.</li>
+                                        <li>Capacitação e formação de equipes e lideranças;</li>
+                                        <li>Desenvolvimento institucional e governança;</li>
+                                        <li>Metodologias e ferramentas de gestão;</li>
+                                        <li>Assessoria técnica continuada;</li>
+                                        <li>Sistematização de processos e lições aprendidas.</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Painel 3: Engajar -->
-                    <div class="solutions__panel solutions__panel--engajar" id="solution-panel-engajar">
-                        <div class="solutions__top-stage">
-                            <button type="button" class="solutions__back-btn" aria-label="Voltar para a seleção de soluções">
+                    <!-- Panel 3: ENGAJAR -->
+                    <div class="solutions__panel solutions__panel--engajar" id="solution-panel-engajar" role="region" aria-label="Detalhes de Engajar">
+                        <div class="solutions__main-content">
+                            <button type="button" class="solutions__back-btn" aria-label="Voltar para as três soluções">
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                                     <line x1="19" y1="12" x2="5" y2="12"></line>
                                     <polyline points="12 19 5 12 12 5"></polyline>
@@ -438,17 +459,24 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
+    <!-- =====================================================================
+         8. FOOTER SECTION (Figma node 1066:161, 1066:140, 1066:139)
+         ===================================================================== -->
+    <footer class="site-footer" data-name="Footer">
         <div class="footer-container">
-            <p class="copyright inter-light">&copy; 2026 INGA - Inovação e Gestão Ambiental. Todos os direitos reservados.</p>
+            <div class="footer-brand">
+                <img src="img/logoBranca.svg" alt="INGA Logo" class="footer-logo">
+                <p class="footer-tagline">inovação e gestão ambiental</p>
+            </div>
         </div>
     </footer>
 
-    <!-- MODAL 1: QUEM LIDERA (EDUARDO PROFILE) -->
-    <div id="modal-lidera" class="modal-overlay" aria-hidden="true">
+    <!-- =====================================================================
+         9. MODAL: QUEM LIDERA (EDUARDO PROFILE)
+         ===================================================================== -->
+    <div id="modal-lidera" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-lidera-title">
         <div class="modal-card modal-lidera-card">
-            <button class="modal-close" aria-label="Fechar">&times;</button>
+            <button class="modal-close" aria-label="Fechar modal">&times;</button>
             <div class="modal-content-grid">
                 <!-- Photo Side -->
                 <div class="modal-img-wrapper">
@@ -456,10 +484,8 @@
                 </div>
                 <!-- Bio Side -->
                 <div class="modal-info-wrapper">
-                    <div class="outline-circle modal-circle">
-                        <span class="circle-text inter-semibold">quem lidera</span>
-                    </div>
-                    <h3 class="profile-name inter-bold">Eduardo Hermes Silva</h3>
+                    <div class="modal-badge-title">quem lidera</div>
+                    <h3 class="profile-name inter-bold" id="modal-lidera-title">Eduardo Hermes Silva</h3>
                     <p class="profile-title inter-semibold-italic">Coordenador Técnico Sênior</p>
                     <div class="profile-bio inter-light">
                         <p>A INGA é liderada por Eduardo Hermes Silva, biólogo, mestre em Geografia e consultor com mais de vinte cinco anos de experiência em planejamento estratégico para conservação da biodiversidade, governança de áreas protegidas e facilitação de processos participativos.</p>
@@ -471,8 +497,10 @@
         </div>
     </div>
 
-    <!-- MODAL 2: CONTATO (CARDCONTATO FIGMA SPEC-001) -->
-    <div id="modal-contato" class="modal-overlay" aria-hidden="true">
+    <!-- =====================================================================
+         10. MODAL: CONTATO (CARDCONTATO FIGMA SPEC-001)
+         ===================================================================== -->
+    <div id="modal-contato" class="modal-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-contato-title">
         <div class="modal-card modal-contato-card" data-name="CardContato">
             <button class="modal-close contact-close-btn" aria-label="Fechar modal de contato">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -481,7 +509,7 @@
                 </svg>
             </button>
             <div class="contact-card-content">
-                <p class="contact-main-text">
+                <p class="contact-main-text" id="modal-contato-title">
                     Conecte-se conosco para desenvolvermos juntos, soluções estratégicas para seu&nbsp;projeto.
                 </p>
                 
@@ -515,6 +543,6 @@
     </div>
 
     <!-- Custom Script -->
-    <script src="script.js?v=2.3"></script>
+    <script src="script.js?v=3.0"></script>
 </body>
 </html>
