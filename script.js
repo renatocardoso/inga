@@ -208,21 +208,19 @@ const init = () => {
 
         lastActiveSolutionBtn = triggerBtn;
 
-        // Innovative compact dock: shrink circles into compact selector for direct switching
-        solutionsButtons.classList.remove('is-hidden');
-        solutionsButtons.classList.add('is-compact');
-
-        // Update active highlight on compact buttons
-        solutionCircleBtns.forEach(btn => {
-            const isMatch = btn.getAttribute('data-target-solution') === solutionId;
-            btn.classList.toggle('is-active-btn', isMatch);
-            btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
-        });
+        // Hide standalone initial circles as the revealed layout embeds the active circle + two mini switcher circles
+        solutionsButtons.classList.add('is-hidden');
+        solutionsButtons.classList.remove('is-compact');
 
         // Activate corresponding panel
         solutionPanels.forEach(panel => {
             if (panel.id === `solution-panel-${solutionId}`) {
                 panel.classList.add('is-active');
+                // Optional: set focus to panel close button for accessibility
+                const closeBtn = panel.querySelector('.solutions__close-btn');
+                if (closeBtn && triggerBtn && triggerBtn.classList.contains('solutions__circle-btn')) {
+                    closeBtn.focus();
+                }
             } else {
                 panel.classList.remove('is-active');
             }
@@ -237,7 +235,8 @@ const init = () => {
             panel.classList.remove('is-active');
         });
 
-        // Restore 3 large circles
+        // Restore initial 3 large circles
+        solutionsButtons.classList.remove('is-hidden');
         solutionsButtons.classList.remove('is-compact');
         solutionCircleBtns.forEach(btn => {
             btn.classList.remove('is-active-btn');
@@ -253,6 +252,17 @@ const init = () => {
 
     if (solutionCircleBtns.length > 0) {
         solutionCircleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const solutionId = btn.getAttribute('data-target-solution');
+                openSolution(solutionId, btn);
+            });
+        });
+    }
+
+    // Mini switcher circles navigation inside revealed panels (Figma nodes 1027:95, 2087:439, 2093:458)
+    const solutionMiniCircleBtns = document.querySelectorAll('.solutions__mini-circle');
+    if (solutionMiniCircleBtns.length > 0) {
+        solutionMiniCircleBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 const solutionId = btn.getAttribute('data-target-solution');
                 openSolution(solutionId, btn);

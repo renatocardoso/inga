@@ -19,14 +19,14 @@ const renderSolucoes = (initialActiveSolution = null) => {
         </p>
 
         <!-- 1. Três Botões Circulares -->
-        <div class="solutions__buttons ${initialActiveSolution ? 'is-compact' : ''}" id="story-solutions-buttons">
-            <button type="button" class="solutions__circle-btn solutions__circle-btn--planejar ${initialActiveSolution === 'planejar' ? 'is-active-btn' : ''}" data-target="planejar">
+        <div class="solutions__buttons ${initialActiveSolution ? 'is-hidden' : ''}" id="story-solutions-buttons">
+            <button type="button" class="solutions__circle-btn solutions__circle-btn--planejar" data-target="planejar">
                 <span class="solutions__circle-label">PLANEJAR</span>
             </button>
-            <button type="button" class="solutions__circle-btn solutions__circle-btn--fortalecer ${initialActiveSolution === 'fortalecer' ? 'is-active-btn' : ''}" data-target="fortalecer">
+            <button type="button" class="solutions__circle-btn solutions__circle-btn--fortalecer" data-target="fortalecer">
                 <span class="solutions__circle-label">FORTALECER</span>
             </button>
-            <button type="button" class="solutions__circle-btn solutions__circle-btn--engajar ${initialActiveSolution === 'engajar' ? 'is-active-btn' : ''}" data-target="engajar">
+            <button type="button" class="solutions__circle-btn solutions__circle-btn--engajar" data-target="engajar">
                 <span class="solutions__circle-label">ENGAJAR</span>
             </button>
         </div>
@@ -49,6 +49,16 @@ const renderSolucoes = (initialActiveSolution = null) => {
                           PLANEJAR
                       </div>
                       <img src="img/onca_planejar.png" alt="Planejar - Olhar da onça" class="solutions__hero-img">
+
+                      <!-- Two smaller circles aligned on top and beside the image (Figma nodes 2413:666 & 2413:668) -->
+                      <div class="solutions__mini-circles" role="toolbar" aria-label="Navegar para outras soluções">
+                          <button type="button" class="solutions__mini-circle solutions__mini-circle--fortalecer" data-target="fortalecer" aria-label="Navegar para Fortalecer">
+                              FORTALECER
+                          </button>
+                          <button type="button" class="solutions__mini-circle solutions__mini-circle--engajar" data-target="engajar" aria-label="Navegar para Engajar">
+                              ENGAJAR
+                          </button>
+                      </div>
                   </div>
                   <div class="solutions__desc-text">
                       <p>Construímos estratégias para orientar decisões e gerar impacto. Apoiamos a definição de propósitos, prioridades e caminhos para orientar decisões e transformar objetivos em planos consistentes e viáveis.</p>
@@ -56,9 +66,7 @@ const renderSolucoes = (initialActiveSolution = null) => {
               </div>
               <div class="solutions__bottom-panel solutions__bottom-panel--planejar">
                   <div class="solutions__bottom-grid">
-                      <div class="solutions__sub-img-wrap">
-                          <img src="img/cactos_planejar.png" alt="Caatinga e mandacarus" class="solutions__sub-img">
-                      </div>
+                      <!-- Left: Content ATUAMOS EM -->
                       <div class="solutions__atuamos-content">
                           <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
                           <ul class="solutions__atuamos-list">
@@ -69,6 +77,10 @@ const renderSolucoes = (initialActiveSolution = null) => {
                               <li>Planos de ação para ecossistemas e espécies ameaçadas;</li>
                               <li>Desenvolvimento de metodologias e instrumentos de planejamento.</li>
                           </ul>
+                      </div>
+                      <!-- Right: Full lateral image with inner rounded border -->
+                      <div class="solutions__sub-img-wrap">
+                          <img src="img/cactos_planejar.png" alt="Caatinga e mandacarus" class="solutions__sub-img">
                       </div>
                   </div>
               </div>
@@ -88,6 +100,16 @@ const renderSolucoes = (initialActiveSolution = null) => {
                           FORTALECER
                       </div>
                       <img src="img/pantanal_fortalecer.png" alt="Pantanal vista aérea" class="solutions__hero-img">
+
+                      <!-- Two smaller circles aligned on top and beside the image (Figma nodes 2413:674 & 2413:672) -->
+                      <div class="solutions__mini-circles" role="toolbar" aria-label="Navegar para outras soluções">
+                          <button type="button" class="solutions__mini-circle solutions__mini-circle--planejar" data-target="planejar" aria-label="Navegar para Planejar">
+                              PLANEJAR
+                          </button>
+                          <button type="button" class="solutions__mini-circle solutions__mini-circle--engajar" data-target="engajar" aria-label="Navegar para Engajar">
+                              ENGAJAR
+                          </button>
+                      </div>
                   </div>
                   <div class="solutions__desc-text">
                       <p>Transformamos estratégias em capacidade de implementação</p>
@@ -97,9 +119,7 @@ const renderSolucoes = (initialActiveSolution = null) => {
               </div>
               <div class="solutions__bottom-panel solutions__bottom-panel--fortalecer">
                   <div class="solutions__bottom-grid">
-                      <div class="solutions__sub-img-wrap">
-                          <img src="img/flores_fortalecer.png" alt="Flores do cerrado sempre-viva" class="solutions__sub-img">
-                      </div>
+                      <!-- Left: Content ATUAMOS EM -->
                       <div class="solutions__atuamos-content">
                           <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
                           <ul class="solutions__atuamos-list">
@@ -109,6 +129,10 @@ const renderSolucoes = (initialActiveSolution = null) => {
                               <li>Capacitação e formação de equipe</li>
                               <li>Estruturação de programas e projetos</li>
                           </ul>
+                      </div>
+                      <!-- Right: Full lateral image with inner rounded border -->
+                      <div class="solutions__sub-img-wrap">
+                          <img src="img/flores_fortalecer.png" alt="Flores do cerrado sempre-viva" class="solutions__sub-img">
                       </div>
                   </div>
               </div>
@@ -128,6 +152,16 @@ const renderSolucoes = (initialActiveSolution = null) => {
                           ENGAJAR
                       </div>
                       <img src="img/araucarias_engajar.png" alt="Araucárias ao pôr do sol" class="solutions__hero-img">
+
+                      <!-- Two smaller circles aligned on top and beside the image (Figma nodes 2413:678 & 2413:676) -->
+                      <div class="solutions__mini-circles" role="toolbar" aria-label="Navegar para outras soluções">
+                          <button type="button" class="solutions__mini-circle solutions__mini-circle--planejar" data-target="planejar" aria-label="Navegar para Planejar">
+                              PLANEJAR
+                          </button>
+                          <button type="button" class="solutions__mini-circle solutions__mini-circle--fortalecer" data-target="fortalecer" aria-label="Navegar para Fortalecer">
+                              FORTALECER
+                          </button>
+                      </div>
                   </div>
                   <div class="solutions__desc-text">
                       <p>Conectamos pessoas para construir soluções compartilhadas</p>
@@ -136,9 +170,7 @@ const renderSolucoes = (initialActiveSolution = null) => {
               </div>
               <div class="solutions__bottom-panel solutions__bottom-panel--engajar">
                   <div class="solutions__bottom-grid">
-                      <div class="solutions__sub-img-wrap">
-                          <img src="img/mata_engajar.png" alt="Mata Atlântica" class="solutions__sub-img">
-                      </div>
+                      <!-- Left: Content ATUAMOS EM -->
                       <div class="solutions__atuamos-content">
                           <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
                           <ul class="solutions__atuamos-list">
@@ -149,6 +181,10 @@ const renderSolucoes = (initialActiveSolution = null) => {
                               <li>Mediação e articulação institucional</li>
                               <li>Conselhos gestores e redes colaborativas</li>
                           </ul>
+                      </div>
+                      <!-- Right: Full lateral image with inner rounded border -->
+                      <div class="solutions__sub-img-wrap">
+                          <img src="img/mata_engajar.png" alt="Mata Atlântica" class="solutions__sub-img">
                       </div>
                   </div>
               </div>
@@ -161,15 +197,12 @@ const renderSolucoes = (initialActiveSolution = null) => {
   // Story interactive event listeners
   const btnGroup = container.querySelector('#story-solutions-buttons');
   const circleBtns = container.querySelectorAll('.solutions__circle-btn');
+  const miniCircleBtns = container.querySelectorAll('.solutions__mini-circle');
   const panels = container.querySelectorAll('.solutions__panel');
   const closeBtns = container.querySelectorAll('.solutions__close-btn');
 
   const openStorySolution = (target) => {
-    btnGroup.classList.remove('is-hidden');
-    btnGroup.classList.add('is-compact');
-    circleBtns.forEach(b => {
-      b.classList.toggle('is-active-btn', b.getAttribute('data-target') === target);
-    });
+    btnGroup.classList.add('is-hidden');
     panels.forEach(p => p.classList.remove('is-active'));
     const activePanel = container.querySelector(`#story-panel-${target}`);
     if (activePanel) activePanel.classList.add('is-active');
@@ -182,11 +215,17 @@ const renderSolucoes = (initialActiveSolution = null) => {
     });
   });
 
+  miniCircleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('data-target');
+      openStorySolution(target);
+    });
+  });
+
   closeBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       panels.forEach(p => p.classList.remove('is-active'));
-      btnGroup.classList.remove('is-compact');
-      circleBtns.forEach(b => b.classList.remove('is-active-btn'));
+      btnGroup.classList.remove('is-hidden');
     });
   });
 
