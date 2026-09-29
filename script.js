@@ -134,116 +134,167 @@ const init = () => {
 
 
     // ==========================================
-    // 5.5 NOSSA ABORDAGEM QUADRANTS INTERACTIVITY
+    // 5.5 NOSSA ABORDAGEM: PILLARSACCORDION (SPEC-002)
     // ==========================================
-    const principlesGrid = document.getElementById('principles-grid');
-    const quadrants = document.querySelectorAll('.quadrant');
+    const pillarsGrid = document.querySelector('.pillars__grid');
+    const pillarItems = document.querySelectorAll('.pillars__item');
 
-    if (principlesGrid && quadrants.length > 0) {
-        quadrants.forEach(quad => {
-            const quadNum = quad.getAttribute('data-quad');
-            
-            quad.addEventListener('mouseenter', () => {
-                principlesGrid.className = `principles-grid-container hover-quad-${quadNum}`;
-            });
-            
-            quad.addEventListener('mouseleave', () => {
-                principlesGrid.className = 'principles-grid-container';
-            });
+    const closeAllPillars = () => {
+        pillarItems.forEach(item => {
+            item.classList.remove('pillars__item--is-expanded');
+            item.setAttribute('aria-expanded', 'false');
+        });
+        if (pillarsGrid) {
+            pillarsGrid.classList.remove('has-expanded');
+        }
+    };
 
-            quad.addEventListener('click', () => {
-                if (principlesGrid.classList.contains(`hover-quad-${quadNum}`)) {
-                    principlesGrid.className = 'principles-grid-container';
-                } else {
-                    principlesGrid.className = `principles-grid-container hover-quad-${quadNum}`;
+    if (pillarItems.length > 0) {
+        pillarItems.forEach(item => {
+            // Expansion trigger on click
+            item.addEventListener('click', (e) => {
+                // If clicked on close button, do nothing here (close button has own handler)
+                if (e.target.closest('.pillars__close-btn')) return;
+
+                const isAlreadyExpanded = item.classList.contains('pillars__item--is-expanded');
+                closeAllPillars();
+
+                if (!isAlreadyExpanded) {
+                    item.classList.add('pillars__item--is-expanded');
+                    item.setAttribute('aria-expanded', 'true');
+                    if (pillarsGrid) pillarsGrid.classList.add('has-expanded');
+
+                    const closeBtn = item.querySelector('.pillars__close-btn');
+                    if (closeBtn) closeBtn.focus();
                 }
+            });
+
+            // Keyboard navigation (Enter / Space)
+            item.addEventListener('keydown', (e) => {
+                if ((e.key === 'Enter' || e.key === ' ') && !item.classList.contains('pillars__item--is-expanded')) {
+                    e.preventDefault();
+                    item.click();
+                }
+            });
+
+            // Close button click handler
+            const closeBtn = item.querySelector('.pillars__close-btn');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    closeAllPillars();
+                    item.focus();
+                });
+            }
+        });
+    }
+
+
+    // ==========================================
+    // 6. SOLUÇÕES: SOLUCOESSHOWCASE (SPEC-002)
+    // ==========================================
+    const solutionsButtons = document.getElementById('solutions-buttons');
+    const solutionCircleBtns = document.querySelectorAll('.solutions__circle-btn');
+    const solutionPanels = document.querySelectorAll('.solutions__panel');
+    const solutionBackBtns = document.querySelectorAll('.solutions__back-btn');
+    let lastActiveSolutionBtn = null;
+
+    const openSolution = (solutionId, triggerBtn) => {
+        if (!solutionsButtons) return;
+
+        lastActiveSolutionBtn = triggerBtn;
+
+        // Animate out the 3 circles
+        solutionsButtons.classList.add('is-hidden');
+
+        // Activate corresponding panel
+        solutionPanels.forEach(panel => {
+            if (panel.id === `solution-panel-${solutionId}`) {
+                panel.classList.add('is-active');
+                const backBtn = panel.querySelector('.solutions__back-btn');
+                if (backBtn) backBtn.focus();
+            } else {
+                panel.classList.remove('is-active');
+            }
+        });
+    };
+
+    const closeSolution = () => {
+        if (!solutionsButtons) return;
+
+        // Hide all active panels
+        solutionPanels.forEach(panel => {
+            panel.classList.remove('is-active');
+        });
+
+        // Restore 3 circles
+        solutionsButtons.classList.remove('is-hidden');
+
+        // Restore focus
+        if (lastActiveSolutionBtn && typeof lastActiveSolutionBtn.focus === 'function') {
+            lastActiveSolutionBtn.focus();
+            lastActiveSolutionBtn = null;
+        }
+    };
+
+    if (solutionCircleBtns.length > 0) {
+        solutionCircleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const solutionId = btn.getAttribute('data-target-solution');
+                openSolution(solutionId, btn);
+            });
+        });
+    }
+
+    if (solutionBackBtns.length > 0) {
+        solutionBackBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                closeSolution();
             });
         });
     }
 
 
     // ==========================================
-    // 6. SOLUÇÕES INTERACTIVE CARDS & TABS
+    // 7. MODALS CONTROL SYSTEM (CONTATO & EDUARDO)
     // ==========================================
-    const solucoesWrapper = document.getElementById('solucoes-wrapper');
-    const solucaoCardItems = document.querySelectorAll('.solucao-card-item');
-    const tabHeaderBtns = document.querySelectorAll('.solucoes-tab-header-btn');
-    const solucaoPanels = document.querySelectorAll('.solucao-panel');
+    let lastModalTrigger = null;
 
-    const switchSolucaoTab = (tabId) => {
-        if (!solucoesWrapper) return;
-        
-        // Show expanded view
-        solucoesWrapper.classList.add('is-expanded');
-
-        // Update tab header buttons
-        tabHeaderBtns.forEach(btn => {
-            if (btn.getAttribute('data-tab-target') === tabId) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-
-        // Update panel content
-        solucaoPanels.forEach(panel => {
-            if (panel.getAttribute('id') === `panel-${tabId}`) {
-                panel.classList.add('active');
-            } else {
-                panel.classList.remove('active');
-            }
-        });
-    };
-
-    // Click rest state cards (image or button)
-    solucaoCardItems.forEach(card => {
-        card.addEventListener('click', () => {
-            const solucaoId = card.getAttribute('data-solucao');
-            switchSolucaoTab(solucaoId);
-        });
-    });
-
-    // Click expanded header tab buttons
-    tabHeaderBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const targetTab = btn.getAttribute('data-tab-target');
-            
-            // If already active, toggle back to 3-cards view
-            if (btn.classList.contains('active')) {
-                solucoesWrapper.classList.remove('is-expanded');
-            } else {
-                switchSolucaoTab(targetTab);
-            }
-        });
-    });
-
-
-    // ==========================================
-    // 7. MODALSPOPUP CONTROL SYSTEM (CONTATO & EDUARDO)
-    // ==========================================
-    const openModal = (modal) => {
+    const openModal = (modal, trigger = null) => {
         closeMobileMenu();
+        lastModalTrigger = trigger || document.activeElement;
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
-        body.classList.add('no-scroll'); // Prevent page scrolling behind modal
+        body.classList.add('no-scroll');
+
+        const closeBtn = modal.querySelector('.modal-close');
+        if (closeBtn) closeBtn.focus();
     };
 
     const closeModal = (modal) => {
         modal.classList.remove('active');
         modal.setAttribute('aria-hidden', 'true');
         body.classList.remove('no-scroll');
+
+        if (lastModalTrigger && typeof lastModalTrigger.focus === 'function') {
+            lastModalTrigger.focus();
+            lastModalTrigger = null;
+        }
     };
 
     // Trigger Eduardo Bio Modal
     const triggerTrajetoria = document.getElementById('trigger-trajetoria');
     
     if (triggerEduardo) {
-        triggerEduardo.addEventListener('click', () => openModal(modalLidera));
+        triggerEduardo.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal(modalLidera, triggerEduardo);
+        });
     }
     if (triggerTrajetoria) {
         triggerTrajetoria.addEventListener('click', (e) => {
             e.preventDefault();
-            openModal(modalLidera);
+            openModal(modalLidera, triggerTrajetoria);
         });
     }
 
@@ -251,7 +302,7 @@ const init = () => {
     triggersContato.forEach(trigger => {
         trigger.addEventListener('click', (e) => {
             e.preventDefault();
-            openModal(modalContato);
+            openModal(modalContato, trigger);
         });
     });
 
@@ -265,18 +316,41 @@ const init = () => {
 
     // Click outside modal card to close
     [modalLidera, modalContato].forEach(modal => {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal(modal);
-            }
-        });
+        if (modal) {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal(modal);
+                }
+            });
+        }
     });
 
-    // Close modals on Escape key press
+    // Global Escape key handler (Modals, PillarsAccordion, Solucoes)
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            closeModal(modalLidera);
-            closeModal(modalContato);
+            // 1. Close open modals first
+            if (modalLidera && modalLidera.classList.contains('active')) {
+                closeModal(modalLidera);
+                return;
+            }
+            if (modalContato && modalContato.classList.contains('active')) {
+                closeModal(modalContato);
+                return;
+            }
+
+            // 2. Close active solution showcase
+            const activeSolutionPanel = document.querySelector('.solutions__panel.is-active');
+            if (activeSolutionPanel) {
+                closeSolution();
+                return;
+            }
+
+            // 3. Close expanded pillar
+            const expandedPillar = document.querySelector('.pillars__item--is-expanded');
+            if (expandedPillar) {
+                closeAllPillars();
+                expandedPillar.focus();
+            }
         }
     });
 

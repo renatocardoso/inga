@@ -85,7 +85,7 @@
                     <div class="text-block main-paragraph inter-light">
                         <p>A INGA – Inovação e Gestão Ambiental nasceu da convicção de que os grandes desafios da conservação da natureza exigem mais do que conhecimento: exigem estratégia, participação e a capacidade de transformar diferentes perspectivas em decisões consistentes e ações efetivas.</p>
                         <p>Especializada em planejamento estratégico, governança e processos participativos, a INGA apoia organizações públicas, privadas e da sociedade civil na concepção e implementação de iniciativas voltadas à conservação da biodiversidade e ao desenvolvimento sustentável. Atuamos na construção de estratégias até sua implementação, sempre por meio de processos colaborativos, transparentes e orientados para resultados.</p>
-                        <p>Criada em 2024, a empresa representa a consolidação de uma <a href="javascript:void(0)" class="trajetoria-link" id="trigger-trajetoria">trajetória profissional</a> construída ao longo de mais de duas décadas de atuação em projetos de conservação da natureza em diferentes regiões do Brasil.</p>
+                        <p>Criada em 2024, a INGA representa a consolidação de uma <button type="button" class="about__trigger--lead" id="trigger-trajetoria" aria-haspopup="dialog" aria-controls="modal-lidera">TRAJETÓRIA PROFISSIONAL</button> construída ao longo de mais de duas décadas de atuação em projetos de conservação da natureza em diferentes regiões do Brasil.</p>
                     </div>
                     <blockquote class="highlight-quote inter-medium-italic">
                         "Essa trajetória reúne experiência em planejamento de áreas protegidas, estratégias de conservação, fortalecimento institucional, processos participativos e articulação entre governos, empresas e comunidades."
@@ -124,104 +124,146 @@
                 </div>
             </div>
             
-            <!-- Full-Width 2x2 Minimalist Interactive Grid -->
-            <div class="principles-grid-container" id="principles-grid">
-                <!-- Division Lines with Overhangs -->
-                <div class="grid-line line-h"></div>
-                <div class="grid-line line-v"></div>
-
-                <!-- Quadrant 1: Top Left -->
-                <div class="quadrant quad-top-left" data-quad="1">
-                    <div class="quad-rest">
-                        <h4 class="quad-title inter-semibold">Estratégia orientada<br>por propósito</h4>
-                    </div>
-                    <div class="quad-hover">
-                        <div class="hover-left">
-                            <h4 class="quad-title inter-bold">Estratégia orientada<br>por propósito</h4>
-                            <div class="quad-icon">
-                                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" class="svg-icon">
-                                    <circle cx="32" cy="32" r="26" />
-                                    <circle cx="32" cy="32" r="17" />
-                                    <circle cx="32" cy="32" r="8" />
-                                </svg>
+            <!-- PillarsAccordion Interactive 2x2 Quadrant Grid (SPEC-002) -->
+            <div class="pillars" id="pillars-accordion">
+                <div class="pillars__grid" role="region" aria-label="Princípios da nossa abordagem">
+                    
+                    <!-- Pilar 1: Estratégia (Petróleo) -->
+                    <div class="pillars__item pillars__item--petroleo" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="pillar-body-estrategia"
+                         data-pillar="estrategia">
+                        <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
+                            <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                                <line x1="12" y1="12" x2="32" y2="32" />
+                                <line x1="32" y1="12" x2="12" y2="32" />
+                            </svg>
+                        </button>
+                        <div class="pillars__inner">
+                            <div class="pillars__col-visual">
+                                <div class="pillars__header">
+                                    <h3 class="pillars__title">Estratégia orientada<br>por propósito</h3>
+                                </div>
+                                <div class="pillars__body" id="pillar-body-estrategia">
+                                    <div class="pillars__icon">
+                                        <svg class="pillars__svg" viewBox="0 0 181 181" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round">
+                                            <circle cx="90.5" cy="90.5" r="76" />
+                                            <circle cx="90.5" cy="90.5" r="48" />
+                                            <circle cx="90.5" cy="90.5" r="20" />
+                                        </svg>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="hover-right">
-                            <p class="quad-desc inter-light">Partimos do propósito da organização ou iniciativa e dos resultados que se pretende alcançar para desenvolver caminhos alinhados aos seus desafios e oportunidades.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quadrant 2: Top Right -->
-                <div class="quadrant quad-top-right" data-quad="2">
-                    <div class="quad-rest">
-                        <h4 class="quad-title inter-semibold">Construção<br>participativa</h4>
-                    </div>
-                    <div class="quad-hover">
-                        <div class="hover-left">
-                            <p class="quad-desc inter-light">Acreditamos que as melhores soluções surgem do encontro entre diferentes conhecimentos, experiências e perspectivas.</p>
-                        </div>
-                        <div class="hover-right">
-                            <h4 class="quad-title inter-bold">Construção<br>participativa</h4>
-                            <div class="quad-icon">
-                                <svg viewBox="0 0 70 70" fill="none" stroke="currentColor" stroke-width="2.5" class="svg-icon">
-                                    <polygon points="35,8 18,34 52,34" />
-                                    <circle cx="23" cy="53" r="11" />
-                                    <rect x="42" y="42" width="20" height="20" />
-                                </svg>
+                            <div class="pillars__body">
+                                <p class="pillars__desc">Partimos do propósito da organização ou iniciativa e dos resultados que se pretende alcançar para desenvolver caminhos alinhados aos seus desafios e oportunidades.</p>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Quadrant 3: Bottom Left -->
-                <div class="quadrant quad-bottom-left" data-quad="3">
-                    <div class="quad-rest">
-                        <h4 class="quad-title inter-semibold">Ciência aplicada<br>à decisão</h4>
-                    </div>
-                    <div class="quad-hover">
-                        <div class="hover-left">
-                            <div class="quad-icon icon-above">
-                                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" class="svg-icon">
-                                    <rect x="10" y="34" width="10" height="22" rx="1" />
-                                    <rect x="27" y="20" width="10" height="36" rx="1" />
-                                    <rect x="44" y="8" width="10" height="48" rx="1" />
-                                </svg>
+                    <!-- Pilar 2: Construção (Verde) -->
+                    <div class="pillars__item pillars__item--verde" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="pillar-body-construcao"
+                         data-pillar="construcao">
+                        <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
+                            <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                                <line x1="12" y1="12" x2="32" y2="32" />
+                                <line x1="32" y1="12" x2="12" y2="32" />
+                            </svg>
+                        </button>
+                        <div class="pillars__inner">
+                            <div class="pillars__body">
+                                <p class="pillars__desc">Acreditamos que as melhores soluções surgem do encontro entre diferentes conhecimentos, experiências e perspectivas.</p>
                             </div>
-                            <h4 class="quad-title inter-bold">Ciência aplicada<br>à decisão</h4>
-                        </div>
-                        <div class="hover-right">
-                            <p class="quad-desc inter-light">Aliamos conhecimento técnico e empírico, experiência prática e metodologias versáteis para apoiar decisões mais qualificadas.</p>
+                            <div class="pillars__col-visual">
+                                <div class="pillars__header">
+                                    <h3 class="pillars__title">Construção<br>participativa</h3>
+                                </div>
+                                <div class="pillars__body" id="pillar-body-construcao">
+                                    <div class="pillars__icon">
+                                        <svg class="pillars__svg" viewBox="0 0 192 192" fill="none" stroke="currentColor" stroke-width="8" stroke-linejoin="round">
+                                            <polygon points="96,16 48,92 144,92" />
+                                            <circle cx="62" cy="144" r="32" />
+                                            <rect x="114" y="112" width="64" height="64" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Quadrant 4: Bottom Right -->
-                <div class="quadrant quad-bottom-right" data-quad="4">
-                    <div class="quad-rest">
-                        <h4 class="quad-title inter-semibold">Implementação<br>e resultados</h4>
-                    </div>
-                    <div class="quad-hover">
-                        <div class="hover-left">
-                            <p class="quad-desc inter-light">Buscamos fortalecer capacidades e criar condições para que estratégias se transformem em resultados concretos.</p>
-                        </div>
-                        <div class="hover-right">
-                            <div class="quad-icon icon-above">
-                                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.5" class="svg-icon">
-                                    <circle cx="32" cy="32" r="26" />
-                                    <path d="M22 42 L42 22" stroke-linecap="round" />
-                                    <path d="M28 22 L42 22 L42 36" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
+                    <!-- Pilar 3: Ciência (Oceano) -->
+                    <div class="pillars__item pillars__item--oceano" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="pillar-body-ciencia"
+                         data-pillar="ciencia">
+                        <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
+                            <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                                <line x1="12" y1="12" x2="32" y2="32" />
+                                <line x1="32" y1="12" x2="12" y2="32" />
+                            </svg>
+                        </button>
+                        <div class="pillars__inner">
+                            <div class="pillars__col-visual">
+                                <div class="pillars__body" id="pillar-body-ciencia">
+                                    <div class="pillars__icon">
+                                        <svg class="pillars__svg" viewBox="0 0 187 187" fill="currentColor">
+                                            <rect x="25" y="98" width="35" height="64" rx="4" />
+                                            <rect x="76" y="52" width="35" height="110" rx="4" />
+                                            <rect x="127" y="24" width="35" height="138" rx="4" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="pillars__header">
+                                    <h3 class="pillars__title">Ciência aplicada<br>à decisão</h3>
+                                </div>
                             </div>
-                            <h4 class="quad-title inter-bold">Implementação<br>e resultados</h4>
+                            <div class="pillars__body">
+                                <p class="pillars__desc">Aliamos conhecimento técnico e empírico, experiência prática e metodologias versáteis para apoiar decisões mais qualificadas.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>   </div>
+
+                    <!-- Pilar 4: Resultados (Âmbar) -->
+                    <div class="pillars__item pillars__item--ambar" 
+                         tabindex="0" 
+                         role="button" 
+                         aria-expanded="false" 
+                         aria-controls="pillar-body-resultados"
+                         data-pillar="resultados">
+                        <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
+                            <svg class="pillars__close-svg" viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round">
+                                <line x1="12" y1="12" x2="32" y2="32" />
+                                <line x1="32" y1="12" x2="12" y2="32" />
+                            </svg>
+                        </button>
+                        <div class="pillars__inner">
+                            <div class="pillars__body">
+                                <p class="pillars__desc">Buscamos fortalecer capacidades e criar condições para que estratégias se transformem em resultados concretos.</p>
+                            </div>
+                            <div class="pillars__col-visual">
+                                <div class="pillars__body" id="pillar-body-resultados">
+                                    <div class="pillars__icon">
+                                        <svg class="pillars__svg" viewBox="0 0 170 170" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M48 116 C30 96 34 62 56 42 C80 20 118 22 138 46 C158 70 152 108 126 128 C104 146 72 144 54 126" />
+                                            <path d="M52 106 L82 76 L108 96 L134 66" />
+                                            <path d="M116 64 H136 V84" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="pillars__header">
+                                    <h3 class="pillars__title">Implementação<br>e resultados</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -253,63 +295,53 @@
                 </div>
             </div>
 
-            <!-- Interactive Soluções Wrapper -->
-            <div class="solucoes-interactive-wrapper" id="solucoes-wrapper">
-
-                <!-- 1. Rest State Cards View (Image 2) -->
-                <div class="solucoes-cards-grid" id="solucoes-cards-grid">
-                    <!-- Card Planejar -->
-                    <div class="solucao-card-item" data-solucao="planejar">
-                        <button class="solucao-card-btn inter-bold">PLANEJAR</button>
-                        <div class="solucao-card-img-wrap">
-                            <img src="img/etapa_planejar.jpg" alt="Planejar" class="solucao-card-img">
-                        </div>
-                    </div>
-
-                    <!-- Card Engajar -->
-                    <div class="solucao-card-item" data-solucao="engajar">
-                        <button class="solucao-card-btn inter-bold">ENGAJAR</button>
-                        <div class="solucao-card-img-wrap">
-                            <img src="img/etapa_engajar.jpg" alt="Engajar" class="solucao-card-img">
-                        </div>
-                    </div>
-
-                    <!-- Card Fortalecer -->
-                    <div class="solucao-card-item" data-solucao="fortalecer">
-                        <button class="solucao-card-btn inter-bold">FORTALECER</button>
-                        <div class="solucao-card-img-wrap">
-                            <img src="img/etapa_fortalecer.jpg" alt="Fortalecer" class="solucao-card-img">
-                        </div>
-                    </div>
+            <!-- Interactive Soluções Showcase (SPEC-002) -->
+            <div class="solutions__arena" id="solutions-arena">
+                
+                <!-- 1. Três Botões Circulares (Estado de Repouso / Seletor) -->
+                <div class="solutions__buttons" id="solutions-buttons">
+                    <button type="button" class="solutions__circle-btn solutions__circle-btn--planejar" data-target-solution="planejar">
+                        PLANEJAR
+                    </button>
+                    <button type="button" class="solutions__circle-btn solutions__circle-btn--fortalecer" data-target-solution="fortalecer">
+                        FORTALECER
+                    </button>
+                    <button type="button" class="solutions__circle-btn solutions__circle-btn--engajar" data-target-solution="engajar">
+                        ENGAJAR
+                    </button>
                 </div>
 
-                <!-- 2. Expanded Tab Card View (Image 1) -->
-                <div class="solucoes-expanded-card" id="solucoes-expanded-card">
-                    <!-- Tab Navigation Header -->
-                    <div class="solucoes-tab-nav">
-                        <button class="solucoes-tab-header-btn inter-bold" data-tab-target="planejar">PLANEJAR</button>
-                        <button class="solucoes-tab-header-btn inter-bold" data-tab-target="engajar">ENGAJAR</button>
-                        <button class="solucoes-tab-header-btn inter-bold" data-tab-target="fortalecer">FORTALECER</button>
-                    </div>
-
-                    <!-- Expanded Content Panels -->
-                    <div class="solucoes-tab-body">
-                        <!-- Panel Planejar -->
-                        <div class="solucao-panel active" id="panel-planejar">
-                            <div class="panel-top-row">
-                                <div class="panel-img-col">
-                                    <img src="img/etapa_planejar.jpg" alt="Planejar" class="panel-img">
+                <!-- 2. Painéis Detalhados Aglutinados (Showcase Ativo) -->
+                <div class="solutions__showcase" id="solutions-showcase">
+                    
+                    <!-- Painel 1: Planejar -->
+                    <div class="solutions__panel solutions__panel--planejar" id="solution-panel-planejar">
+                        <div class="solutions__top-stage">
+                            <button type="button" class="solutions__back-btn" aria-label="Voltar para a seleção de soluções">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                                <span>Voltar</span>
+                            </button>
+                            <div class="solutions__composition">
+                                <div class="solutions__badge-circle solutions__badge-circle--planejar">
+                                    PLANEJAR
                                 </div>
-                                <div class="panel-desc-col">
-                                    <p class="panel-desc-text inter-light">
-                                        Construímos estratégias para orientar decisões e gerar impacto. Apoiamos a definição de propósitos, prioridades e caminhos para orientar decisões e transformar objetivos em planos consistentes e viáveis.
-                                    </p>
-                                </div>
+                                <img src="img/etapa_planejar.jpg" alt="Planejar - Olhar da onça" class="solutions__hero-img">
                             </div>
-                            <div class="panel-bottom-row">
-                                <div class="panel-atuamos-label inter-bold">ATUAMOS EM:</div>
-                                <div class="panel-atuamos-list">
-                                    <ul class="inter-light">
+                            <p class="solutions__desc-text">
+                                Construímos estratégias para orientar decisões e gerar impacto. Apoiamos a definição de propósitos, prioridades e caminhos para orientar decisões e transformar objetivos em planos consistentes e viáveis.
+                            </p>
+                        </div>
+                        <div class="solutions__bottom-panel solutions__bottom-panel--planejar">
+                            <div class="solutions__bottom-grid">
+                                <div class="solutions__sub-img-wrap">
+                                    <img src="img/solucao_planejar_sub.jpg" alt="Caatinga e vegetação semiárida" class="solutions__sub-img">
+                                </div>
+                                <div class="solutions__atuamos-content">
+                                    <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
+                                    <ul class="solutions__atuamos-list">
                                         <li>Planejamento estratégico institucional;</li>
                                         <li>Planos de Manejo de Áreas Protegidas;</li>
                                         <li>Planejamento territorial para conservação;</li>
@@ -320,50 +352,36 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <!-- Panel Engajar -->
-                        <div class="solucao-panel" id="panel-engajar">
-                            <div class="panel-top-row">
-                                <div class="panel-img-col">
-                                    <img src="img/etapa_engajar.jpg" alt="Engajar" class="panel-img">
+                    <!-- Painel 2: Fortalecer -->
+                    <div class="solutions__panel solutions__panel--fortalecer" id="solution-panel-fortalecer">
+                        <div class="solutions__top-stage">
+                            <button type="button" class="solutions__back-btn" aria-label="Voltar para a seleção de soluções">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                                <span>Voltar</span>
+                            </button>
+                            <div class="solutions__composition">
+                                <div class="solutions__badge-circle solutions__badge-circle--fortalecer">
+                                    FORTALECER
                                 </div>
-                                <div class="panel-desc-col">
-                                    <p class="panel-desc-text inter-light">
-                                        Conectamos pessoas para construir soluções compartilhadas. A conservação da natureza é um esforço coletivo. Promovemos processos participativos que conectam diferentes conhecimentos, interesses e perspectivas em torno de objetivos comuns, fortalecem a governança, promovem o diálogo e ampliam a legitimidade das decisões.
-                                    </p>
-                                </div>
+                                <img src="img/etapa_fortalecer.jpg" alt="Fortalecer - Paisagem aquática e áreas alagadas" class="solutions__hero-img">
                             </div>
-                            <div class="panel-bottom-row">
-                                <div class="panel-atuamos-label inter-bold">ATUAMOS EM:</div>
-                                <div class="panel-atuamos-list">
-                                    <ul class="inter-light">
-                                        <li>Facilitação de oficinas e encontros;</li>
-                                        <li>Diagnósticos e planejamentos participativos;</li>
-                                        <li>Governança colaborativa;</li>
-                                        <li>Mapeamento de atores;</li>
-                                        <li>Mediação e articulação institucional;</li>
-                                        <li>Conselhos gestores e redes colaborativas.</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <p class="solutions__desc-text">
+                                Transformamos estratégias em capacidade de implementação. Uma boa estratégia só gera impacto quando as organizações estão preparadas para colocá-la em prática. Apoiamos organizações e iniciativas no fortalecimento de sua gestão, no desenvolvimento de capacidades e na estruturação de processos que tornem a implementação mais consistente e duradoura.
+                            </p>
                         </div>
-
-                        <!-- Panel Fortalecer -->
-                        <div class="solucao-panel" id="panel-fortalecer">
-                            <div class="panel-top-row">
-                                <div class="panel-img-col">
-                                    <img src="img/etapa_fortalecer.jpg" alt="Fortalecer" class="panel-img">
+                        <div class="solutions__bottom-panel solutions__bottom-panel--fortalecer">
+                            <div class="solutions__bottom-grid">
+                                <div class="solutions__sub-img-wrap">
+                                    <img src="img/solucao_fortalecer_sub.jpg" alt="Flores do cerrado sempre-viva" class="solutions__sub-img">
                                 </div>
-                                <div class="panel-desc-col">
-                                    <p class="panel-desc-text inter-light">
-                                        Transformamos estratégias em capacidade de implementação. Uma boa estratégia só gera impacto quando as organizações estão preparadas para colocá-la em prática. Apoiamos organizações e iniciativas no fortalecimento de sua gestão, no desenvolvimento de capacidades e na estruturação de processos que tornem a implementação mais consistente e duradoura.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="panel-bottom-row">
-                                <div class="panel-atuamos-label inter-bold">ATUAMOS EM:</div>
-                                <div class="panel-atuamos-list">
-                                    <ul class="inter-light">
+                                <div class="solutions__atuamos-content">
+                                    <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
+                                    <ul class="solutions__atuamos-list">
                                         <li>Fortalecimento institucional;</li>
                                         <li>Desenvolvimento organizacional;</li>
                                         <li>Gestão do conhecimento;</li>
@@ -374,8 +392,48 @@
                             </div>
                         </div>
                     </div>
-                </div>
 
+                    <!-- Painel 3: Engajar -->
+                    <div class="solutions__panel solutions__panel--engajar" id="solution-panel-engajar">
+                        <div class="solutions__top-stage">
+                            <button type="button" class="solutions__back-btn" aria-label="Voltar para a seleção de soluções">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                                    <polyline points="12 19 5 12 12 5"></polyline>
+                                </svg>
+                                <span>Voltar</span>
+                            </button>
+                            <div class="solutions__composition">
+                                <div class="solutions__badge-circle solutions__badge-circle--engajar">
+                                    ENGAJAR
+                                </div>
+                                <img src="img/etapa_engajar.jpg" alt="Engajar - Araucárias ao entardecer" class="solutions__hero-img">
+                            </div>
+                            <p class="solutions__desc-text">
+                                Conectamos pessoas para construir soluções compartilhadas. A conservação da natureza é um esforço coletivo. Promovemos processos participativos que conectam diferentes conhecimentos, interesses e perspectivas em torno de objetivos comuns, fortalecem a governança, promovem o diálogo e ampliam a legitimidade das decisões.
+                            </p>
+                        </div>
+                        <div class="solutions__bottom-panel solutions__bottom-panel--engajar">
+                            <div class="solutions__bottom-grid">
+                                <div class="solutions__sub-img-wrap">
+                                    <img src="img/solucao_engajar_sub.jpg" alt="Mata Atlântica e encostas verdes" class="solutions__sub-img">
+                                </div>
+                                <div class="solutions__atuamos-content">
+                                    <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
+                                    <ul class="solutions__atuamos-list">
+                                        <li>Facilitação de oficinas e encontros;</li>
+                                        <li>Diagnósticos e planejamentos participativos;</li>
+                                        <li>Governança colaborativa;</li>
+                                        <li>Mapeamento de atores;</li>
+                                        <li>Mediação e articulação institucional;</li>
+                                        <li>Conselhos gestores e redes colaborativas.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
