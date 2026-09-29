@@ -1,0 +1,37 @@
+{
+  "name": "web",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic --project-token=chpt_1f88bf909e19f61"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/renatocardoso/inga.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renatocardoso/inga/issues"
+  },
+  "homepage": "https://github.com/renatocardoso/inga#readme",
+  "description": "",
+  "devDependencies": {
+    "@chromatic-com/storybook": "latest",
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/addon-vitest": "^10.6.0",
+    "@storybook/html-vite": "^10.6.0",
+    "@vitest/browser-playwright": "latest",
+    "@vitest/coverage-v8": "latest",
+    "chromatic": "^18.10.1",
+    "playwright": "latest",
+    "storybook": "^10.6.0",
+    "vitest": "latest"
+  }
+}
