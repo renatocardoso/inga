@@ -9,11 +9,11 @@ export default {
 const renderPillars = (initialActivePillar = null) => {
   const wrapper = document.createElement('div');
   wrapper.style.backgroundColor = 'var(--verdemata-100)';
-  wrapper.style.padding = '3rem 2rem';
+  wrapper.style.padding = '3rem 0';
   wrapper.style.minHeight = '650px';
 
   wrapper.innerHTML = `
-    <div style="max-width: 1440px; margin: 0 auto;">
+    <div style="width: 100%;">
       <div class="pillars" id="story-pillars">
         <div class="pillars__grid ${initialActivePillar ? 'has-expanded' : ''}" role="region" aria-label="Princípios da nossa abordagem">
           
