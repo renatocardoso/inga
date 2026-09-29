@@ -196,7 +196,7 @@ const init = () => {
     const solutionsButtons = document.getElementById('solutions-buttons');
     const solutionCircleBtns = document.querySelectorAll('.solutions__circle-btn');
     const solutionPanels = document.querySelectorAll('.solutions__panel');
-    const solutionBackBtns = document.querySelectorAll('.solutions__back-btn');
+    const solutionCloseBtns = document.querySelectorAll('.solutions__close-btn, .solutions__back-btn');
     let lastActiveSolutionBtn = null;
 
     const openSolution = (solutionId, triggerBtn) => {
@@ -211,8 +211,8 @@ const init = () => {
         solutionPanels.forEach(panel => {
             if (panel.id === `solution-panel-${solutionId}`) {
                 panel.classList.add('is-active');
-                const backBtn = panel.querySelector('.solutions__back-btn');
-                if (backBtn) backBtn.focus();
+                const closeBtn = panel.querySelector('.solutions__close-btn, .solutions__back-btn');
+                if (closeBtn) closeBtn.focus();
             } else {
                 panel.classList.remove('is-active');
             }
@@ -246,13 +246,24 @@ const init = () => {
         });
     }
 
-    if (solutionBackBtns.length > 0) {
-        solutionBackBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
+    if (solutionCloseBtns.length > 0) {
+        solutionCloseBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
                 closeSolution();
             });
         });
     }
+
+    // Allow closing solution panel with Escape key
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            const hasActivePanel = Array.from(solutionPanels).some(panel => panel.classList.contains('is-active'));
+            if (hasActivePanel) {
+                closeSolution();
+            }
+        }
+    });
 
 
     // ==========================================
