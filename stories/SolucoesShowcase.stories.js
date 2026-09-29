@@ -66,7 +66,11 @@ const renderSolucoes = (initialActiveSolution = null) => {
               </div>
               <div class="solutions__bottom-panel solutions__bottom-panel--planejar">
                   <div class="solutions__bottom-grid">
-                      <!-- Left: Content ATUAMOS EM -->
+                      <!-- Left: Lateral image with rounded right pill boundary (Figma node 1027:95) -->
+                      <div class="solutions__sub-img-wrap">
+                          <img src="img/cactos_planejar.png" alt="Caatinga e mandacarus" class="solutions__sub-img">
+                      </div>
+                      <!-- Right: Content ATUAMOS EM -->
                       <div class="solutions__atuamos-content">
                           <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
                           <ul class="solutions__atuamos-list">
@@ -77,10 +81,6 @@ const renderSolucoes = (initialActiveSolution = null) => {
                               <li>Planos de ação para ecossistemas e espécies ameaçadas;</li>
                               <li>Desenvolvimento de metodologias e instrumentos de planejamento.</li>
                           </ul>
-                      </div>
-                      <!-- Right: Full lateral image with inner rounded border -->
-                      <div class="solutions__sub-img-wrap">
-                          <img src="img/cactos_planejar.png" alt="Caatinga e mandacarus" class="solutions__sub-img">
                       </div>
                   </div>
               </div>
@@ -119,7 +119,11 @@ const renderSolucoes = (initialActiveSolution = null) => {
               </div>
               <div class="solutions__bottom-panel solutions__bottom-panel--fortalecer">
                   <div class="solutions__bottom-grid">
-                      <!-- Left: Content ATUAMOS EM -->
+                      <!-- Left: Lateral image with rounded right pill boundary (Figma node 2087:439) -->
+                      <div class="solutions__sub-img-wrap">
+                          <img src="img/flores_fortalecer.png" alt="Flores do cerrado sempre-viva" class="solutions__sub-img">
+                      </div>
+                      <!-- Right: Content ATUAMOS EM -->
                       <div class="solutions__atuamos-content">
                           <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
                           <ul class="solutions__atuamos-list">
@@ -129,10 +133,6 @@ const renderSolucoes = (initialActiveSolution = null) => {
                               <li>Capacitação e formação de equipe</li>
                               <li>Estruturação de programas e projetos</li>
                           </ul>
-                      </div>
-                      <!-- Right: Full lateral image with inner rounded border -->
-                      <div class="solutions__sub-img-wrap">
-                          <img src="img/flores_fortalecer.png" alt="Flores do cerrado sempre-viva" class="solutions__sub-img">
                       </div>
                   </div>
               </div>
@@ -170,7 +170,11 @@ const renderSolucoes = (initialActiveSolution = null) => {
               </div>
               <div class="solutions__bottom-panel solutions__bottom-panel--engajar">
                   <div class="solutions__bottom-grid">
-                      <!-- Left: Content ATUAMOS EM -->
+                      <!-- Left: Lateral image with rounded right pill boundary (Figma node 2093:458) -->
+                      <div class="solutions__sub-img-wrap">
+                          <img src="img/mata_engajar.png" alt="Mata Atlântica" class="solutions__sub-img">
+                      </div>
+                      <!-- Right: Content ATUAMOS EM -->
                       <div class="solutions__atuamos-content">
                           <h4 class="solutions__atuamos-title">ATUAMOS EM:</h4>
                           <ul class="solutions__atuamos-list">
@@ -181,10 +185,6 @@ const renderSolucoes = (initialActiveSolution = null) => {
                               <li>Mediação e articulação institucional</li>
                               <li>Conselhos gestores e redes colaborativas</li>
                           </ul>
-                      </div>
-                      <!-- Right: Full lateral image with inner rounded border -->
-                      <div class="solutions__sub-img-wrap">
-                          <img src="img/mata_engajar.png" alt="Mata Atlântica" class="solutions__sub-img">
                       </div>
                   </div>
               </div>
