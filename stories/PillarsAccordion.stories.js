@@ -30,11 +30,11 @@ const renderPillars = (initialActivePillar = null) => {
                   </svg>
               </button>
               <div class="pillars__initial-box">
-                  <h3 class="pillars__initial-title">ESTRATÉGIA ORIENTADA<br>POR PROPÓSITO</h3>
+                  <h3 class="pillars__initial-title">PROPÓSITO</h3>
               </div>
               <div class="pillars__expanded-content" id="story-body-estrategia">
                   <div class="pillars__col-left">
-                      <h3 class="pillars__title">ESTRATÉGIA ORIENTADA<br>POR PROPÓSITO</h3>
+                      <h3 class="pillars__title">PROPÓSITO</h3>
                       <div class="pillars__icon">
                           <svg class="pillars__svg" viewBox="0 0 181 181" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round">
                               <circle cx="90.5" cy="90.5" r="76" />

@@ -1,5 +1,5 @@
 export default {
-  title: 'Components/QuemLideraModal',
+  title: 'Design System/Modals/QuemLideraModal',
   tags: ['autodocs'],
   parameters: {
     layout: 'centered',
@@ -28,16 +28,16 @@ export const Default = {
           </svg>
       </button>
       <div class="modal-lidera__layout">
-          <!-- Vertical Teal Block on Left -->
+          <!-- Vertical Teal Block on Left (31.25% width / 450px) -->
           <div class="modal-lidera__teal-column"></div>
-          <!-- Large Overlapping Circle Photo -->
+          <!-- Centered Overlapping Circle Photo (600px diameter on seam) -->
           <div class="modal-lidera__circle-wrap">
               <img src="img/eduardo_palestra.png" alt="Eduardo Hermes Silva palestrando" class="modal-lidera__circle-img">
           </div>
-          <!-- Right Side Content -->
+          <!-- Right Side Content with generous breathing room -->
           <div class="modal-lidera__content-column">
               <div class="modal-lidera__text-box">
-                  <p>A INGA é liderada por Eduardo Hermes Silva, biólogo, mestre em Geografia e consultor com mais de vinte cinco anos de experiência em planejamento estratégico para conservação da biodiversidade, governança de áreas protegidas e facilitação de processos participativos.</p>
+                  <p>A INGA é liderada por Eduardo Hermes Silva, biólogo, mestre em Geografia e consultor com mais de vinte e cinco anos de experiência em planejamento estratégico para conservação da biodiversidade, governança de áreas protegidas e facilitação de processos participativos.</p>
                   <p>Ele responde pela coordenação técnica, pelo relacionamento com os clientes e pela qualidade das entregas. Conforme a complexidade, a INGA reúne e coordena uma rede de consultores e parceiros, formando equipes multidisciplinares capazes de integrar diferentes conhecimentos e experiências.</p>
                   <p>Esse modelo combina atendimento próximo, flexibilidade e excelência técnica, permitindo que cada projeto conte com as competências mais adequadas aos seus desafios, sem abrir mão da consistência metodológica e da condução direta de um consultor sênior.</p>
               </div>

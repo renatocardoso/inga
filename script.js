@@ -207,6 +207,7 @@ const init = () => {
         if (!solutionsButtons) return;
 
         lastActiveSolutionBtn = triggerBtn;
+        closeAllMediaPopovers();
 
         // Hide standalone initial circles as the revealed layout embeds the active circle + two mini switcher circles
         solutionsButtons.classList.add('is-hidden');
@@ -229,6 +230,8 @@ const init = () => {
 
     const closeSolution = () => {
         if (!solutionsButtons) return;
+
+        closeAllMediaPopovers();
 
         // Hide all active panels
         solutionPanels.forEach(panel => {
@@ -279,15 +282,66 @@ const init = () => {
         });
     }
 
-    // Allow closing solution panel with Escape key
+    // ==========================================
+    // 6.1 SOLUÇÕES: MEDIA BUTTONS & POPOVERS (Figma nodes 3460:1834, 3463:1912)
+    // ==========================================
+    const mediaBtns = document.querySelectorAll('.solucoes__media--btn-sm, .solucoes__media--btn-lg, .solucoes-media-btn');
+
+    const closeAllMediaPopovers = () => {
+        mediaBtns.forEach(btn => {
+            btn.classList.remove('is-expanded');
+            btn.setAttribute('aria-expanded', 'false');
+        });
+    };
+
+    if (mediaBtns.length > 0) {
+        mediaBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                // Ignore clicks on inner outbound links
+                if (e.target.closest('.solucoes__media--link, .solucoes-media-popover__link')) return;
+
+                const isAlreadyExpanded = btn.classList.contains('is-expanded');
+                closeAllMediaPopovers();
+
+                if (!isAlreadyExpanded) {
+                    btn.classList.add('is-expanded');
+                    btn.setAttribute('aria-expanded', 'true');
+                }
+            });
+
+            // Keyboard accessibility (Enter / Space)
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    btn.click();
+                }
+            });
+        });
+
+        // Close expanded media popovers when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.solucoes__media--btn-sm, .solucoes__media--btn-lg, .solucoes-media-btn')) {
+                closeAllMediaPopovers();
+            }
+        });
+    }
+
+    // Allow closing solution panel or media popovers with Escape key
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
+            const hasExpandedMedia = Array.from(mediaBtns).some(btn => btn.classList.contains('is-expanded'));
+            if (hasExpandedMedia) {
+                closeAllMediaPopovers();
+                return;
+            }
+
             const hasActivePanel = Array.from(solutionPanels).some(panel => panel.classList.contains('is-active'));
             if (hasActivePanel) {
                 closeSolution();
             }
         }
     });
+
 
 
     // ==========================================

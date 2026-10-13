@@ -21,3 +21,11 @@ yarn-debug.log*
 yarn-error.log*
 
 *storybook.log
+
+# Raw assets / references
+img/Website/
+img/referenciasVisuais/
+
+# Agent & Skills workspace configs
+.agents/
+skills-lock.json
