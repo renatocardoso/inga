@@ -25,12 +25,6 @@ export default {
       <div class="modal-contato__content" data-name="contato__content">
         <div class="card-contact__header" data-name="header--card">
           <span class="card-contact__brand-dot" data-name="brand__symbol" aria-hidden="true"></span>
-          <button class="modal-close contact-close-btn" data-name="button-close" aria-label="Fechar modal de contato">
-              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                  <path d="M1 1L11 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                  <path d="M11 1L1 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-              </svg>
-          </button>
         </div>
         <p class="contact-main-text">
             ${args.text || 'Entre em contato para desenvolvermos juntos soluções estratégicas para seu projeto.'}

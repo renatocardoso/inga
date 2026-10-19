@@ -155,11 +155,8 @@ const init = () => {
 
     if (pillarItems.length > 0) {
         pillarItems.forEach(item => {
-            // Expansion trigger on click
-            item.addEventListener('click', (e) => {
-                // If clicked on close button, do nothing here (close button has own handler)
-                if (e.target.closest('.pillars__close-btn')) return;
-
+            // Expansion & collapse toggle on click (o próprio clique no conteúdo fecha o pilar)
+            item.addEventListener('click', () => {
                 const isAlreadyExpanded = item.classList.contains('pillars__item--is-expanded');
                 closeAllPillars();
 
@@ -167,149 +164,94 @@ const init = () => {
                     item.classList.add('pillars__item--is-expanded');
                     item.setAttribute('aria-expanded', 'true');
                     if (pillarsGrid) pillarsGrid.classList.add('has-expanded');
-
-                    const closeBtn = item.querySelector('.pillars__close-btn');
-                    if (closeBtn) closeBtn.focus();
                 }
             });
 
             // Keyboard navigation (Enter / Space)
             item.addEventListener('keydown', (e) => {
-                if ((e.key === 'Enter' || e.key === ' ') && !item.classList.contains('pillars__item--is-expanded')) {
+                if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     item.click();
                 }
             });
-
-            // Close button click handler
-            const closeBtn = item.querySelector('.pillars__close-btn');
-            if (closeBtn) {
-                closeBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    closeAllPillars();
-                    item.focus();
-                });
-            }
         });
     }
 
 
     // ==========================================
-    // 6. SOLUÇÕES: SOLUCOESSHOWCASE (SPEC-002)
     // ==========================================
-    const solutionsButtons = document.getElementById('solutions-buttons');
-    const solutionCircleBtns = document.querySelectorAll('.solutions__circle-btn');
+    // 6. SOLUÇÕES: NOVA ARQUITETURA DE NAVEGAÇÃO E SHOWCASE (SPEC-002)
+    // ==========================================
+    const solutionsSection = document.getElementById('solucoes');
+    const solutionsNavBar = document.getElementById('solutions-nav-bar');
+    const solutionNavBtns = document.querySelectorAll('.solutions__nav-btn');
     const solutionPanels = document.querySelectorAll('.solutions__panel');
-    const solutionCloseBtns = document.querySelectorAll('.solutions__close-btn, .solutions__back-btn');
-    let lastActiveSolutionBtn = null;
+    const mediaCards = document.querySelectorAll('.solutions__media-card');
 
-    const openSolution = (solutionId, triggerBtn) => {
-        if (!solutionsButtons) return;
-
-        lastActiveSolutionBtn = triggerBtn;
-        closeAllMediaPopovers();
-
-        // Hide standalone initial circles as the revealed layout embeds the active circle + two mini switcher circles
-        solutionsButtons.classList.add('is-hidden');
-        solutionsButtons.classList.remove('is-compact');
-
-        // Activate corresponding panel
-        solutionPanels.forEach(panel => {
-            if (panel.id === `solution-panel-${solutionId}`) {
-                panel.classList.add('is-active');
-                // Optional: set focus to panel close button for accessibility
-                const closeBtn = panel.querySelector('.solutions__close-btn');
-                if (closeBtn && triggerBtn && triggerBtn.classList.contains('solutions__circle-btn')) {
-                    closeBtn.focus();
-                }
-            } else {
-                panel.classList.remove('is-active');
-            }
+    const resetSolutionsToDefault = () => {
+        if (solutionsSection) {
+            solutionsSection.dataset.stage = 'default';
+        }
+        if (solutionsNavBar) {
+            solutionsNavBar.dataset.stage = 'default';
+        }
+        solutionNavBtns.forEach(btn => {
+            btn.setAttribute('aria-selected', 'false');
         });
-    };
 
-    const closeSolution = () => {
-        if (!solutionsButtons) return;
-
-        closeAllMediaPopovers();
-
-        // Hide all active panels
         solutionPanels.forEach(panel => {
             panel.classList.remove('is-active');
+            panel.hidden = true;
         });
 
-        // Restore initial 3 large circles
-        solutionsButtons.classList.remove('is-hidden');
-        solutionsButtons.classList.remove('is-compact');
-        solutionCircleBtns.forEach(btn => {
-            btn.classList.remove('is-active-btn');
-            btn.removeAttribute('aria-selected');
-        });
-
-        // Restore focus
-        if (lastActiveSolutionBtn && typeof lastActiveSolutionBtn.focus === 'function') {
-            lastActiveSolutionBtn.focus();
-            lastActiveSolutionBtn = null;
-        }
+        // Close any revealed cards
+        mediaCards.forEach(card => card.classList.remove('is-revealed'));
     };
 
-    if (solutionCircleBtns.length > 0) {
-        solutionCircleBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const solutionId = btn.getAttribute('data-target-solution');
-                openSolution(solutionId, btn);
-            });
-        });
-    }
+    const activateSolution = (solutionId) => {
+        if (!solutionsNavBar) return;
 
-    // Mini switcher circles navigation inside revealed panels (Figma nodes 1027:95, 2087:439, 2093:458)
-    const solutionMiniCircleBtns = document.querySelectorAll('.solutions__mini-circle');
-    if (solutionMiniCircleBtns.length > 0) {
-        solutionMiniCircleBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const solutionId = btn.getAttribute('data-target-solution');
-                openSolution(solutionId, btn);
-            });
-        });
-    }
+        // If clicking on already active button, return to default state per user alignment
+        if (solutionsNavBar.dataset.stage === solutionId) {
+            resetSolutionsToDefault();
+            return;
+        }
 
-    if (solutionCloseBtns.length > 0) {
-        solutionCloseBtns.forEach(btn => {
+        if (solutionsSection) {
+            solutionsSection.dataset.stage = solutionId;
+        }
+        solutionsNavBar.dataset.stage = solutionId;
+
+        solutionNavBtns.forEach(btn => {
+            const isTarget = btn.dataset.solution === solutionId;
+            btn.setAttribute('aria-selected', isTarget ? 'true' : 'false');
+        });
+
+        solutionPanels.forEach(panel => {
+            if (panel.id === `solution-panel-${solutionId}`) {
+                panel.hidden = false;
+                panel.classList.add('is-active');
+            } else {
+                panel.classList.remove('is-active');
+                panel.hidden = true;
+            }
+        });
+
+        // Close any previously revealed media cards
+        mediaCards.forEach(card => card.classList.remove('is-revealed'));
+    };
+
+    if (solutionNavBtns.length > 0) {
+        solutionNavBtns.forEach(btn => {
             btn.addEventListener('click', (e) => {
                 e.preventDefault();
-                closeSolution();
-            });
-        });
-    }
-
-    // ==========================================
-    // 6.1 SOLUÇÕES: MEDIA BUTTONS & POPOVERS (Figma nodes 3460:1834, 3463:1912)
-    // ==========================================
-    const mediaBtns = document.querySelectorAll('.solucoes__media--btn-sm, .solucoes__media--btn-lg, .solucoes-media-btn');
-
-    const closeAllMediaPopovers = () => {
-        mediaBtns.forEach(btn => {
-            btn.classList.remove('is-expanded');
-            btn.setAttribute('aria-expanded', 'false');
-        });
-    };
-
-    if (mediaBtns.length > 0) {
-        mediaBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                // Ignore clicks on inner outbound links
-                if (e.target.closest('.solucoes__media--link, .solucoes-media-popover__link')) return;
-
-                const isAlreadyExpanded = btn.classList.contains('is-expanded');
-                closeAllMediaPopovers();
-
-                if (!isAlreadyExpanded) {
-                    btn.classList.add('is-expanded');
-                    btn.setAttribute('aria-expanded', 'true');
+                const solutionId = btn.dataset.solution;
+                if (solutionId) {
+                    activateSolution(solutionId);
                 }
             });
 
-            // Keyboard accessibility (Enter / Space)
+            // Keyboard navigation
             btn.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -317,27 +259,48 @@ const init = () => {
                 }
             });
         });
+    }
 
-        // Close expanded media popovers when clicking outside
+    // Media Cards Hover/Tap Crossfade Interaction (Mobile and Touch Friendly)
+    if (mediaCards.length > 0) {
+        mediaCards.forEach(card => {
+            card.addEventListener('click', (e) => {
+                // If on touch device, toggle reveal
+                const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+                if (isTouch) {
+                    const wasRevealed = card.classList.contains('is-revealed');
+                    mediaCards.forEach(c => c.classList.remove('is-revealed'));
+                    if (!wasRevealed) {
+                        card.classList.add('is-revealed');
+                    }
+                }
+            });
+        });
+
+        // Click outside closes revealed media popovers
         document.addEventListener('click', (e) => {
-            if (!e.target.closest('.solucoes__media--btn-sm, .solucoes__media--btn-lg, .solucoes-media-btn')) {
-                closeAllMediaPopovers();
+            if (!e.target.closest('.solutions__media-card')) {
+                mediaCards.forEach(card => card.classList.remove('is-revealed'));
             }
         });
     }
 
-    // Allow closing solution panel or media popovers with Escape key
+    // Escape key returns solutions to default state
     window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
-            const hasExpandedMedia = Array.from(mediaBtns).some(btn => btn.classList.contains('is-expanded'));
-            if (hasExpandedMedia) {
-                closeAllMediaPopovers();
+            if (pillarsGrid && pillarsGrid.classList.contains('has-expanded')) {
+                closeAllPillars();
                 return;
             }
 
-            const hasActivePanel = Array.from(solutionPanels).some(panel => panel.classList.contains('is-active'));
-            if (hasActivePanel) {
-                closeSolution();
+            const hasRevealedCard = Array.from(mediaCards).some(c => c.classList.contains('is-revealed'));
+            if (hasRevealedCard) {
+                mediaCards.forEach(c => c.classList.remove('is-revealed'));
+                return;
+            }
+
+            if (solutionsNavBar && solutionsNavBar.dataset.stage !== 'default') {
+                resetSolutionsToDefault();
             }
         }
     });
@@ -403,7 +366,7 @@ const init = () => {
         });
     });
 
-    // Click outside modal card to close
+    // Click outside modal card to close (backdrop)
     [modalLidera, modalContato].forEach(modal => {
         if (modal) {
             modal.addEventListener('click', (e) => {
@@ -413,6 +376,20 @@ const init = () => {
             });
         }
     });
+
+    // Click on modal-contato card to close (sem botão X, o próprio clique no popup fecha)
+    const modalContatoCard = modalContato ? modalContato.querySelector('.modal-contato-card') : null;
+    if (modalContatoCard) {
+        modalContatoCard.addEventListener('click', (e) => {
+            // Se o clique foi em um link (email ou whatsapp), permite abrir o link e fecha o modal
+            if (e.target.closest('a')) {
+                setTimeout(() => closeModal(modalContato), 150);
+                return;
+            }
+            // Clique no próprio popup fecha o modal
+            closeModal(modalContato);
+        });
+    }
 
     // Global Escape key handler (Modals, PillarsAccordion, Solucoes)
     document.addEventListener('keydown', (e) => {

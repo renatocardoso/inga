@@ -62,7 +62,7 @@ export const NavButtonStates = {
         </div>
         <div style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem;">
           <span style="font-size: 0.75rem; color: var(--color-ocean-400);">state=hover / active</span>
-          <button type="button" class="header-nav__link active" style="color: var(--color-ocean-400);">QUEM SOMOS</button>
+          <button type="button" class="header-nav__link active">QUEM SOMOS</button>
         </div>
       </div>
     `;

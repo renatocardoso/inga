@@ -186,14 +186,12 @@ body.no-scroll {
     height: 100px;
     z-index: 1000;
     pointer-events: none;
-    transition: background-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+    transition: backdrop-filter 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header-nav.scrolled {
-    background: rgba(0, 8, 8, 0.45);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+    /* Pure floating island navigation - no full width bar per Figma */
+    background: transparent;
 }
 
 .header-nav__container {
@@ -237,12 +235,12 @@ body.no-scroll {
     transition: transform 0.25s ease, background-color 0.25s ease;
 }
 
-/* Floating pill navigation list (1000px width in Figma) */
+/* Floating pill navigation list (1000px width in Figma node 2242:526) */
 .header-nav__list {
     width: 1000px;
     max-width: calc(100% - 65px);
     height: clamp(60px, 6.94vw, 100px);
-    background: rgba(9, 31, 30, 0.50);
+    background: rgba(9, 31, 30, 0.50); /* 50% opacity per Figma */
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius-pill);
@@ -256,26 +254,29 @@ body.no-scroll {
     transition: var(--transition-smooth);
 }
 
+/* nav-btn component (Figma node 2055:234) - text-only color transitions, no capsule background */
 .header-nav__link {
     font-family: var(--font-primary);
-    font-size: 1.125rem; /* 18px */
-    font-weight: 400;
-    color: var(--color-ocean-100);
+    font-size: 1.125rem; /* 18px per Figma */
+    font-weight: 400; /* Regular */
+    text-transform: uppercase;
+    color: var(--color-ocean-100, #d5ebea);
     text-decoration: none;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
     white-space: nowrap;
-    transition: color 0.25s ease, transform 0.25s ease;
-    background: none;
+    transition: color 0.2s ease;
+    background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.25rem 0;
+    padding: 0.35rem 0;
+    border-radius: 0;
 }
 
 .header-nav__link:focus-visible,
 .header-nav__link.active {
-    color: var(--color-ocean-400); /* #57b0ae */
-    text-shadow: none;
-    transform: none;
+    background: transparent;
+    color: var(--color-ocean-400, #57b0ae);
+    outline: none;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -285,9 +286,8 @@ body.no-scroll {
     }
 
     .header-nav__link:hover {
-        color: var(--color-ocean-400);
-        text-shadow: none;
-        transform: none;
+        background: transparent;
+        color: var(--color-ocean-400, #57b0ae);
     }
 }
 
@@ -356,6 +356,13 @@ body.no-scroll {
     max-width: 100%;
     height: 693px;
     min-height: 693px;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero--mobile .hero__bg-container {
+    transform: rotate(90deg) scale(1.8);
+    transform-origin: center center;
 }
 
 .hero--mobile .hero__container {
@@ -395,7 +402,7 @@ body.no-scroll {
 }
 
 .hero__headline-box {
-    max-width: 420px;
+    max-width: 363px;
 }
 
 .hero__title {
@@ -429,10 +436,10 @@ body.no-scroll {
 
 .hero__tagline {
     font-family: var(--font-primary);
-    font-size: 12px;
+    font-size: 11.5px;
     font-weight: 600;
-    color: var(--color-ocean-400); /* #57b0ae */
-    letter-spacing: 1.32px;
+    color: var(--color-ocean-500, #2e9d9a);
+    letter-spacing: 1.265px;
     text-transform: uppercase;
     margin-top: 18px;
     line-height: normal;
@@ -473,7 +480,8 @@ body.no-scroll {
     color: var(--oceanoprofundo-500);
 }
 
-.about__trigger--lead {
+.about__trigger--lead,
+#trigger-trajetoria {
     display: inline;
     background: transparent;
     border: none;
@@ -485,18 +493,20 @@ body.no-scroll {
     font-weight: 400;
     font-style: italic;
     color: var(--color-ocean-500);
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    text-decoration-thickness: 1px;
+    text-decoration: none !important;
     white-space: nowrap;
     cursor: pointer;
     transition: var(--transition-fast);
 }
 
 .about__trigger--lead:hover,
-.about__trigger--lead:focus-visible {
+.about__trigger--lead:focus-visible,
+.about__trigger--lead:active,
+#trigger-trajetoria:hover,
+#trigger-trajetoria:focus-visible,
+#trigger-trajetoria:active {
     color: var(--color-ocean-700);
-    text-decoration-thickness: 2px;
+    text-decoration: none !important;
     outline: none;
 }
 
@@ -584,7 +594,7 @@ body.no-scroll {
    6. Nossa Abordagem Section & PillarsAccordion (Figma Component 1)
    ========================================================================== */
 .approach-section {
-    background-color: var(--verdemata-100); /* #cdded9 */
+    background-color: var(--verdemata-200, #9bbdb3); /* #9bbdb3 no Figma node 4010:2846 */
     padding: 260px 0 0 0;
     position: relative;
     z-index: 10;
@@ -599,13 +609,13 @@ body.no-scroll {
 .approach-subtitle {
     font-family: var(--font-primary);
     font-weight: 300;
-    font-size: clamp(1.2rem, 1.8vw, 1.5rem); /* 24px */
-    line-height: clamp(1.6rem, 2.2vw, 2rem);  /* 32px */
-    color: var(--verdemata-900);             /* #00110c */
+    font-size: clamp(1.35rem, 2.22vw, 2rem); /* 32px no Figma */
+    line-height: clamp(1.8rem, 2.9vw, 2.625rem); /* 42px no Figma */
+    color: var(--color-ocean-900, #091f1e);
     text-align: center;
 }
 
-/* --- PillarsAccordion Component (SPEC-002 / Figma Component 1) --- */
+/* --- PillarsAccordion Component (SPEC-002 / Figma Component Set 3238:1020) --- */
 .pillars {
     width: 100%;
     max-width: 100%;
@@ -616,10 +626,12 @@ body.no-scroll {
 .pillars__grid {
     position: relative;
     width: 100%;
-    height: clamp(480px, 35.5vw, 540px);
+    max-width: 1440px;
+    margin: 0 auto;
+    height: clamp(480px, 35.5vw, 512px);
     min-height: 480px;
     overflow: hidden;
-    background-color: var(--verdemata-100);
+    background-color: var(--verdemata-200, #9bbdb3);
 }
 
 .pillars__item {
@@ -655,8 +667,8 @@ body.no-scroll {
 
 .pillars__initial-title {
     font-family: var(--font-primary);
-    font-size: clamp(1.2rem, 1.8vw, 1.75rem);
-    line-height: 1.35;
+    font-size: clamp(1.35rem, 2.22vw, 2rem); /* 32px no Figma */
+    line-height: clamp(1.8rem, 2.9vw, 2.625rem); /* 42px no Figma */
     font-weight: 300;
     text-transform: uppercase;
     letter-spacing: 0.04em;
@@ -670,15 +682,16 @@ body.no-scroll {
 }
 
 /* Modifiers de Posição & Cantos Assimétricos (Collapsed)
-   Cada elemento tem apenas um corner com radius 999, idêntico ao shape revelado */
+   Os 4 quadrantes juntos formam UMA ÚNICA CÁPSULA ESTÁDIO contínua (1440x512px no Figma),
+   com cantos externos arredondados (256px / rounded-500px) e cantos retos (0) no centro. */
 .pillars__item--petroleo {
     top: 0;
     left: 0;
     width: 50%;
     height: 50%;
-    background-color: var(--color-petroleo-900);
-    color: var(--color-petroleo-200);
-    border-radius: 0 0 var(--radius-pill) 0;
+    background-color: var(--color-ocean-400, #57b0ae);
+    color: var(--color-ocean-900, #091f1e);
+    border-radius: 256px 0 0 0;
     z-index: 2;
 }
 
@@ -687,9 +700,9 @@ body.no-scroll {
     right: 0;
     width: 50%;
     height: 50%;
-    background-color: var(--color-verde-700);
-    color: var(--color-verde-300);
-    border-radius: 0 0 0 var(--radius-pill);
+    background-color: var(--verdemata-700, #033627);
+    color: var(--verdemata-300, #699c8d);
+    border-radius: 0 256px 0 0;
     z-index: 1;
 }
 
@@ -698,9 +711,9 @@ body.no-scroll {
     left: 0;
     width: 50%;
     height: 50%;
-    background-color: var(--color-oceano-600);
-    color: var(--color-oceano-900);
-    border-radius: 0 var(--radius-pill) 0 0;
+    background-color: var(--oceanoprofundo-500, #002c2d);
+    color: var(--oceanoprofundo-200, #99aaab);
+    border-radius: 0 0 0 256px;
     z-index: 1;
 }
 
@@ -709,73 +722,80 @@ body.no-scroll {
     right: 0;
     width: 50%;
     height: 50%;
-    background-color: var(--color-amarelo-500);
-    color: var(--color-amarelo-900);
-    border-radius: var(--radius-pill) 0 0 0;
+    background-color: #000000;
+    color: #cccccc;
+    border-radius: 0 0 256px 0;
     z-index: 2;
 }
 
-/* Estado Expandido Preciso (Figma nodes 1009:11, 1009:48, 1009:35, 1009:62)
-   Cada elemento expande alinhando a 2 margens e deixando moldura nas outras 2,
-   com APENAS UMA BORDA ARREDONDADA (radius: 127px). */
+/* Estado Expandido Preciso (Figma node 3238:1020 / component set)
+   Cada elemento expande cobrindo a grade, com cantos diagonais arredondados */
 
-/* 1. Estratégia Expandida (Top-Left): Alinha Topo e Esquerda, moldura Direita e Fundo */
+/* 1. Propósito Expandido (Top-Left): Fundo oceano-400 / #57b0ae, texto oceano-900 / #091f1e, cantos 256px 0 150px 0 (Figma 3238:1018) */
 .pillars__item--petroleo.pillars__item--is-expanded {
     position: absolute;
     top: 0 !important;
     left: 0 !important;
     bottom: auto !important;
     right: auto !important;
-    width: calc(100% - clamp(60px, 6.1vw, 88px)) !important;
+    width: calc(100% - clamp(20px, 2vw, 26px)) !important;
     height: calc(100% - 19px) !important;
-    border-radius: 0 0 127px 0 !important;
+    background-color: var(--color-ocean-400, #57b0ae) !important;
+    color: var(--color-ocean-900, #091f1e) !important;
+    border-radius: 256px 0 150px 0 !important;
     z-index: 20 !important;
-    cursor: default;
+    cursor: pointer;
 }
 
-/* 2. Construção Expandida (Top-Right): Alinha Topo e Direita, moldura Esquerda e Fundo */
+/* 2. Construção Expandida (Top-Right): Fundo verdemata-700 / #033627, cantos 0 256px 0 150px */
 .pillars__item--verde.pillars__item--is-expanded {
     position: absolute;
     top: 0 !important;
     right: 0 !important;
     bottom: auto !important;
     left: auto !important;
-    width: calc(100% - clamp(60px, 6.1vw, 88px)) !important;
+    width: calc(100% - clamp(20px, 2vw, 26px)) !important;
     height: calc(100% - 19px) !important;
-    border-radius: 0 0 0 127px !important;
+    background-color: var(--verdemata-700, #033627) !important;
+    color: var(--verdemata-300, #699c8d) !important;
+    border-radius: 0 256px 0 150px !important;
     z-index: 20 !important;
-    cursor: default;
+    cursor: pointer;
 }
 
-/* 3. Ciência Expandida (Bottom-Left): Alinha Fundo e Esquerda, moldura Topo e Direita */
+/* 3. Ciência Expandida (Bottom-Left): Fundo oceanoprofundo-500 / #002c2d, cantos 0 150px 0 256px */
 .pillars__item--oceano.pillars__item--is-expanded {
     position: absolute;
     bottom: 0 !important;
     left: 0 !important;
     top: auto !important;
     right: auto !important;
-    width: calc(100% - clamp(60px, 6.1vw, 88px)) !important;
+    width: calc(100% - clamp(20px, 2vw, 26px)) !important;
     height: calc(100% - 19px) !important;
-    border-radius: 0 127px 0 0 !important;
+    background-color: var(--oceanoprofundo-500, #002c2d) !important;
+    color: var(--oceanoprofundo-200, #99aaab) !important;
+    border-radius: 0 150px 0 256px !important;
     z-index: 20 !important;
-    cursor: default;
+    cursor: pointer;
 }
 
-/* 4. Resultados Expandida (Bottom-Right): Alinha Fundo e Direita, moldura Topo e Esquerda */
+/* 4. Implementação Expandida (Bottom-Right): Fundo #000000, cantos 150px 0 256px 0 */
 .pillars__item--ambar.pillars__item--is-expanded {
     position: absolute;
     bottom: 0 !important;
     right: 0 !important;
     top: auto !important;
     left: auto !important;
-    width: calc(100% - clamp(60px, 6.1vw, 88px)) !important;
+    width: calc(100% - clamp(20px, 2vw, 26px)) !important;
     height: calc(100% - 19px) !important;
-    border-radius: 127px 0 0 0 !important;
+    background-color: #000000 !important;
+    color: #cccccc !important;
+    border-radius: 150px 0 256px 0 !important;
     z-index: 20 !important;
-    cursor: default;
+    cursor: pointer;
 }
 
-/* Layout Interno Expandido */
+/* Layout Interno Expandido - clique em qualquer parte do conteúdo fecha o pilar */
 .pillars__expanded-content {
     width: 100%;
     height: 100%;
@@ -786,6 +806,7 @@ body.no-scroll {
     box-sizing: border-box;
     opacity: 0;
     transition: opacity 0.3s ease 0.15s;
+    cursor: pointer;
 }
 
 .pillars__item--is-expanded .pillars__expanded-content {
@@ -799,6 +820,7 @@ body.no-scroll {
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
+    pointer-events: none; /* Garante que o clique no texto/ícone propague naturalmente para o container do pilar */
 }
 
 .pillars__col-left {
@@ -843,149 +865,91 @@ body.no-scroll {
     height: 100%;
 }
 
-/* Botão Fechar do Pilar */
-.pillars__close-btn {
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    width: 44px;
-    height: 44px;
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    color: inherit;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
-    z-index: 25;
-}
-
-.pillars__item--is-expanded .pillars__close-btn {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transition: var(--transition-content);
-}
-
-.pillars__close-btn:hover {
-    transform: scale(1.1);
-    background-color: rgba(255, 255, 255, 0.12);
-}
-
-.pillars__close-svg {
-    width: 28px;
-    height: 28px;
-}
-
 /* ==========================================================================
-   7. Transition Sandpipers (Figma node 2028:177)
+   5. Transição Maçaricos (Figma node 4008:2842)
    ========================================================================== */
 .transition-birds-section {
     width: 100%;
-    height: clamp(340px, 45vw, 652px);
-    overflow: hidden;
-    background-color: #f0ebe4;
-}
-
-.transition-birds__img-wrap {
-    width: 100%;
-    height: 100%;
-}
-
-.transition-birds__img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-/* ==========================================================================
-   8. Soluções Intro Section (Figma nodes 2070:429, 2070:426, 2067:354)
-   ========================================================================== */
-/* ==========================================================================
-   8. Soluções Highlight (Figma nodes 2070:429, 3290:94, 2067:354)
-   ========================================================================== */
-.solucoes__highlight,
-.solutions-intro-section {
-    width: 100%;
-    overflow: hidden;
+    background-color: var(--verdemata-200, #9bbdb3);
     position: relative;
-    background-color: var(--oceano-400, #57b0ae);
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    padding: clamp(3rem, 6vw, 6rem) 1.5rem;
 }
 
-.solucoes__highlight--bg {
+.transition-birds__wrap {
+    display: flex;
+    justify-content: center;
     width: 100%;
-    min-height: clamp(440px, 40.6vw, 585px);
-    background-color: var(--oceano-400, #57b0ae);
-    display: grid;
-    grid-template-columns: minmax(320px, 1fr) minmax(340px, 1.1fr);
-    align-items: stretch;
 }
 
-.solucoes__highlight--text-side,
-.solutions-intro__text-side {
+.transition-birds__circle {
+    width: clamp(340px, 69.4vw, 1000px);
+    height: clamp(340px, 69.4vw, 1000px);
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: var(--oceanoprofundo-600, #002324);
+    position: relative;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: clamp(2rem, 5vw, 6rem);
+    box-shadow: 0 24px 70px rgba(0, 30, 20, 0.18);
 }
 
-.solucoes__highlight--quote,
-.solutions-intro__quote {
+.transition-birds__circle::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('img/macaricos_transicao.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.45;
+    pointer-events: none;
+    border-radius: 50%;
+}
+
+.transition-birds__quote {
+    position: relative;
+    z-index: 2;
     font-family: var(--font-primary);
     font-style: italic;
     font-weight: 300; /* Light Italic */
-    font-size: clamp(1.4rem, 2.5vw, 2.25rem); /* 36px no Figma */
-    line-height: clamp(2rem, 3.3vw, 3rem);     /* 48px no Figma */
-    color: var(--color-ocean-900, #091f1e);
+    font-size: clamp(1.2rem, 2.5vw, 2.25rem); /* 36px no Figma */
+    line-height: clamp(1.6rem, 3.3vw, 3rem);     /* 48px no Figma */
+    color: var(--color-white, #ffffff);
+    text-align: center;
     max-width: 506px;
-    margin: 0;
+    margin: 0 auto;
 }
 
-.solucoes__highlight--img-side,
-.solutions-intro__media-side {
-    display: flex;
-    align-items: stretch;
-    justify-content: flex-end;
-    overflow: hidden;
-    position: relative;
-}
-
-.solucoes__highlight--img,
-.solutions-intro__media-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: right center;
-    display: block;
-}
-
-@media (max-width: 860px) {
-    .solucoes__highlight--bg {
-        grid-template-columns: 1fr;
-    }
-
-    .solucoes__highlight--img-side {
-        height: 320px;
-    }
-}
 
 /* ==========================================================================
-   9. Soluções Main Showcase (Figma nodes 1027:95, 2087:439, 2093:458)
+   6. Soluções Main Showcase (Figma nodes 4008:2845, 4007:2762, 4020:2868)
    ========================================================================== */
 .solutions-section {
-    background-color: var(--verdemata-100); /* #cdded9 */
+    background-color: #ffffff;
     padding: clamp(4.5rem, 6vw, 6rem) 0 0 0;
     position: relative;
     z-index: 10;
     overflow-x: clip;
     overflow-y: visible;
+    transition: background-color 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fundo unificado de toda a seção de soluções no estado ativo (sem quebra de cor) */
+.solutions-section[data-stage="planejar"] {
+    background-color: var(--color-ocean-100, #d5ebea);
+}
+
+.solutions-section[data-stage="engajar"] {
+    background-color: var(--verdemata-100, #cdded9);
+}
+
+.solutions-section[data-stage="fortalecer"] {
+    background-color: var(--oceanoprofundo-100, #ccd4d5);
 }
 
 .solutions-container {
@@ -999,45 +963,29 @@ body.no-scroll {
     font-weight: 300;
     font-size: 1.25rem; /* 20px */
     line-height: 1.75rem; /* 28px */
-    color: var(--verdemata-900); /* #00110c */
+    color: var(--verdemata-900, #00110c);
     text-align: center;
     max-width: 1080px;
     margin: 0 auto clamp(3.5rem, 5vw, 5rem) auto;
 }
 
-.solutions__arena {
-    position: relative;
-    width: 100%;
-}
-
-.solutions__buttons {
+/* Dynamic Navigation Bar (solucoes__nav - Figma node 4007:2762) */
+.solutions__nav-bar {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: clamp(1.5rem, 4vw, 3.5rem);
-    padding: 2rem 1rem 4rem 1rem;
-    transition: gap 0.4s cubic-bezier(0.25, 1, 0.5, 1), padding 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+    gap: clamp(24px, 7.6vw, 110px);
+    padding: 1.5rem 1rem clamp(3rem, 5vw, 5rem) 1rem;
+    background-color: transparent;
+    transition: gap 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                padding 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Compact selector navigation state: círculos reduzem e permitem navegação direta */
-.solutions__buttons.is-compact {
-    gap: clamp(1rem, 2.5vw, 2.2rem);
-    padding: 0 1rem 2.5rem 1rem;
-}
-
-.solutions__buttons.is-hidden {
-    opacity: 0;
-    transform: scale(0.85);
-    pointer-events: none;
-    height: 0;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-}
-
-.solutions__circle-btn {
-    width: clamp(200px, 20vw, 300px);
-    height: clamp(200px, 20vw, 300px);
+/* Nav Button Default (300px circular capsules) */
+.solutions__nav-btn {
+    width: clamp(180px, 20.8vw, 300px);
+    height: clamp(180px, 20.8vw, 300px);
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -1045,82 +993,121 @@ body.no-scroll {
     align-items: center;
     justify-content: center;
     font-family: var(--font-primary);
-    font-size: clamp(1.35rem, 2.1vw, 2rem); /* 32px no Figma */
-    line-height: clamp(1.8rem, 2.8vw, 2.625rem); /* 42px no Figma */
-    font-weight: 300; /* Light - consistent with Figma */
+    font-size: clamp(1.2rem, 2.2vw, 2rem); /* 32px no Figma */
+    line-height: clamp(1.6rem, 2.9vw, 2.625rem); /* 42px no Figma */
+    font-weight: 300; /* Light */
     text-transform: uppercase;
     letter-spacing: 0.02em;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, opacity 0.35s ease;
     box-shadow: none;
+    transition: width 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                font-size 0.35s ease,
+                background-color 0.3s ease,
+                transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                opacity 0.35s ease;
 }
 
-.solutions__circle-btn:focus-visible {
+.solutions__nav-btn:focus-visible {
     outline: 3px solid var(--color-ocean-900);
     outline-offset: 4px;
 }
 
-/* Estado Compacto (Quando um painel está aberto) */
-.solutions__buttons.is-compact .solutions__circle-btn {
-    width: clamp(80px, 8.5vw, 110px);
-    height: clamp(80px, 8.5vw, 110px);
-    font-size: clamp(0.72rem, 0.9vw, 0.875rem);
-    font-weight: 600;
+/* Cores Iniciais dos Botões */
+.solutions__nav-btn--planejar {
+    background-color: var(--color-ocean-400, #57b0ae);
+    color: #091f1e;
+    order: 1;
+}
+
+.solutions__nav-btn--engajar {
+    background-color: var(--verdemata-600, #044834);
+    color: #cdded9;
+    order: 2;
+}
+
+.solutions__nav-btn--fortalecer {
+    background-color: var(--oceanoprofundo-600, #002324);
+    color: #ccd4d5;
+    order: 3;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .solutions__nav-btn:hover {
+        transform: scale(1.04);
+    }
+    .solutions__nav-btn--planejar:hover {
+        background-color: var(--color-ocean-300, #81c4c2);
+    }
+    .solutions__nav-btn--engajar:hover {
+        background-color: var(--verdemata-500, #055a41);
+    }
+    .solutions__nav-btn--fortalecer:hover {
+        background-color: var(--oceanoprofundo-500, #002c2d);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Dynamic Navigation Switcher in Active Stages
+   -------------------------------------------------------------------------- */
+.solutions__nav-bar[data-stage="planejar"],
+.solutions__nav-bar[data-stage="engajar"],
+.solutions__nav-bar[data-stage="fortalecer"] {
+    gap: clamp(24px, 17vw, 250px);
+    padding: clamp(2rem, 3.5vw, 3rem) 1rem;
+    background-color: transparent;
+}
+
+/* Redução para esferas compactas de 160px para dimensões não-ativas */
+.solutions__nav-bar[data-stage="planejar"] .solutions__nav-btn:not(.solutions__nav-btn--planejar),
+.solutions__nav-bar[data-stage="engajar"] .solutions__nav-btn:not(.solutions__nav-btn--engajar),
+.solutions__nav-bar[data-stage="fortalecer"] .solutions__nav-btn:not(.solutions__nav-btn--fortalecer) {
+    width: clamp(90px, 11.1vw, 160px);
+    height: clamp(90px, 11.1vw, 160px);
+    font-size: clamp(0.75rem, 1.1vw, 1.125rem);
+    line-height: 1.3;
+    font-weight: 500;
     letter-spacing: 0.04em;
-    opacity: 0.65;
-    transform: scale(0.92);
-    box-shadow: none;
+    opacity: 0.9;
 }
 
-.solutions__buttons.is-compact .solutions__circle-btn:hover {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.solutions__buttons.is-compact .solutions__circle-btn.is-active-btn {
+.solutions__nav-bar[data-stage="planejar"] .solutions__nav-btn:not(.solutions__nav-btn--planejar):hover,
+.solutions__nav-bar[data-stage="engajar"] .solutions__nav-btn:not(.solutions__nav-btn--engajar):hover,
+.solutions__nav-bar[data-stage="fortalecer"] .solutions__nav-btn:not(.solutions__nav-btn--fortalecer):hover {
     opacity: 1;
     transform: scale(1.06);
-    outline: 3px solid var(--verdemata-900);
-    outline-offset: 3px;
 }
 
-/* Cores dos Botões Principais de Soluções (Figma solucoes__btn variants) */
-.solutions__circle-btn--planejar {
-    background-color: var(--amareloouro-500); /* #dcaa1d */
-    color: var(--amareloouro-900);            /* #2b2105 */
+/* Dimensão Ativa permanece destacada em 300px */
+.solutions__nav-bar[data-stage="planejar"] .solutions__nav-btn--planejar,
+.solutions__nav-bar[data-stage="engajar"] .solutions__nav-btn--engajar,
+.solutions__nav-bar[data-stage="fortalecer"] .solutions__nav-btn--fortalecer {
+    width: clamp(180px, 20.8vw, 300px);
+    height: clamp(180px, 20.8vw, 300px);
+    font-size: clamp(1.2rem, 2.2vw, 2rem);
+    cursor: pointer;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
 }
 
-.solutions__circle-btn--fortalecer {
-    background-color: var(--verdemata-700);   /* #033627 */
-    color: var(--verdemata-300);              /* #699c8d */
-}
+/* Reordenação dinâmica das esferas conforme o Figma */
+/* 1. Stage Planejar: Planejar (1st) | Engajar (2nd) | Fortalecer (3rd) */
+.solutions__nav-bar[data-stage="planejar"] .solutions__nav-btn--planejar { order: 1; }
+.solutions__nav-bar[data-stage="planejar"] .solutions__nav-btn--engajar { order: 2; }
+.solutions__nav-bar[data-stage="planejar"] .solutions__nav-btn--fortalecer { order: 3; }
 
-.solutions__circle-btn--engajar {
-    background-color: var(--color-ocean-500); /* #2e9d9a */
-    color: var(--color-ocean-900);            /* #091f1e */
-}
+/* 2. Stage Engajar: Engajar (1st) | Planejar (2nd) | Fortalecer (3rd) */
+.solutions__nav-bar[data-stage="engajar"] .solutions__nav-btn--engajar { order: 1; }
+.solutions__nav-bar[data-stage="engajar"] .solutions__nav-btn--planejar { order: 2; }
+.solutions__nav-bar[data-stage="engajar"] .solutions__nav-btn--fortalecer { order: 3; }
 
-/* Hover específico por tema (Figma state=hover) */
-@media (hover: hover) and (pointer: fine) {
-    .solutions__circle-btn:hover {
-        transform: scale(1.04);
-        box-shadow: none;
-    }
-
-    .solutions__circle-btn--planejar:hover {
-        background-color: var(--amareloouro-300); /* #eacc77 */
-    }
-
-    .solutions__circle-btn--fortalecer:hover {
-        background-color: var(--verdemata-500);   /* #055a41 */
-    }
-
-    .solutions__circle-btn--engajar:hover {
-        background-color: var(--color-ocean-300); /* #81c4c2 */
-    }
-}
+/* 3. Stage Fortalecer: Fortalecer (1st) | Engajar (2nd) | Planejar (3rd) */
+.solutions__nav-bar[data-stage="fortalecer"] .solutions__nav-btn--fortalecer { order: 1; }
+.solutions__nav-bar[data-stage="fortalecer"] .solutions__nav-btn--engajar { order: 2; }
+.solutions__nav-bar[data-stage="fortalecer"] .solutions__nav-btn--planejar { order: 3; }
 
 
-/* Painéis de Revelação de Conteúdo */
+/* --------------------------------------------------------------------------
+   Content Panels & Split-Column Showcase (Node 4020:2868)
+   -------------------------------------------------------------------------- */
 .solutions__panels-container {
     position: relative;
     width: 100%;
@@ -1129,544 +1116,170 @@ body.no-scroll {
 .solutions__panel {
     display: none;
     opacity: 0;
-    transform: translateY(20px);
-    position: relative;
-    transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    width: 100%;
+    transition: opacity 0.4s ease;
 }
 
-.solutions__panel.is-active {
+.solutions__panel.is-active,
+.solutions__panel:not([hidden]) {
     display: block;
     opacity: 1;
-    transform: translateY(0);
 }
 
-/* Botão Fechar em X (Figma Spec) */
-.solutions__close-btn {
-    position: absolute;
-    top: 1.5rem;
-    right: 2rem;
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    background: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #222222;
-    transition: var(--transition-fast);
-    z-index: 20;
+/* Fundo unificado do painel conforme a dimensão */
+.solutions__panel--planejar {
+    background-color: var(--color-ocean-100, #d5ebea);
 }
 
-@media (hover: hover) and (pointer: fine) {
-    .solutions__close-btn:hover {
-        background: var(--color-white);
-        transform: scale(1.1);
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
-    }
+.solutions__panel--engajar {
+    background-color: var(--verdemata-100, #cdded9);
 }
 
-.solutions__close-btn:focus-visible {
-    outline: 2px solid var(--verdemata-900);
-    outline-offset: 2px;
+.solutions__panel--fortalecer {
+    background-color: var(--oceanoprofundo-100, #ccd4d5);
 }
 
-/* ==========================================================================
-   Novo Layout de Soluções (Figma nodes 1027:95, 3409:594, 3409:618)
-   ========================================================================== */
-.solutions__showcase-layout {
+.solutions__split-layout {
     max-width: 1440px;
     margin: 0 auto;
-    padding: clamp(2rem, 3vw, 3.5rem) clamp(1.5rem, 4vw, 4rem) clamp(4rem, 6vw, 6rem) clamp(1.5rem, 4vw, 4rem);
+    min-height: 961px;
     display: grid;
-    grid-template-columns: minmax(360px, 1.1fr) minmax(320px, 0.9fr);
-    gap: clamp(2rem, 4.5vw, 5.5rem);
-    align-items: start;
-    position: relative;
+    grid-template-columns: minmax(360px, 663px) minmax(360px, 774px);
+    align-items: stretch;
 }
 
-/* Coluna Visual (Esquerda): Badge + 2 Botões de Mídia Interativos com Popover (Figma nodes 3445:1769, 3450:1786, 3463:1899) */
-.solutions__visual-col {
-    position: relative;
-    width: 100%;
-    min-height: clamp(900px, 118vw, 1720px);
-    overflow: visible;
-}
-
-.solutions__badge-circle {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: clamp(220px, 20.8vw, 300px);
-    height: clamp(220px, 20.8vw, 300px);
-    border-radius: 50%;
+/* --------------------------------------------------------------------------
+   Coluna da Esquerda: Mídia (663px de largura)
+   -------------------------------------------------------------------------- */
+.solutions__media-col {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-primary);
-    font-size: clamp(1.2rem, 2.1vw, 2rem);
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    z-index: 25;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+    flex-direction: column;
+    width: 100%;
+    max-width: 663px;
 }
 
-.solutions__badge-circle--planejar {
-    background-color: var(--amareloouro-500);
-    color: var(--amareloouro-900);
-}
-
-.solutions__badge-circle--fortalecer {
-    background-color: var(--verdemata-700);
-    color: var(--verdemata-300);
-}
-
-.solutions__badge-circle--engajar {
-    background-color: var(--color-ocean-500);
-    color: var(--color-ocean-900);
-}
-
-
-
-/* ==========================================================================
-   Botões Interativos de Mídia com Popover Deslocado por Trás da Foto
-   Figma: solucoes__media--btn-sm (3460:1834) e solucoes__media--btn-lg (3463:1912)
-   ========================================================================== */
-.solucoes__media--btn-sm,
-.solucoes__media--btn-lg,
-.solucoes-media-btn {
-    position: absolute;
-    overflow: visible; /* Fundamental: permite que o popover se projete para fora */
+/* Bloco Superior (663x445px, border-top-right-radius: 300px) */
+.solutions__media-card--round {
+    width: 100%;
+    height: clamp(340px, 30.9vw, 445px);
+    min-height: 340px;
+    border-top-right-radius: clamp(140px, 20.8vw, 300px);
+    overflow: hidden;
+    position: relative;
     cursor: pointer;
-    background: transparent;
-    border: none;
-    padding: 0;
-    display: block;
-    -webkit-tap-highlight-color: transparent;
-    transition: z-index 0.3s ease;
+    background-color: transparent;
 }
 
-.solucoes__media--btn-sm:focus-visible,
-.solucoes__media--btn-lg:focus-visible,
-.solucoes-media-btn:focus-visible {
+/* Bloco Inferior (663x444px, retangular) */
+.solutions__media-card--rect {
+    width: 100%;
+    height: clamp(340px, 30.8vw, 444px);
+    min-height: 340px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.solutions__media-card {
+    outline: none;
+}
+
+.solutions__media-card:focus-visible {
     outline: 3px solid var(--color-ocean-900);
-    outline-offset: 4px;
+    outline-offset: -3px;
 }
 
-/* Botão Menor (solucoes__media--btn-sm - Figma node 3460:1834: 500x500px) */
-.solucoes__media--btn-sm.solucoes__media--btn-top,
-.solucoes-media-btn--sm.solucoes-media-btn--top {
-    top: clamp(110px, 11.1vw, 160px);
-    left: clamp(70px, 7.6vw, 110px);
-    width: clamp(340px, 34.5vw, 498px);
-    height: clamp(340px, 34.5vw, 500px);
-    z-index: 10;
-}
-
-/* Botão Maior (solucoes__media--btn-lg - Figma node 3463:1912: 650x650px) */
-.solucoes__media--btn-lg.solucoes__media--btn-bottom,
-.solucoes-media-btn--lg.solucoes-media-btn--bottom {
-    top: clamp(390px, 38.8vw, 560px);
-    left: clamp(-40px, -2.8vw, -40px);
-    width: clamp(450px, 45.1vw, 650px);
-    height: clamp(450px, 45.1vw, 650px);
-    z-index: 5;
-}
-
-/* Trigger com Imagem Circular (fica em primeiro plano: z-index 3) */
-.solucoes__media--trigger {
+/* Foto com transição suave */
+.solutions__media-photo-wrap {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    border-radius: 9999px;
-    overflow: hidden;
-    z-index: 3;
-    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.16);
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1;
+    opacity: 1;
+    transition: opacity 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.solucoes__media--img,
-.solucoes-media-btn__img {
+.solutions__media-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    border-radius: 9999px;
-    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
 }
 
-/* Popover Circular com Conteúdo (Figma: size 650px, surge por trás da foto com z-index 1) */
-.solucoes__media--popover,
-.solucoes-media-popover {
+/* Popover com informações do parceiro (Crossfade on hover - Figma solucoes_media) */
+.solutions__media-popover {
     position: absolute;
-    border-radius: 9999px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: clamp(12px, 1.4vw, 20px);
-    padding: clamp(24px, 4vw, 50px) clamp(24px, 4.5vw, 60px);
-    text-align: center;
-    z-index: 1; /* Fica por trás do trigger que tem z-index 3 */
-    
-    /* Estado inicial: recolhido atrás da foto */
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    padding: clamp(2rem, 4vw, 3.5rem);
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.75);
     pointer-events: none;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-    transition: 
-        transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-        opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        top 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-        left 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-        width 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-        height 0.55s cubic-bezier(0.16, 1, 0.3, 1),
-        visibility 0.4s ease;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-/* Temas de cores do Popover por Solução */
-.planejar__media--popover,
-.solucoes-media-popover--planejar {
-    background-color: var(--amareloouro-100, #f8eed1);
-    color: var(--amareloouro-900, #2b2105);
+/* Temas de cores do Popover por Solução - Fundo unificado com o conteúdo da etapa */
+.solutions__panel--planejar .solutions__media-popover {
+    background-color: var(--color-ocean-100, #d5ebea);
+    color: #091f1e;
 }
 
-.fortalecer__media--popover,
-.solucoes-media-popover--fortalecer {
-    background-color: var(--verdemata-100, #d5eae1);
-    color: var(--verdemata-900, #012319);
+.solutions__panel--engajar .solutions__media-popover {
+    background-color: var(--verdemata-100, #cdded9);
+    color: #00110c;
 }
 
-.engajar__media--popover,
-.solucoes-media-popover--engajar {
-    background-color: #ffffff;
-    color: var(--color-ocean-900, #091f1e);
+.solutions__panel--fortalecer .solutions__media-popover {
+    background-color: var(--oceanoprofundo-100, #ccd4d5);
+    color: #000c0c;
 }
 
-/* Conteúdo interno do Popover */
-.solucoes__media--logo,
-.planejar__media--logo,
-.fortalecer__media--logo,
-.engajar__media--logo,
-.solucoes-media-popover__logo-wrap {
-    min-height: clamp(36px, 4.5vw, 73px);
-    max-height: 74px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.solucoes__media--logo-img,
-.solucoes-media-popover__logo {
-    max-width: clamp(120px, 14vw, 195px);
-    max-height: clamp(36px, 4.5vw, 73px);
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    display: block;
-}
-
-.solucoes__media--title,
-.solucoes-media-popover__title {
-    font-family: var(--font-primary);
-    font-size: clamp(0.95rem, 1.25vw, 1.25rem); /* 20px no Figma */
-    font-weight: 400; /* Regular */
-    line-height: clamp(1.3rem, 1.8vw, 2rem);     /* 32px */
-    margin: 0;
-    max-width: 506px;
-    text-align: center;
-    color: inherit;
-}
-
-.solucoes__media--desc,
-.solucoes-media-popover__desc {
-    font-family: var(--font-primary);
-    font-size: clamp(0.85rem, 1.1vw, 1.125rem); /* 18-20px */
-    font-weight: 300; /* Light */
-    line-height: clamp(1.2rem, 1.55vw, 1.75rem); /* 28px */
-    margin: 0;
-    max-width: 380px;
-    text-align: center;
-    color: inherit;
-}
-
-.solucoes__media--link,
-.solucoes-media-popover__link {
-    font-family: var(--font-primary);
-    font-size: clamp(0.85rem, 1.1vw, 1.125rem);
-    font-weight: 400;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-    cursor: pointer;
-    color: inherit;
-    display: inline-block;
-    margin-top: 4px;
-    transition: opacity 0.2s ease;
-}
-
-.solucoes__media--link:hover,
-.solucoes-media-popover__link:hover {
-    opacity: 0.75;
-}
-
-/* ==========================================================================
-   Comportamento Interativo: Popover surge por trás da foto e se desloca abaixo
-   Figma Specs:
-   - Botão SM (node 3460:1834): top: 400px; left: -151px; size: 650px;
-   - Botão LG (node 3463:1912): top: 460px; left: 340px; size: 650px;
-   ========================================================================== */
-
-/* Feedback de Hover sutil no Trigger */
+/* Efeito de Fade / Crossfade no Hover e Focus */
 @media (hover: hover) and (pointer: fine) {
-    .solucoes__media--btn-sm:hover .solucoes__media--trigger,
-    .solucoes__media--btn-lg:hover .solucoes__media--trigger,
-    .solucoes-media-btn:hover .solucoes__media--trigger,
-    .solucoes-media-btn:hover .solucoes-media-btn__img {
-        transform: scale(1.025);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+    .solutions__media-card:hover .solutions__media-photo-wrap {
+        opacity: 0;
+        transform: scale(1.02);
+    }
+
+    .solutions__media-card:hover .solutions__media-popover {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
     }
 }
 
-/* Estado Ativo/Expandido (clique via mouse ou touch / teclado) */
-.solucoes__media--btn-sm.is-expanded,
-.solucoes__media--btn-lg.is-expanded,
-.solucoes-media-btn.is-expanded {
-    z-index: 15 !important;
-}
-
-.solucoes__media--btn-sm.is-expanded .solucoes__media--trigger,
-.solucoes__media--btn-lg.is-expanded .solucoes__media--trigger {
+.solutions__media-card.is-revealed .solutions__media-photo-wrap,
+.solutions__media-card:focus-visible .solutions__media-photo-wrap {
+    opacity: 0;
     transform: scale(1.02);
-    box-shadow: 0 22px 55px rgba(0, 0, 0, 0.26);
 }
 
-.solucoes__media--btn-sm.is-expanded .solucoes__media--popover,
-.solucoes-media-btn--sm.is-expanded .solucoes-media-popover {
-    top: clamp(240px, 28vw, 400px);
-    left: clamp(-151px, -11vw, -80px);
-    width: clamp(480px, 45vw, 650px);
-    height: clamp(480px, 45vw, 650px);
+.solutions__media-card.is-revealed .solutions__media-popover,
+.solutions__media-card:focus-visible .solutions__media-popover {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
     pointer-events: auto;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
 }
 
-.solucoes__media--btn-lg.is-expanded .solucoes__media--popover,
-.solucoes-media-btn--lg.is-expanded .solucoes-media-popover {
-    top: clamp(260px, 32vw, 460px);
-    left: clamp(140px, 24vw, 340px);
-    width: clamp(480px, 45vw, 650px);
-    height: clamp(480px, 45vw, 650px);
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-    pointer-events: auto;
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
-}
-
-/* Ajustes Responsivos para Telas Médias e Pequenas (< 992px) */
-@media (max-width: 991px) {
-    .solutions__visual-col {
-        min-height: auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 3rem;
-        padding-top: 180px;
-    }
-
-    .solutions__badge-circle {
-        position: absolute;
-        top: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-
-    .solucoes__media--btn-sm.solucoes__media--btn-top,
-    .solucoes__media--btn-lg.solucoes__media--btn-bottom,
-    .solucoes-media-btn--sm.solucoes-media-btn--top,
-    .solucoes-media-btn--lg.solucoes-media-btn--bottom {
-        position: relative;
-        top: auto;
-        left: auto;
-        width: min(80vw, 420px);
-        height: min(80vw, 420px);
-        margin: 0 auto;
-    }
-
-    .solucoes__media--btn-sm.is-expanded .solucoes__media--popover,
-    .solucoes__media--btn-lg.is-expanded .solucoes__media--popover,
-    .solucoes-media-btn--sm.is-expanded .solucoes-media-popover,
-    .solucoes-media-btn--lg.is-expanded .solucoes-media-popover {
-        top: calc(100% + 20px);
-        left: 50%;
-        transform: translateX(-50%) scale(1);
-        width: min(88vw, 440px);
-        height: min(88vw, 440px);
-        padding: 24px 20px;
-    }
-}
-
-
-/* Coluna de Conteúdo (Direita): Mini Switchers + Descrição + ATUAMOS EM + CASES */
-.solutions__content-col {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(1.75rem, 2.5vw, 2.5rem);
-    padding-top: clamp(0.5rem, 2vw, 2.5rem);
-    max-width: 540px;
-}
-
-/* Mini Switcher Circles (Figma nodes 3407:566, 3407:570, etc.) */
-.solutions__mini-circles {
-    display: flex;
-    align-items: center;
-    gap: clamp(1rem, 2.5vw, 2.2rem);
-    margin-bottom: 0.5rem;
-}
-
-.solutions__mini-circle {
-    width: clamp(100px, 11vw, 160px);
-    height: clamp(100px, 11vw, 160px);
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
+.solutions__media-logo-wrap {
+    max-height: 72px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--font-primary);
-    font-size: clamp(0.95rem, 1.25vw, 1.25rem); /* 20px no Figma */
-    font-weight: 400; /* Regular no Figma */
-    line-height: clamp(1.4rem, 2vw, 2rem); /* 32px no Figma */
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease;
-    box-shadow: none;
 }
 
-.solutions__mini-circle:focus-visible {
-    outline: 2px solid var(--color-ocean-900);
-    outline-offset: 2px;
-}
-
-.solutions__mini-circle--planejar {
-    background-color: var(--amareloouro-500);
-    color: var(--amareloouro-900);
-}
-
-.solutions__mini-circle--fortalecer {
-    background-color: var(--verdemata-700);
-    color: var(--verdemata-300);
-}
-
-.solutions__mini-circle--engajar {
-    background-color: var(--color-ocean-500);
-    color: var(--color-ocean-900);
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .solutions__mini-circle:hover {
-        transform: scale(1.05);
-    }
-
-    .solutions__mini-circle--planejar:hover {
-        background-color: var(--amareloouro-300);
-    }
-
-    .solutions__mini-circle--fortalecer:hover {
-        background-color: var(--verdemata-500);
-    }
-
-    .solutions__mini-circle--engajar:hover {
-        background-color: var(--color-ocean-300);
-    }
-}
-
-
-/* Textos da Coluna Direita */
-.solutions__desc-text {
-    font-family: var(--font-primary);
-    font-weight: 300;
-    font-size: 1.25rem; /* 20px */
-    line-height: 1.75rem; /* 28px */
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-}
-
-.solutions__desc-text p {
-    font-family: var(--font-primary);
-    font-weight: 300;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    margin: 0;
-}
-
-.solutions__section-title {
-    font-family: var(--font-primary);
-    font-size: 1.25rem; /* 20px */
-    font-weight: 500;
-    line-height: 2rem;   /* 32px */
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    margin: 0 0 0.85rem 0;
-}
-
-.solutions__bullets-list {
-    list-style-type: disc;
-    padding-left: 1.6rem;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.35rem;
-}
-
-.solutions__bullets-list li {
-    font-family: var(--font-primary);
-    font-weight: 300;
-    font-size: 1.25rem;
-    line-height: 2rem;
-}
-
-/* Seção de CASES */
-.solutions__cases-box {
-    margin-top: 0.5rem;
-}
-
-.solutions__cases-list {
-    display: flex;
-    flex-direction: column;
-    gap: 2.25rem;
-    margin-top: 1rem;
-}
-
-.solutions__case-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    align-items: flex-start;
-}
-
-.solutions__case-logo-wrap {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-}
-
-.solutions__case-logo {
-    max-height: 60px;
+.solutions__media-logo-img {
+    max-height: 64px;
     max-width: 220px;
     width: auto;
     height: auto;
@@ -1674,117 +1287,174 @@ body.no-scroll {
     display: block;
 }
 
-.solutions__case-desc {
+.solutions__media-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.solutions__media-project-title {
     font-family: var(--font-primary);
-    font-weight: 300;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    font-size: clamp(1rem, 1.4vw, 1.25rem); /* 20px */
+    font-weight: 400;
+    line-height: 1.5;
+    margin: 0;
+    max-width: 440px;
+    color: inherit;
+}
+
+.solutions__media-location {
+    font-family: var(--font-primary);
+    font-size: clamp(0.95rem, 1.25vw, 1.125rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0.25rem 0 0 0;
+    color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   Coluna da Direita: Conteúdo Editorial (774px de largura, padding 79px 50px)
+   -------------------------------------------------------------------------- */
+.solutions__editorial-col {
+    padding: clamp(2.5rem, 5.5vw, 79px) clamp(1.5rem, 3.5vw, 50px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 774px;
+    gap: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.solutions__editorial-title {
+    font-family: var(--font-primary);
+    font-style: italic;
+    font-weight: 300; /* Light Italic */
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem); /* 36px no Figma */
+    line-height: clamp(2rem, 3.3vw, 3rem);     /* 48px no Figma */
     margin: 0;
 }
 
-/* Temas e Cores por Solução */
-.solutions__panel--planejar {
-    background-color: var(--amareloouro-200, #f1dda4);
+.solutions__editorial-desc {
+    font-family: var(--font-primary);
+    font-weight: 300; /* Light */
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem); /* 20px no Figma */
+    line-height: clamp(1.6rem, 1.95vw, 1.75rem); /* 28px no Figma */
+    margin: 0;
 }
 
-.solutions__panel--fortalecer {
-    background-color: var(--verdemata-200, #9bbdb3);
+.solutions__act-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
 }
 
-.solutions__panel--engajar {
-    background-color: var(--color-ocean-100, #d5ebea);
+.solutions__act-label {
+    font-family: var(--font-primary);
+    font-size: 1.25rem; /* 20px */
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0;
 }
 
-.solutions__panel--planejar .solutions__desc-text,
-.solutions__panel--planejar .solutions__desc-text p,
-.solutions__panel--planejar .solutions__section-title,
-.solutions__panel--planejar .solutions__bullets-list li,
-.solutions__panel--planejar .solutions__case-desc {
-    color: var(--color-amarelo-900); /* #2b2105 */
+.solutions__act-list {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.solutions__panel--fortalecer .solutions__desc-text,
-.solutions__panel--fortalecer .solutions__desc-text p,
-.solutions__panel--fortalecer .solutions__section-title,
-.solutions__panel--fortalecer .solutions__bullets-list li,
-.solutions__panel--fortalecer .solutions__case-desc {
-    color: var(--verdemata-800); /* #012319 */
+.solutions__act-list li {
+    font-family: var(--font-primary);
+    font-weight: 300; /* Light */
+    font-size: clamp(1.05rem, 1.4vw, 1.25rem); /* 20px */
+    line-height: clamp(1.6rem, 1.95vw, 1.75rem); /* 28px */
 }
 
-.solutions__panel--engajar .solutions__desc-text,
-.solutions__panel--engajar .solutions__desc-text p,
-.solutions__panel--engajar .solutions__section-title,
-.solutions__panel--engajar .solutions__bullets-list li,
-.solutions__panel--engajar .solutions__case-desc {
-    color: var(--color-ocean-900); /* #091f1e */
+/* Cores de texto editorial por dimensão */
+.solutions__panel--planejar .solutions__editorial-col {
+    color: #091f1e;
+}
+
+.solutions__panel--engajar .solutions__editorial-col {
+    color: #00110c;
+}
+
+.solutions__panel--fortalecer .solutions__editorial-col {
+    color: #000c0c;
 }
 
 /* Responsividade de Soluções */
 @media (max-width: 992px) {
-    .solutions__showcase-layout {
+    .solutions__split-layout {
         grid-template-columns: 1fr;
-        gap: 3rem;
-        padding-top: 4.5rem;
+        min-height: auto;
     }
 
-    .solutions__visual-col {
-        min-height: 600px;
-        display: block;
-        position: relative;
-    }
-
-    .solutions__badge-circle {
-        top: 0;
-        left: 5%;
-        width: 150px;
-        height: 150px;
-        font-size: 1.1rem;
-    }
-
-    .solucoes-media-btn--sm.solucoes-media-btn--top {
-        top: 50px;
-        left: 20%;
-        width: clamp(220px, 46vw, 320px);
-        height: clamp(220px, 46vw, 320px);
-    }
-
-    .solucoes-media-btn--lg.solucoes-media-btn--bottom {
-        top: 240px;
-        left: 5%;
-        width: clamp(260px, 56vw, 380px);
-        height: clamp(260px, 56vw, 380px);
-    }
-
-    .solutions__content-col {
+    .solutions__media-col {
         max-width: 100%;
+    }
+
+    .solutions__media-card--round {
+        border-top-right-radius: 120px;
+        height: 380px;
+    }
+
+    .solutions__media-card--rect {
+        height: 380px;
+    }
+
+    .solutions__editorial-col {
+        max-width: 100%;
+        padding: 3rem 1.5rem;
+    }
+
+    .solutions__nav-bar {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+    }
+
+    .solutions__nav-bar[data-stage="planejar"],
+    .solutions__nav-bar[data-stage="engajar"],
+    .solutions__nav-bar[data-stage="fortalecer"] {
+        gap: 1.5rem;
     }
 }
 
 @media (max-width: 600px) {
-    .solutions__visual-col {
-        min-height: 520px;
+    .solutions__nav-btn {
+        width: 140px;
+        height: 140px;
+        font-size: 1rem;
     }
 
-    .solutions__badge-circle {
-        top: 0;
-        left: 0;
-        width: 120px;
-        height: 120px;
-        font-size: 0.95rem;
+    .solutions__nav-bar[data-stage="planejar"] .solutions__nav-btn--planejar,
+    .solutions__nav-bar[data-stage="engajar"] .solutions__nav-btn--engajar,
+    .solutions__nav-bar[data-stage="fortalecer"] .solutions__nav-btn--fortalecer {
+        width: 150px;
+        height: 150px;
+        font-size: 1.05rem;
     }
 
-    .solucoes-media-btn--sm.solucoes-media-btn--top {
-        top: 40px;
-        left: 15%;
-        width: 200px;
-        height: 200px;
+    .solutions__nav-bar[data-stage="planejar"] .solutions__nav-btn:not(.solutions__nav-btn--planejar),
+    .solutions__nav-bar[data-stage="engajar"] .solutions__nav-btn:not(.solutions__nav-btn--engajar),
+    .solutions__nav-bar[data-stage="fortalecer"] .solutions__nav-btn:not(.solutions__nav-btn--fortalecer) {
+        width: 76px;
+        height: 76px;
+        font-size: 0.65rem;
     }
 
-    .solucoes-media-btn--lg.solucoes-media-btn--bottom {
-        top: 180px;
-        left: 0;
-        width: 240px;
-        height: 240px;
+    .solutions__media-card--round {
+        border-top-right-radius: 80px;
+        height: 300px;
+    }
+
+    .solutions__media-card--rect {
+        height: 300px;
     }
 }
 
@@ -1849,6 +1519,7 @@ body.no-scroll {
     gap: 1.25rem;
     position: relative;
     min-height: 38px;
+    cursor: pointer;
 }
 
 .footer-icon-btn {
@@ -1856,8 +1527,10 @@ body.no-scroll {
     align-items: center;
     justify-content: center;
     color: var(--color-ocean-400); /* #57b0ae */
-    text-decoration: none;
+    text-decoration: none !important;
     flex-shrink: 0;
+    transition: color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
 }
 
 .footer-svg-icon {
@@ -1865,23 +1538,25 @@ body.no-scroll {
 }
 
 .footer-icon-btn:hover,
-.footer-icon-btn:focus-visible {
-    color: var(--color-ocean-400);
-    transform: none;
+.footer-icon-btn:focus-visible,
+.footer-action-row:hover .footer-icon-btn {
+    color: var(--color-ocean-300, #81c4c2);
+    transform: scale(1.06);
     outline: none;
 }
 
 /* Lateral text reveal identical to CardContato */
 .footer-side-reveal {
     font-family: var(--font-primary);
-    font-size: 1.125rem;
-    font-weight: 400;
-    color: var(--color-ocean-400);
-    text-decoration: none;
+    font-size: clamp(1rem, 1.3vw, 1.25rem); /* 20px no Figma */
+    font-weight: 300; /* Inter:Light */
+    color: var(--color-ocean-300, #81c4c2);
+    text-decoration: none !important;
     white-space: nowrap;
     opacity: 0;
     transform: translateX(-10px);
     pointer-events: none;
+    cursor: pointer;
     transition: opacity 0.25s ease, transform 0.25s ease, color 0.2s ease;
 }
 
@@ -1892,10 +1567,10 @@ body.no-scroll {
     pointer-events: auto;
 }
 
-.footer-side-reveal:hover {
-    color: var(--color-ocean-100);
-    text-decoration: underline;
-    text-underline-offset: 4px;
+.footer-side-reveal:hover,
+.footer-side-reveal:focus-visible {
+    color: var(--color-ocean-100, #d5ebea);
+    text-decoration: none !important; /* Sem sublinhado, idêntico ao CardContato */
 }
 
 /* ==========================================================================
@@ -2112,6 +1787,7 @@ body.no-scroll {
     position: relative;
     box-sizing: border-box;
     overflow: visible;
+    cursor: pointer; /* Permite clicar no popup para fechar */
 }
 
 .modal-contato__content {
@@ -2120,12 +1796,12 @@ body.no-scroll {
     flex-direction: column;
     align-items: flex-start;
     position: relative;
+    cursor: pointer;
 }
 
 .card-contact__header {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     width: 100%;
     margin-bottom: clamp(20px, 3vw, 28px);
 }
@@ -2138,24 +1814,6 @@ body.no-scroll {
     background-color: var(--color-ocean-400); /* #57b0ae */
 }
 
-.modal-contato-card .contact-close-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--color-ocean-400); /* #57b0ae */
-    padding: 6px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.15s ease;
-}
-
-.modal-contato-card .contact-close-btn:hover,
-.modal-contato-card .contact-close-btn:focus-visible {
-    color: var(--color-ocean-100);
-    transform: scale(1.15);
-}
-
 .contact-main-text {
     font-family: var(--font-primary);
     font-size: clamp(1.1rem, 2vw, 1.5rem); /* 24px no Figma */
@@ -2166,9 +1824,10 @@ body.no-scroll {
     margin: 0 0 clamp(24px, 3.5vw, 36px) 0;
     width: 100%;
     max-width: 286px;
+    user-select: none;
 }
 
-/* Vertical Icons Alignment with Lateral Reveal on Hover */
+/* Vertical Icons Alignment with Lateral Reveal on Hover (Figma link-contato) */
 .contact-actions-vertical {
     display: flex;
     flex-direction: column;
@@ -2183,6 +1842,7 @@ body.no-scroll {
     gap: 1.25rem;
     position: relative;
     min-height: 38px;
+    cursor: pointer;
 }
 
 .contact-icon-btn {
@@ -2190,9 +1850,10 @@ body.no-scroll {
     align-items: center;
     justify-content: center;
     color: var(--color-ocean-400); /* #57b0ae */
-    text-decoration: none;
+    text-decoration: none !important;
     flex-shrink: 0;
     transition: color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
 }
 
 .contact-svg-icon {
@@ -2200,22 +1861,24 @@ body.no-scroll {
 }
 
 .contact-icon-btn:hover,
-.contact-icon-btn:focus-visible {
-    color: var(--color-ocean-100);
-    transform: scale(1.08);
+.contact-icon-btn:focus-visible,
+.contact-action-row:hover .contact-icon-btn {
+    color: var(--color-ocean-300, #81c4c2);
+    transform: scale(1.06);
 }
 
-/* Lateral text reveal */
+/* Lateral text reveal (Figma node 4006:2689 e 1898:42: Inter Light 20px, sem sublinhado) */
 .contact-side-reveal {
     font-family: var(--font-primary);
-    font-size: clamp(0.95rem, 1.2vw, 1.125rem);
-    font-weight: 400;
-    color: var(--color-ocean-400);
-    text-decoration: none;
+    font-size: clamp(1rem, 1.3vw, 1.25rem); /* 20px no Figma */
+    font-weight: 300; /* Inter:Light */
+    color: var(--color-ocean-300, #81c4c2);
+    text-decoration: none !important;
     white-space: nowrap;
     opacity: 0;
     transform: translateX(-10px);
     pointer-events: none;
+    cursor: pointer;
     transition: opacity 0.25s ease, transform 0.25s ease, color 0.2s ease;
 }
 
@@ -2226,10 +1889,10 @@ body.no-scroll {
     pointer-events: auto;
 }
 
-.contact-side-reveal:hover {
-    color: var(--color-ocean-100);
-    text-decoration: underline;
-    text-underline-offset: 4px;
+.contact-side-reveal:hover,
+.contact-side-reveal:focus-visible {
+    color: var(--color-ocean-100, #d5ebea);
+    text-decoration: none !important; /* Sem sublinhado conforme Figma */
 }
 
 
@@ -2434,6 +2097,15 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
+    .hero {
+        overflow: hidden;
+    }
+
+    .hero__bg-container {
+        transform: rotate(90deg) scale(1.8);
+        transform-origin: center center;
+    }
+
     .footer-container {
         flex-direction: column;
         align-items: center;

@@ -8,7 +8,7 @@ export default {
 
 const renderPillars = (initialActivePillar = null) => {
   const wrapper = document.createElement('div');
-  wrapper.style.backgroundColor = 'var(--verdemata-100)';
+  wrapper.style.backgroundColor = 'var(--verdemata-200)';
   wrapper.style.padding = '3rem 0';
   wrapper.style.minHeight = '650px';
 
@@ -23,12 +23,6 @@ const renderPillars = (initialActivePillar = null) => {
                role="button" 
                aria-expanded="${initialActivePillar === 'estrategia' ? 'true' : 'false'}" 
                data-pillar="estrategia">
-              <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
-                  <svg class="pillars__close-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                  </svg>
-              </button>
               <div class="pillars__initial-box">
                   <h3 class="pillars__initial-title">PROPÓSITO</h3>
               </div>
@@ -55,12 +49,6 @@ const renderPillars = (initialActivePillar = null) => {
                role="button" 
                aria-expanded="${initialActivePillar === 'construcao' ? 'true' : 'false'}" 
                data-pillar="construcao">
-              <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
-                  <svg class="pillars__close-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                  </svg>
-              </button>
               <div class="pillars__initial-box">
                   <h3 class="pillars__initial-title">CONSTRUÇÃO<br>PARTICIPATIVA</h3>
               </div>
@@ -87,12 +75,6 @@ const renderPillars = (initialActivePillar = null) => {
                role="button" 
                aria-expanded="${initialActivePillar === 'ciencia' ? 'true' : 'false'}" 
                data-pillar="ciencia">
-              <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
-                  <svg class="pillars__close-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                  </svg>
-              </button>
               <div class="pillars__initial-box">
                   <h3 class="pillars__initial-title">CIÊNCIA APLICADA<br>A DECISÃO</h3>
               </div>
@@ -119,12 +101,6 @@ const renderPillars = (initialActivePillar = null) => {
                role="button" 
                aria-expanded="${initialActivePillar === 'resultados' ? 'true' : 'false'}" 
                data-pillar="resultados">
-              <button type="button" class="pillars__close-btn" aria-label="Fechar detalhes do pilar">
-                  <svg class="pillars__close-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                  </svg>
-              </button>
               <div class="pillars__initial-box">
                   <h3 class="pillars__initial-title">IMPLEMENTAÇÃO<br>E RESULTADOS</h3>
               </div>
@@ -163,8 +139,7 @@ const renderPillars = (initialActivePillar = null) => {
   };
 
   items.forEach(item => {
-    item.addEventListener('click', (e) => {
-      if (e.target.closest('.pillars__close-btn')) return;
+    item.addEventListener('click', () => {
       const isExp = item.classList.contains('pillars__item--is-expanded');
       closeAll();
       if (!isExp) {
@@ -173,14 +148,6 @@ const renderPillars = (initialActivePillar = null) => {
         grid.classList.add('has-expanded');
       }
     });
-
-    const closeBtn = item.querySelector('.pillars__close-btn');
-    if (closeBtn) {
-      closeBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        closeAll();
-      });
-    }
   });
 
   return wrapper;
