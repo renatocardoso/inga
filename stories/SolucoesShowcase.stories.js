@@ -107,7 +107,7 @@ const renderSolucoes = (initialStage = 'default', initialRevealedCardIndex = nul
                         <h4 class="solutions__act-label">ATUAÇÃO</h4>
                         <ul class="solutions__act-list">
                             <li>Planejamento estratégico institucional;</li>
-                            <li>Planos de Manejo de Áreas Protegidas;</li>
+                            <li>Planos de Manejo e de Uso Público de Áreas Protegidas;</li>
                             <li>Planejamento territorial para conservação;</li>
                             <li>Estratégias e programas de uso e conservação da biodiversidade;</li>
                             <li>Planos de ação para ecossistemas e espécies ameaçadas;</li>
@@ -127,25 +127,9 @@ const renderSolucoes = (initialStage = 'default', initialRevealedCardIndex = nul
                 <!-- Left Column: Media Stack (663px) -->
                 <div class="solutions__media-col">
                     <!-- Top Media Card (663x445px, rounded-tr 300px) -->
-                    <div class="solutions__media-card solutions__media-card--round" tabindex="0" role="region" aria-label="Case PAT Campanha">
+                    <div class="solutions__media-card solutions__media-card--round" tabindex="0" role="region" aria-label="Case REBIO do Mato Grande">
                         <div class="solutions__media-photo-wrap">
                             <img src="img/solucoes_engajar_pampa.jpg" alt="Campo e gado ao entardecer no Pampa" class="solutions__media-photo">
-                        </div>
-                        <div class="solutions__media-popover">
-                            <div class="solutions__media-logo-wrap">
-                                <img src="img/case_pat_campanha.svg" alt="PAT Campanha Sul e Serra do Sudeste" class="solutions__media-logo-img">
-                            </div>
-                            <div class="solutions__media-info">
-                                <p class="solutions__media-project-title">Oficina de Monitoria do PAT Campanha Sul e Serra do Sudeste</p>
-                                <p class="solutions__media-location">Pampa</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Bottom Media Card (663x444px, straight) -->
-                    <div class="solutions__media-card solutions__media-card--rect" tabindex="0" role="region" aria-label="Case REBIO do Mato Grande">
-                        <div class="solutions__media-photo-wrap">
-                            <img src="img/solucoes_engajar_oficina.jpg" alt="Facilitador conduzindo oficina participativa com post-its" class="solutions__media-photo">
                         </div>
                         <div class="solutions__media-popover">
                             <div class="solutions__media-logo-wrap">
@@ -154,6 +138,22 @@ const renderSolucoes = (initialStage = 'default', initialRevealedCardIndex = nul
                             <div class="solutions__media-info">
                                 <p class="solutions__media-project-title">Oficina de Elaboração do Plano de Manejo da Reserva Biológica do Mato Grande</p>
                                 <p class="solutions__media-location">Pampa e Sistema Costeiro Marinho</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Media Card (663x444px, straight) -->
+                    <div class="solutions__media-card solutions__media-card--rect" tabindex="0" role="region" aria-label="Case PAT Campanha">
+                        <div class="solutions__media-photo-wrap">
+                            <img src="img/solucoes_engajar_oficina.jpg" alt="Facilitador conduzindo oficina participativa com post-its" class="solutions__media-photo">
+                        </div>
+                        <div class="solutions__media-popover">
+                            <div class="solutions__media-logo-wrap">
+                                <img src="img/case_pat_campanha.svg" alt="PAT Campanha Sul e Serra do Sudeste" class="solutions__media-logo-img">
+                            </div>
+                            <div class="solutions__media-info">
+                                <p class="solutions__media-project-title">Oficina de Monitoria do Plano de Ação para Conservação de Espécies Ameaçadas do Território Campanha Sul e Serra do Sudeste</p>
+                                <p class="solutions__media-location">Pampa</p>
                             </div>
                         </div>
                     </div>
@@ -197,7 +197,7 @@ const renderSolucoes = (initialStage = 'default', initialRevealedCardIndex = nul
                                 <img src="img/case_wwf.svg" alt="WWF Brasil" class="solutions__media-logo-img">
                             </div>
                             <div class="solutions__media-info">
-                                <p class="solutions__media-project-title">Planejamento Estratégico e Conservação em Paisagens Silvestres</p>
+                                <p class="solutions__media-project-title">Assessoria para implementação do Plano de Ação para Conservação de Espécies Ameaçadas do Território Planalto Sul</p>
                                 <p class="solutions__media-location">Mata Atlântica</p>
                             </div>
                         </div>
@@ -232,7 +232,8 @@ const renderSolucoes = (initialStage = 'default', initialRevealedCardIndex = nul
                             <li>Desenvolvimento organizacional;</li>
                             <li>Gestão do conhecimento;</li>
                             <li>Capacitação e formação de equipe;</li>
-                            <li>Estruturação de programas e projetos.</li>
+                            <li>Estruturação de programas e projetos;</li>
+                            <li>Formulação de políticas públicas e instrumentos normativos.</li>
                         </ul>
                     </div>
                 </div>

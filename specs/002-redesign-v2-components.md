@@ -65,9 +65,9 @@
   - Oceano (inf. esquerdo): cantos retos (`0`).
   - Âmbar (inf. direito): `border-radius: var(--radius-full) 0 0 var(--radius-full);` (com sobreposição sutil à esquerda).
 - **Estado Expandido**:
-  - `position: absolute; inset: 0; width: 100%; height: 100%; z-index: 10;`
-  - Transição de raio: apenas 1 canto mantém raio arredondado (`127px`), 3 cantos retos (`0`).
-  - Transições CSS: `transition: all 400ms cubic-bezier(0.25, 1, 0.5, 1);`
+  - `position: absolute; inset: 0; width: 100%; height: 100%; z-index: 20;`
+  - Transição de raio: todos os 4 cantos arredondados (`256px` / formato cápsula contínuo ocupando 100% da área).
+  - Transições CSS: `transition: width 400ms cubic-bezier(0.25, 1, 0.5, 1), height 400ms cubic-bezier(0.25, 1, 0.5, 1), border-radius 400ms cubic-bezier(0.25, 1, 0.5, 1), opacity 300ms ease;`
   - Entrada de conteúdo: `transition: opacity 250ms ease 150ms, visibility 250ms ease 150ms;`
 - **Acessibilidade**:
   - `tabindex="0"`, ativação via `Enter` e `Space`.

@@ -29,3 +29,6 @@ img/referenciasVisuais/
 # Agent & Skills workspace configs
 .agents/
 skills-lock.json
+
+# Scratch
+scratch/

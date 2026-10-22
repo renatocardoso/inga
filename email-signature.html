@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assinatura de E-mail - INGA | Eduardo Hermes Silva</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f0f4f3;
+      color: #1a2423;
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .page-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #000808;
+      margin-bottom: 8px;
+    }
+    .page-subtitle {
+      font-size: 15px;
+      color: #4a5c57;
+    }
+    .signature-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 8, 8, 0.08);
+      padding: 32px;
+      max-width: 900px;
+      width: 100%;
+      margin-bottom: 24px;
+    }
+    .preview-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #6d827c;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .signature-wrapper {
+      background: #ffffff;
+      border: 1px dashed #cdded9;
+      border-radius: 8px;
+      padding: 24px;
+      display: inline-block;
+      width: 100%;
+      overflow-x: auto;
+    }
+    .actions-bar {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background-color: #2e9d9a;
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background-color: #247d7b;
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background-color: #e5eae7;
+      color: #000808;
+    }
+    .btn-secondary:hover {
+      background-color: #d5deda;
+    }
+    .toast {
+      display: none;
+      background: #000808;
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 13px;
+      align-items: center;
+      gap: 6px;
+      animation: fadeIn 0.2s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .instructions-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(0, 8, 8, 0.04);
+      padding: 28px 32px;
+      max-width: 900px;
+      width: 100%;
+    }
+    .instructions-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #000808;
+      margin-bottom: 12px;
+    }
+    .instructions-card ol {
+      padding-left: 20px;
+      color: #334440;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .instructions-card li {
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <h1 class="page-title">Assinatura de E-mail Oficial</h1>
+    <p class="page-subtitle">INGA &bull; Inovação e Gestão Ambiental</p>
+  </header>
+
+  <main class="signature-card">
+    <span class="preview-label">Pré-visualização da Assinatura</span>
+    
+    <div class="signature-wrapper" id="signature-container">
+      <!-- ================================================================= -->
+      <!-- INÍCIO DA ASSINATURA DE E-MAIL (TABLE COMPATÍVEL COM TODOS OS CLIENTES) -->
+      <!-- ================================================================= -->
+      <table id="email-signature-table" cellpadding="0" cellspacing="0" border="0" style="vertical-align: top; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #ffffff;">
+        <tbody>
+          <tr>
+            <!-- Coluna 1: Logo da INGA -->
+            <td valign="top" style="vertical-align: top; padding: 0; padding-right: 55px; width: 224px; min-width: 224px;">
+              <a href="https://www.inga.eco.br" target="_blank" rel="noopener noreferrer" style="text-decoration: none; display: block; border: 0;">
+                <img src="img/logo_inga_email.png" alt="INGA - Inovação e Gestão Ambiental" width="224" height="78" style="display: block; border: 0; outline: none; text-decoration: none; width: 224px; height: 78px; max-width: 224px;" />
+              </a>
+            </td>
+
+            <!-- Coluna 2: Informações de Contato -->
+            <td valign="top" style="vertical-align: top; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+              <table cellpadding="0" cellspacing="0" border="0" style="vertical-align: top; border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                <tbody>
+                  <!-- Nome -->
+                  <tr>
+                    <td style="padding: 0 0 2px 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 700; line-height: 32px; color: #000808; white-space: nowrap;">
+                      Eduardo Hermes Silva
+                    </td>
+                  </tr>
+
+                  <!-- Cargo -->
+                  <tr>
+                    <td style="padding: 0 0 2px 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 300; font-style: italic; line-height: 28px; color: #000808; white-space: nowrap;">
+                      Diretor e gerente de projetos
+                    </td>
+                  </tr>
+
+                  <!-- Email e Telefone -->
+                  <tr>
+                    <td style="padding: 0 0 4px 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 300; line-height: 28px; color: #000808; white-space: nowrap;">
+                      <a href="mailto:eduardo@inga.eco.br" style="color: #000808; text-decoration: none; font-weight: 300;">eduardo@inga.eco.br</a>
+                      <span style="color: #000808; font-weight: 300; padding: 0 8px;">|</span>
+                      <a href="tel:+5548996162725" style="color: #000808; text-decoration: none; font-weight: 300;">+55 (48) 99616-2725</a>
+                    </td>
+                  </tr>
+
+                  <!-- Website -->
+                  <tr>
+                    <td style="padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 700; line-height: 32px; color: #2e9d9a; white-space: nowrap;">
+                      <a href="https://www.inga.eco.br" target="_blank" rel="noopener noreferrer" style="color: #2e9d9a; text-decoration: none; font-weight: 700;">www.inga.eco.br</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- ================================================================= -->
+      <!-- FIM DA ASSINATURA DE E-MAIL -->
+      <!-- ================================================================= -->
+    </div>
+
+    <div class="actions-bar">
+      <button type="button" class="btn btn-primary" id="btn-copy-rich">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        Copiar Assinatura (para colar no Gmail / Outlook)
+      </button>
+
+      <button type="button" class="btn btn-secondary" id="btn-copy-html">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        Copiar Código HTML
+      </button>
+
+      <span class="toast" id="toast-msg">Copiado com sucesso!</span>
+    </div>
+  </main>
+
+  <section class="instructions-card">
+    <h3>Como instalar no seu e-mail:</h3>
+    <ol>
+      <li><strong>No Gmail:</strong> Clique no botão <em>"Copiar Assinatura"</em> acima. Acesse o Gmail &rarr; <em>Configurações (engrenagem)</em> &rarr; <em>Ver todas as configurações</em> &rarr; role até <em>Assinatura</em> &rarr; clique no campo e pressione <code>Ctrl + V</code> (ou <code>Cmd + V</code> no Mac). Salve as alterações.</li>
+      <li><strong>No Outlook (Web ou Desktop):</strong> Clique em <em>"Copiar Assinatura"</em>. Abra as Configurações de Assinatura do Outlook e cole diretamente no editor com <code>Ctrl + V</code>.</li>
+      <li><strong>No Apple Mail:</strong> Abra <em>Preferências</em> &rarr; <em>Assinaturas</em>, crie uma nova assinatura e cole.</li>
+    </ol>
+  </section>
+
+  <script>
+    const btnCopyRich = document.getElementById('btn-copy-rich');
+    const btnCopyHtml = document.getElementById('btn-copy-html');
+    const toast = document.getElementById('toast-msg');
+    const sigTable = document.getElementById('email-signature-table');
+
+    function showToast(text) {
+      toast.textContent = text;
+      toast.style.display = 'inline-flex';
+      setTimeout(() => {
+        toast.style.display = 'none';
+      }, 3000);
+    }
+
+    btnCopyRich.addEventListener('click', async () => {
+      try {
+        const range = document.createRange();
+        range.selectNode(sigTable);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+        document.execCommand('copy');
+        selection.removeAllRanges();
+        showToast('Assinatura copiada! Cole com Ctrl+V no seu cliente de e-mail.');
+      } catch (err) {
+        console.error('Falha ao copiar:', err);
+        showToast('Erro ao copiar automaticamente. Selecione e copie manualmente.');
+      }
+    });
+
+    btnCopyHtml.addEventListener('click', async () => {
+      try {
+        const htmlCode = sigTable.outerHTML;
+        await navigator.clipboard.writeText(htmlCode);
+        showToast('Código HTML copiado para a área de transferência!');
+      } catch (err) {
+        console.error('Falha ao copiar HTML:', err);
+        showToast('Erro ao copiar HTML.');
+      }
+    });
+  </script>
+</body>
+</html>

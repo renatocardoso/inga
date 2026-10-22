@@ -28,7 +28,7 @@ export const Default = {
           A INGA – Inovação e Gestão Ambiental nasceu da convicção de que os grandes desafios da conservação da natureza exigem mais do que conhecimento: exigem estratégia, participação e a capacidade de transformar diferentes perspectivas em decisões consistentes e ações efetivas.
         </p>
         <p style="margin-bottom: 1.5rem;">
-          Criada em 2024, a INGA representa a consolidação de uma 
+          Criada em 2023, a INGA representa a consolidação de uma 
           <button type="button" class="about__trigger--lead" id="story-trigger-lead" aria-haspopup="dialog">
             ${args.text}
           </button> 

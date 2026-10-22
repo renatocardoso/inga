@@ -94,7 +94,7 @@
     --line-height-solucoes-btn: 2.25rem;  /* 36px */
     --radius-pill: 999px;
     --radius-expanded-corner: 127px;
-    --transition-pillar: transform 400ms cubic-bezier(0.25, 1, 0.5, 1), opacity 300ms ease;
+    --transition-pillar: width 400ms cubic-bezier(0.25, 1, 0.5, 1), height 400ms cubic-bezier(0.25, 1, 0.5, 1), border-radius 400ms cubic-bezier(0.25, 1, 0.5, 1), opacity 300ms ease;
     --transition-content: opacity 250ms ease 150ms, visibility 250ms ease 150ms;
     --transition-smooth: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
     --transition-fast: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s ease;
@@ -631,7 +631,8 @@ body.no-scroll {
     height: clamp(480px, 35.5vw, 512px);
     min-height: 480px;
     overflow: hidden;
-    background-color: var(--verdemata-200, #9bbdb3);
+    border-radius: 256px;
+    background-color: transparent;
 }
 
 .pillars__item {
@@ -728,71 +729,56 @@ body.no-scroll {
     z-index: 2;
 }
 
-/* Estado Expandido Preciso (Figma node 3238:1020 / component set)
-   Cada elemento expande cobrindo a grade, com cantos diagonais arredondados */
-
-/* 1. Propósito Expandido (Top-Left): Fundo oceano-400 / #57b0ae, texto oceano-900 / #091f1e, cantos 256px 0 150px 0 (Figma 3238:1018) */
-.pillars__item--petroleo.pillars__item--is-expanded {
+/* Estado Expandido (Figma Component Set abordagem-grid / 5 Variants)
+   Quando revelado, a cor de fundo do conteúdo ocupa toda a área principal (100% x 100%)
+   com os 4 cantos arredondados (formato cápsula/estádio contínuo com raio 256px). */
+.pillars__item.pillars__item--is-expanded {
     position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 256px !important;
+    z-index: 20 !important;
+    cursor: pointer;
+}
+
+/* 1. Propósito Expandido (Top-Left): Fundo oceano-400 / #57b0ae, texto oceano-900 / #091f1e */
+.pillars__item--petroleo.pillars__item--is-expanded {
     top: 0 !important;
     left: 0 !important;
     bottom: auto !important;
     right: auto !important;
-    width: calc(100% - clamp(20px, 2vw, 26px)) !important;
-    height: calc(100% - 19px) !important;
     background-color: var(--color-ocean-400, #57b0ae) !important;
     color: var(--color-ocean-900, #091f1e) !important;
-    border-radius: 256px 0 150px 0 !important;
-    z-index: 20 !important;
-    cursor: pointer;
 }
 
-/* 2. Construção Expandida (Top-Right): Fundo verdemata-700 / #033627, cantos 0 256px 0 150px */
+/* 2. Construção Expandida (Top-Right): Fundo verdemata-700 / #033627, texto verdemata-300 / #699c8d */
 .pillars__item--verde.pillars__item--is-expanded {
-    position: absolute;
     top: 0 !important;
     right: 0 !important;
     bottom: auto !important;
     left: auto !important;
-    width: calc(100% - clamp(20px, 2vw, 26px)) !important;
-    height: calc(100% - 19px) !important;
     background-color: var(--verdemata-700, #033627) !important;
     color: var(--verdemata-300, #699c8d) !important;
-    border-radius: 0 256px 0 150px !important;
-    z-index: 20 !important;
-    cursor: pointer;
 }
 
-/* 3. Ciência Expandida (Bottom-Left): Fundo oceanoprofundo-500 / #002c2d, cantos 0 150px 0 256px */
+/* 3. Ciência Expandida (Bottom-Left): Fundo oceanoprofundo-500 / #002c2d, texto oceanoprofundo-200 / #99aaab */
 .pillars__item--oceano.pillars__item--is-expanded {
-    position: absolute;
     bottom: 0 !important;
     left: 0 !important;
     top: auto !important;
     right: auto !important;
-    width: calc(100% - clamp(20px, 2vw, 26px)) !important;
-    height: calc(100% - 19px) !important;
     background-color: var(--oceanoprofundo-500, #002c2d) !important;
     color: var(--oceanoprofundo-200, #99aaab) !important;
-    border-radius: 0 150px 0 256px !important;
-    z-index: 20 !important;
-    cursor: pointer;
 }
 
-/* 4. Implementação Expandida (Bottom-Right): Fundo #000000, cantos 150px 0 256px 0 */
+/* 4. Implementação Expandida (Bottom-Right): Fundo #000000, texto #cccccc */
 .pillars__item--ambar.pillars__item--is-expanded {
-    position: absolute;
     bottom: 0 !important;
     right: 0 !important;
     top: auto !important;
     left: auto !important;
-    width: calc(100% - clamp(20px, 2vw, 26px)) !important;
-    height: calc(100% - 19px) !important;
     background-color: #000000 !important;
     color: #cccccc !important;
-    border-radius: 150px 0 256px 0 !important;
-    z-index: 20 !important;
-    cursor: pointer;
 }
 
 /* Layout Interno Expandido - clique em qualquer parte do conteúdo fecha o pilar */
@@ -961,9 +947,9 @@ body.no-scroll {
 .solutions-lead-intro {
     font-family: var(--font-primary);
     font-weight: 300;
-    font-size: 1.25rem; /* 20px */
-    line-height: 1.75rem; /* 28px */
-    color: var(--verdemata-900, #00110c);
+    font-size: clamp(1.35rem, 2.22vw, 2rem); /* 32px no Figma */
+    line-height: clamp(1.8rem, 2.9vw, 2.625rem); /* 42px no Figma */
+    color: var(--color-ocean-900, #091f1e);
     text-align: center;
     max-width: 1080px;
     margin: 0 auto clamp(3.5rem, 5vw, 5rem) auto;
@@ -1142,7 +1128,6 @@ body.no-scroll {
 .solutions__split-layout {
     max-width: 1440px;
     margin: 0 auto;
-    min-height: 961px;
     display: grid;
     grid-template-columns: minmax(360px, 663px) minmax(360px, 774px);
     align-items: stretch;
@@ -1168,6 +1153,7 @@ body.no-scroll {
     position: relative;
     cursor: pointer;
     background-color: transparent;
+    flex: 1 1 auto;
 }
 
 /* Bloco Inferior (663x444px, retangular) */
@@ -1179,6 +1165,7 @@ body.no-scroll {
     position: relative;
     cursor: pointer;
     background-color: transparent;
+    flex: 1 1 auto;
 }
 
 .solutions__media-card {
@@ -2035,7 +2022,8 @@ body.no-scroll {
         overflow: visible;
     }
 
-    .pillars__item {
+    .pillars__item,
+    .pillars__item.pillars__item--is-expanded {
         position: relative !important;
         width: 100% !important;
         height: auto !important;
